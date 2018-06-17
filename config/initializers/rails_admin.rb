@@ -1,10 +1,19 @@
 require 'i18n'
 I18n.available_locales = [:en, :uk]
-I18n.default_locale = :uk
+I18n.default_locale = :en
 
 RailsAdmin.config do |config|
 
+  config.parent_controller = "::ApplicationController"
+
   ### Popular gems integration
+
+  config.authorize_with do |controller|
+    unless current_user.try(:admin?)
+      flash[:error] = "You are not an admin"
+      redirect_to root_path
+    end
+  end
 
   ## == Devise ==
   config.authenticate_with do
@@ -16,10 +25,10 @@ RailsAdmin.config do |config|
   # config.authorize_with :cancan
 
   ## == Pundit ==
-  # config.authorize_with :pundit
+  config.authorize_with :pundit
 
   # == PaperTrail ==
-  config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
+  # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
@@ -39,7 +48,7 @@ RailsAdmin.config do |config|
     show_in_app
 
     ## With an audit adapter, you can add:
-    history_index
-    history_show
+    # history_index
+    # history_show
   end
 end
