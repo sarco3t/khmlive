@@ -1,16 +1,18 @@
-require "i18n"
-I18n.available_locales = [:en, :uk]
+# frozen_string_literal: true
+
+require 'i18n'
+I18n.available_locales = %i[en uk]
 I18n.default_locale = :en
 
 RailsAdmin.config do |config|
-  config.excluded_models = ["ActiveStorage::Blob", "ActiveStorage::Attachment", "Ckeditor::Picture", "Ckeditor::Asset"]
-  config.parent_controller = "::ApplicationController"
+  config.excluded_models = ['ActiveStorage::Blob', 'ActiveStorage::Attachment', 'Ckeditor::Picture', 'Ckeditor::Asset', 'AbstractPost']
+  config.parent_controller = '::ApplicationController'
 
   ### Popular gems integration
 
-  config.authorize_with do |controller|
+  config.authorize_with do |_controller|
     unless current_user.try(:admin?)
-      flash[:error] = "You are not an admin"
+      flash[:error] = 'You are not an admin'
       redirect_to root_path
     end
   end
@@ -21,9 +23,6 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
 
-  ## == Cancan ==
-  # config.authorize_with :cancan
-
   ## == Pundit ==
   config.authorize_with :pundit
 
@@ -31,10 +30,6 @@ RailsAdmin.config do |config|
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
-
-  ## == Gravatar integration ==
-  ## To disable Gravatar integration in Navigation Bar set to false
-  # config.show_gravatar = true
 
   config.actions do
     dashboard                     # mandatory
@@ -52,7 +47,12 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.model "Post" do
+  config.model 'Article' do
+    list do
+      include_all_fields
+      field :category
+      exclude_fields :type
+    end
     edit do
       field :body, :ck_editor
       field :images, :active_storage_many
@@ -61,7 +61,7 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model "Category" do
+  config.model 'Category' do
     edit do
       field :logo, :active_storage
       include_all_fields

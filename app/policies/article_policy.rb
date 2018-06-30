@@ -1,0 +1,1 @@
+class ArticlePolicy < PostPolicy; end
