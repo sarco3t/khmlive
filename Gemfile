@@ -61,6 +61,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-gem 'rails_admin'
 gem 'devise'
 gem 'pundit'
+
+# admin
+gem 'rails_admin', github: 'scalderdom/rails_admin', branch: 'active_storage'
+gem 'ckeditor'

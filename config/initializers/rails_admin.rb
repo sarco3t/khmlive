@@ -3,7 +3,7 @@ I18n.available_locales = [:en, :uk]
 I18n.default_locale = :en
 
 RailsAdmin.config do |config|
-
+  config.excluded_models = ['ActiveStorage::Blob', 'ActiveStorage::Attachment']
   config.parent_controller = "::ApplicationController"
 
   ### Popular gems integration
@@ -50,5 +50,23 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+  end
+
+  config.model 'Post' do
+    edit do
+      field :title, :string
+      # field :body, :wysihtml5
+      field :images, :active_storage_many
+    end
+    configure :type do
+      hide
+    end
+  end
+
+  config.model 'Category' do
+    edit do
+      field :title, :string
+      field :logo, :active_storage
+    end
   end
 end
