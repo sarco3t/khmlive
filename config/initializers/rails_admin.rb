@@ -1,9 +1,9 @@
-require 'i18n'
+require "i18n"
 I18n.available_locales = [:en, :uk]
 I18n.default_locale = :en
 
 RailsAdmin.config do |config|
-  config.excluded_models = ['ActiveStorage::Blob', 'ActiveStorage::Attachment']
+  config.excluded_models = ["ActiveStorage::Blob", "ActiveStorage::Attachment", "Ckeditor::Picture", "Ckeditor::Asset"]
   config.parent_controller = "::ApplicationController"
 
   ### Popular gems integration
@@ -52,21 +52,19 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.model 'Post' do
+  config.model "Post" do
     edit do
-      field :title, :string
-      # field :body, :wysihtml5
+      field :body, :ck_editor
       field :images, :active_storage_many
-    end
-    configure :type do
-      hide
+      include_all_fields
+      exclude_fields :type
     end
   end
 
-  config.model 'Category' do
+  config.model "Category" do
     edit do
-      field :title, :string
       field :logo, :active_storage
+      include_all_fields
     end
   end
 end
