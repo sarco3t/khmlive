@@ -41,7 +41,7 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-
+    nestable
     ## With an audit adapter, you can add:
     # history_index
     # history_show
@@ -62,9 +62,18 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Category' do
+    nestable_tree({
+      max_depth: 3
+    })
     edit do
+      field :parent_id, :enum do
+        enum_method do
+          :parent_enum
+        end
+      end
       field :logo, :active_storage
       include_all_fields
+      exclude_fields :ancestry
     end
   end
 end

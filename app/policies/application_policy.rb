@@ -34,6 +34,10 @@ class ApplicationPolicy
     user.admin?
   end
 
+  def nestable?
+    user.admin?
+  end
+
   def edit?
     update?
   end

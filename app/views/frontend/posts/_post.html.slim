@@ -1,0 +1,155 @@
+.post
+    .post_header
+        .post_image
+            a(href="#")
+                -if post.category.logo.attached?
+                    = img_tag url_for(post.category.logo)
+
+        .post_info
+            .post_category
+                = link_to post.category.title, category_posts_path(post.category.slug)
+            .post_date 17 хв
+
+        .post_action
+            a(href="#")
+                i.fas.fa-ellipsis-h
+
+    .post_content
+        .text_post
+            p= post.body
+            p
+                a(href="#")
+                    img(src="img/posts/content_1.jpg" class="img-responsive")
+
+        .post_like
+            .like_btns
+                a(href="#" class="like_btn like active")
+                    .like_button_icon
+                        i.fas.fa-heart
+                    .like_button_count
+                        | 130
+
+                a(href="#" class="like_btn comment")
+                    .like_button_icon
+                        i.fas.fa-comment
+                    .like_button_count
+                        | 50
+
+                a(href="#" class="like_btn share active")
+                    .like_button_icon
+                        i.fas.fa-share
+                    .like_button_count
+                        | 8
+
+            .like_views.views
+                .like_icon
+                    i.fas.fa-eye
+                .like_count
+                    | 2536
+
+    .replies
+        .replies_list
+            .button_more
+                a(href="#") Переглянути ще 20 коментарів
+
+            .reply.reply_item
+                .wrap_reply
+                    a(href="#" class="reply_image")
+                        img(src="img/user.jpg")
+
+                    .reply_content
+                        .reply_action
+
+                        .reply_author
+                            a(href="#" class="author") Користувач Користувач
+
+                        .reply_text
+                            .wall_reply_text Коментар
+
+                        .reply_footer
+                            .reply_info
+                                a(href="#" class="reply_btn reply") Відповісти
+
+                                .reply_date 7 хв
+
+                            .reply_like
+                                a(href="#" class="like_btn like active")
+                                    .like_button_icon
+                                        i.fas.fa-heart
+                                    .like_button_count 1
+
+            .reply.reply_item
+                .wrap_reply
+                    a(href="#" class="reply_image")
+                        img(src="img/user.jpg")
+
+                    .reply_content
+                        .reply_action
+
+                        .reply_author
+                            a(href="#" class="author") Користувач Користувач
+
+                        .reply_text
+                            .wall_reply_text Коментар
+
+                        .reply_footer
+                            .reply_info
+                                a(href="#" class="reply_btn reply") Відповісти
+
+                                .reply_date 7 хв
+
+                            .reply_like
+                                a(href="#" class="like_btn like")
+                                    .like_button_icon
+                                        i.fas.fa-heart
+                                    .like_button_count 10
+
+            .reply.reply_item
+                .wrap_reply
+                    a(href="#" class="reply_image")
+                        img(src="img/user.jpg")
+
+                    .reply_content
+                        .reply_action
+
+                        .reply_author
+                            a(href="#" class="author") Користувач Користувач
+
+                        .reply_text
+                            .wall_reply_text Коментар
+
+                        .reply_footer
+                            .reply_info
+                                a(href="#" class="reply_btn reply") Відповісти
+
+                                .reply_date 7 хв
+
+                            .reply_like
+                                a(href="#" class="like_btn like")
+                                    .like_button_icon
+                                        i.fas.fa-heart
+                                    .like_button_count 11
+
+    .reply_box
+            .reply_box_wrapper
+                .reply_box_image
+                    a(href="#")
+                        img(src="img/user.jpg")
+
+                .reply_box_comment
+                    textarea(name="comment" placeholder="Написати коментар" data-emojiable="true" class="comment_text_1")
+
+                    .reply_box_action
+                        .action_item.reply_box_attach_image
+                            input(type="file")
+                            a(href="#")
+                                i.fas.fa-camera
+
+                        //.action_item.reply_box_emoji
+                        //    a(href="#")
+                        //        i.far.fa-smile
+
+    .reply_box_button
+        .button
+            button(class="btn btn-primary") Відправити
+

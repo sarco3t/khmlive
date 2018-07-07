@@ -4,7 +4,7 @@
             .sidebar_nav
                 ul.nav
                     li
-                        a href="/news.html"
+                      = link_to category_posts_path('news') do
                             span.icon_nav
                                 i.far.fa-newspaper
                             span Новини
@@ -34,10 +34,10 @@
                                 i.fas.fa-file-alt
                             span Історії хмельничан
                     li
-                        a href="/search_you.html"
-                            span.icon_nav
-                                i.fas.fa-heart
-                            span Шукаю тебе
+                      = link_to category_posts_path('shukaiu-tebe') do
+                        span.icon_nav
+                            i.fas.fa-heart
+                        span Шукаю тебе
                     li
                         a href="/paw.html"
                             span.icon_nav

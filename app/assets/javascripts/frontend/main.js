@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("turbolinks:load", function() {
     // $('select.selectCategory').selectize({
     //     create: false,
     //     sortField: 'text',
@@ -44,7 +44,7 @@ $(document).ready(function () {
            $(current).addClass('current-active');
        }
    });
-    
+
    $('.im_dialog_tools .search_dialog a').on('click', function (e) {
        e.preventDefault();
 
@@ -90,7 +90,7 @@ $(document).ready(function () {
       $(this).toggleClass('active');
       $(this).parent().find('.nav-mobile-sub').toggleClass('active');
    });
-    
+
    $('a.like_btn.like, a.like_btn.share ').on('click', function (e) {
        e.preventDefault();
 
@@ -116,7 +116,7 @@ $(document).ready(function () {
 
        $(this).parent().find('input').click();
    });
-    
+
    $('.action-header a').on('click', function (e) {
        e.preventDefault();
 
@@ -134,7 +134,7 @@ $(document).ready(function () {
 
        $(this).parent().parent().find('.hide_default').toggleClass('show');
    });
-    
+
    // remove
    $('#signinModal .link_action a').on('click', function (e) {
       e.preventDefault();
