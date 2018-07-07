@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta charset="utf-8"
+    meta content="width=device-width,initial-scale=1" name="viewport"
+    title Live Khmelnitsky
+    base href="/"
+
+    = stylesheet_link_tag    'frontend', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'frontend', 'data-turbolinks-track': 'reload'
+  body
+    #wrapper
+      = render 'partials/frontend/header'
+      section.main
+        = yield
+      = render 'partials/frontend/footer'
+
+    = render 'partials/frontend/modals'

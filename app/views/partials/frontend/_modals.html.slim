@@ -1,0 +1,273 @@
+#modal-box
+    #addNews.modal.fade tabindex="-1" role="dialog"
+        .modal-dialog role="document"
+            .modal-content
+
+                button class="close" data-dismiss="modal" aria-label="Close"
+                    .wrap_button
+                        i.fas.fa-times
+
+                .modal-header
+
+                    .modal-title.text-center Запропонувати новину
+
+                .modal-body
+                    form action="" method="POST"
+                        .form-group
+                            .select_category
+                                select.selectCategory_modal
+                                    option Вибір розділу
+                                    option Розід 1
+                                    option Розід 2
+                                    option Розід 3
+                                    option Розід 4
+                                    option Розід 5
+                                    option Розід 6
+                                    option Розід 7
+                                    option Розід 8
+
+                        .form-group
+                            .modal_action
+                                ul
+                                    li
+                                        a href="#"
+                                            i.fas.fa-quote-right
+                                    li
+                                        a href="#"
+                                            i.fas.fa-camera
+                                    li
+                                        a href="#"
+                                            i.fab.fa-youtube
+
+                        .form-group
+                            textarea class="form-control" placeholder="Введіть текст новини"
+
+                        .form-group
+                            .row
+                                .col-md-6
+                                    .form-group.button
+                                        button type="submit" class="btn btn-primary" Надіслати
+
+                                .col-md-6
+                                    .form-group
+                                        .text-right.recaptcha_content
+                                            img src="assets/re_captcha.jpg"
+
+
+    #addPoster.modal.fade tabindex="-1" role="dialog"
+        .modal-dialog role="document"
+            .modal-content
+
+                button class="close" data-dismiss="modal" aria-label="Close"
+                    .wrap_button
+                        i.fas.fa-times
+
+                .modal-header
+
+                    .modal-title.text-center Додати афішу
+
+                .modal-body
+                    form action="" method="POST"
+                        .form-group
+                            .select_category
+                                select.selectCategory_modal2
+                                    option Вибір розділу
+                                    option Розід 1
+                                    option Розід 2
+                                    option Розід 3
+                                    option Розід 4
+                                    option Розід 5
+                                    option Розід 6
+                                    option Розід 7
+                                    option Розід 8
+
+                        .form-group
+                            .modal_action
+                                ul
+                                    li
+                                        a href="#"
+                                            i.fas.fa-quote-right
+                                    li
+                                        a href="#"
+                                            i.fas.fa-camera
+                                    li
+                                        a href="#"
+                                            i.fab.fa-youtube
+
+                        .form-group
+                            textarea class="form-control" placeholder="Опис"
+
+                        .form-group
+                            label for="location"
+                                | Місце
+                                sup *
+                            input type="text" name="location" id="location" class="form-control"
+
+                        .form-group
+                            label for="dateTime"
+                                | Дата і час
+                                sup *
+                            input type="text" name="dateTime" id="dateTime" class="form-control"
+
+                        .form-group
+                            label for="price"
+                                | Ціна
+                                sup *
+                            input type="text" name="price" id="price" class="form-control"
+
+                        .form-group
+                            .row
+                                .col-md-6
+                                    .modal_price
+                                        input type="checkbox" name="price_published" id="price_published" class="checkbox" checked
+                                        label for="price_published" Платна публікація
+
+                                        .modal_content_price
+                                            .price 150 грн
+                                            .item
+                                                input type="radio" name="day" id="one_day" class="radio"
+                                                label for="one_day" 1 день
+
+                                            .item
+                                                input type="radio" name="day" id="two_day" class="radio"
+                                                label for="two_day" 1 день
+
+                                            .item
+                                                input type="radio" name="day" id="three_day" class="radio"
+                                                label for="three_day" 1 день
+
+                                .col-md-6
+                                    .text-right
+                                        a href="#" class="modal_link" Детальніше
+
+                        .form-group
+                            .row
+                                .col-md-6
+                                    .form-group.button
+                                        button type="submit" class="btn btn-primary" Надіслати і оплатити
+
+                                .col-md-6
+                                    .form-group
+                                        .text-right.recaptcha_content
+                                            img src="assets/re_captcha.jpg"
+
+
+    #forgotModal.modal.fade
+        .modal-dialog
+            .modal-content
+
+                button class="close" data-dismiss="modal" aria-label="Close"
+                    .wrap_button
+                        i.fas.fa-times
+
+                .modal-header
+                    .modal-title.text-center Відновлення паролю
+
+                .modal-body
+                    .description
+                        p
+                            | Будь ласка, вкажіть телефон або email,
+                            br
+                            | який Ви використовували для
+                            br
+                            | входу на сайт.
+
+                    form action="" method="POST"
+                        .form-group
+                            input type="text" name="login" placeholder="Логін" class="form-control"
+
+                        .form-group
+                            button type="button" class="btn btn-primary full-width" Далі
+
+                        .form-group
+                            .text-center.recaptcha_content
+                                img src="assets/re_captcha.jpg"
+
+    #forgotCodeModal.modal.fade
+        .modal-dialog
+            .modal-content
+
+                button class="close" data-dismiss="modal" aria-label="Close"
+                    .wrap_button
+                        i.fas.fa-times
+
+                .modal-header
+                    .modal-title.text-center Відновлення паролю
+
+                .modal-body
+                    .description
+                        p
+                            | Введіть код
+
+                    form action="" method="POST"
+                        .form-group
+                            input type="text" name="login" placeholder="Код" class="form-control"
+
+                        .form-group
+                            button type="button" class="btn btn-primary full-width" Далі
+
+
+    #signupModal.modal.fade
+        .modal-dialog
+            .modal-content
+
+                button class="close" data-dismiss="modal" aria-label="Close"
+                    .wrap_button
+                        i.fas.fa-times
+
+                .modal-header
+                    .modal-title.text-center Реєстрація
+
+                .modal-body
+                    form action="" method="POST"
+                        .form-group
+                            input type="text" name="email" placeholder="E-mail" class="form-control"
+
+                        .form-group
+                            input type="text" name="login" placeholder="Логін" class="form-control"
+
+                        .form-group
+                            input type="password" name="password" placeholder="Пароль" class="form-control"
+
+                        .form-group
+                            input type="password" name="confirm_password" placeholder="Повторити пароль" class="form-control"
+
+                        .form-group
+                            button type="submit" class="btn btn-primary full-width" Зареєструватись
+
+                        .form-group
+                            .text-center.recaptcha_content
+                                img src="assets/re_captcha.jpg"
+
+    #signinModal.modal.fade
+        .modal-dialog
+            .modal-content
+                button class="close" data-dismiss="modal" aria-label="Close"
+                    .wrap_button
+                        i.fas.fa-times
+
+                .modal-header
+                    .modal-title.text-center Авторизація
+
+                .modal-body
+                    form action="" method="POST"
+                        .form-group
+                            input type="text" name="login" placeholder="E-mail/Логін" class="form-control"
+
+                        .form-group
+                            input type="password" name="password" placeholder="Пароль" class="form-control"
+
+                        .form-group
+                            button type="submit" class="btn btn-primary full-width" Вхід
+
+                        .form-group
+                            input type="checkbox" name="remember" id="remember" class="checkbox" checked="true"
+                            label for="remember" Запам’ятати мене
+
+                .model-footer
+                    .link_action
+                        .action_signin
+                            a href="#signup" Реєстрація
+
+                        .action_forgot
+                            a href="#forgot" Забули пароль?

@@ -1,0 +1,127 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+@mixin button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 25%);
+  }
+  &:hover {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 12%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: darken($background, 17%);
+          border-color: darken($border, 25%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+
+@mixin button-variant-primary($color, $background, $border) {
+  color: $color;
+  //background-color: $background;
+  //border-color: $border;
+  text-transform: uppercase;
+  padding: 12px 16px 10px;
+  border-radius: 22px;
+
+  background: rgb(41,217,153);
+  background: -moz-linear-gradient(left, rgba(41,217,153,1) 0%, rgba(41,217,153,1) 29%, rgba(36,247,170,1) 100%);
+  background: -webkit-linear-gradient(left, rgba(41,217,153,1) 0%,rgba(41,217,153,1) 29%,rgba(36,247,170,1) 100%);
+  background: linear-gradient(to right, rgba(41,217,153,1) 0%,rgba(41,217,153,1) 29%,rgba(36,247,170,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#29d999', endColorstr='#24f7aa',GradientType=1 );
+
+  &:focus,
+  &.focus {
+    color: $color;
+    background: darken($background, 12%);
+    //border-color: darken($border, 25%);
+  }
+  &:hover {
+    color: $color;
+    background: darken($background, 5%);
+    //border-color: darken($border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    //background-color: darken($background, 10%);
+    //border-color: darken($border, 12%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      //background-color: darken($background, 17%);
+      //border-color: darken($border, 25%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: $background;
+      //border-color: $border;
+    }
+  }
+
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+
+// Button sizes
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}

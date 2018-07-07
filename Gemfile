@@ -41,6 +41,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'slim_lint', require: false
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem "web-console", ">= 3.3.0"
   gem "listen", ">= 3.0.5", "< 3.2"
@@ -66,3 +67,7 @@ gem "pundit"
 # admin
 gem "rails_admin", github: "scalderdom/rails_admin", branch: "active_storage"
 gem "ckeditor"
+
+# frontend
+gem 'slim-rails'
+gem 'jquery-ui-rails'

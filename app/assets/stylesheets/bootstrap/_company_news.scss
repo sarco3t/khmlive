@@ -1,0 +1,117 @@
+.page_company_news {
+
+  .bg_header_company {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 30px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .company_description {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    padding: 28px;
+    margin-bottom: 28px;
+  }
+
+  .company_map {
+    border: 1px solid #e8e8e8;
+    background: #fff;
+
+    .map_content {
+      width: 100%;
+      height: 458px;
+    }
+  }
+
+  .company_sidebar_contacts {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+  }
+
+  .company_message {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    padding: 18px 30px;
+    margin-top: 30px;
+
+    .button {
+      text-align: center;
+    }
+
+    .btn {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    @media (max-width: $screen-md-max) {
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  .photo_albums {
+    margin: 30px 0;
+
+    .item_album {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      padding: 20px 30px 28px;
+      margin-bottom: 30px;
+
+      .heading {
+        color: #212121;
+        font-size: 20px;
+        font-weight: 500;
+        padding-bottom: 20px;
+      }
+
+      .image_album {
+        img {
+          width: 100%;
+        }
+
+        &.count_item {
+          position: relative;
+
+          &:before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+          }
+
+          .count_photo {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            color: #fff;
+            font-size: 25px;
+            text-align: center;
+            margin: auto;
+            height: 30px;
+          }
+        }
+      }
+    }
+
+  }
+
+  @media (min-width: 1650px) {
+    .wrap_adcontent .wrap_aditem_list .item_list {
+      width: 30%;
+    }
+  }
+}
