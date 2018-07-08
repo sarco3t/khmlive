@@ -1,0 +1,52 @@
+  .container
+    .row
+      .col-md-2.col-lg-2
+        .sidebar.sidebar_left
+          = render 'partials/frontend/sidebar'
+
+      .col-md-10.col-lg-10
+        .content
+          .poster_action
+            .action_top
+              .row
+                .col-md-9
+                  .select_category.select_poster
+                    select.selectCategory
+                      option(selected disabled) Вся афіша
+                      option Розділ
+                      option Розділ 2
+                      option Розділ 3
+                      option Розділ 4
+                      option Розділ 5
+                      option Розділ 6
+
+                .col-md-3
+                  .button
+                    button(class="btn btn-primary" data-toggle="modal" data-target="#addPoster") додати афішу
+
+            .action_bottom
+              ul.nav.nav_poster
+                li
+                  a(href="#" class="active")
+                    span Всі дати
+                li
+                  a(href="#")
+                    span Сьогодні
+                li
+                  a(href="#")
+                    span Завтра
+                li
+                  input(type="hidden" class="datepicker_input hidden_calendar")
+                  a(href="#" class="button_calendar")
+                    span Календар
+
+
+          .wrap_poster
+            .heading Рекомендовано
+            = render "frontend/affiches/affiches", posts: @posts
+          .wrap_poster
+            .heading Вся афіша
+            = render "frontend/affiches/affiches", posts: @posts
+            .button
+              a(href="#" class="button_more")
+                span Ще

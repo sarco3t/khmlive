@@ -47,6 +47,6 @@
           | 2536
 
   - if post.comments_count.positive?
-    = render 'frontend/comments/comments', comments: post.comments
+    = render 'frontend/comments/comments', post: post
   = render 'frontend/comments/form'
 

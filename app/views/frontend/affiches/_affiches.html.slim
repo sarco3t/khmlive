@@ -1,0 +1,21 @@
+.content
+  .poster-list
+    - posts.in_groups_of(3).each do |group|
+      - next if group.nil?
+      .row
+        - group.each do |post|
+          - next if post.nil?
+          .col-md-4
+            .poster_item
+              .image_poster
+                img(src="img/posts/poster.jpg" class="img-responsive")
+
+              .title_poster
+                = link_to category_post_path(post.category, post) do
+                 = post.body
+              .meta_poster
+                .category_poster
+                  a(href="#") Інше
+
+                .date_poster
+                  | 12.10.2017

@@ -5,7 +5,7 @@ ruby "2.5.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.2.0"
-gem "mysql2"
+gem "pg"
 # Use Puma as the app server
 gem "puma", "~> 3.11"
 # Use SCSS for stylesheets
@@ -70,6 +70,7 @@ gem "rails_admin", github: "scalderdom/rails_admin", branch: "active_storage"
 gem "ckeditor"
 gem 'ancestry'
 gem 'rails_admin_nestable'
+gem 'storext'
 
 # frontend
 gem 'slim-rails'
@@ -77,3 +78,4 @@ gem 'jquery-ui-rails'
 gem 'friendly_id'
 gem 'babosa'
 gem 'kaminari'
+gem 'webpacker', '~> 3.5'

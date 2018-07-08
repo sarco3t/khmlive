@@ -1,0 +1,292 @@
+.container
+  .row
+    .col-md-2.col-lg-2
+      .sidebar.sidebar_left
+        = render "partials/frontend/sidebar"
+
+    .col-md-10.col-lg-10
+      .content
+        .poster_action
+          .action_top
+            .row
+              .col-md-9
+                .select_category.select_poster
+                  select.selectCategory
+                    option(selected disabled) Вся афіша
+                    option Розділ
+                    option Розділ 2
+                    option Розділ 3
+                    option Розділ 4
+                    option Розділ 5
+                    option Розділ 6
+
+              .col-md-3
+                .button
+                  button(class="btn btn-primary") додати афішу
+
+
+        .wrap_poster
+          .post_poster
+            .header
+              .heading_post Якими є сценарії використання хмарних технологій
+              .image_post
+                img(src="img/posts/header.jpg" class="img-responsive")
+
+
+          .poster_info
+            .row
+              .col-md-5.col-sm-5.col-lg-4.hidden-xs
+                .content_column
+                  .label_item_info Жанр:
+                  .label_item_info Год выхода:
+                  .label_item_info Актер:
+                  .label_item_info Режиссер:
+                  .label_item_info Продюсер:
+                  .label_item_info Сценарист:
+
+
+              .col-md-7.col-sm-7.col-lg-8
+                .content_column
+                  .label_item_info.visible-xs-block Жанр:
+                  .item_info Комедия, Мелодрама
+
+                  .label_item_info.visible-xs-block Год выхода:
+                  .item_info  2017
+
+                  .label_item_info.visible-xs-block Актер:
+                  .item_info
+                    | Ор Атика, Пьер-Франсуа Мартен-Лаваль, Луиза Бургуан
+
+                  .label_item_info.visible-xs-block Режиссер:
+                  .item_info  Бруно Шиш, Жан-Поль Мюэль
+
+                  .label_item_info.visible-xs-block Продюсер:
+                  .item_info  Филипп Руссле, Летиция Голицына
+
+                  .label_item_info.visible-xs-block Сценарист:
+                  .item_info Фабрис Роже-Лакан, Бруно Шиш, Николя Мерсье
+
+          .poster_description
+            .heading Опис:
+            .content
+              p= @post.body
+          .poster_trailer
+            .heading Трейлер
+
+            .content
+              .video_content
+                .video_image
+                  a(href="#")
+                    .icon_play
+                      i.fas.fa-play
+
+                    img(src="img/posts/header.jpg" class="img-responsive")
+
+                .video_item
+                  iframe(width="100%" height="445" src="https://www.youtube.com/embed/KukfQduBl4U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen)
+
+          .sessions_poster
+            .header_sessions
+              ul.nav
+                li
+                  a(href="#" class="active")
+                    span Сьогодні
+
+                li
+                  a(href="#")
+                    span Завтра
+
+                li
+                  input(type="hidden" class="datepicker_input hidden_calendar")
+                  a(href="#" class="button_calendar")
+                    span Календар
+
+            .content_sessions
+              .tab-content
+                .table-responsive
+                  table.table
+                    tbody
+                      tr
+                        td(colspan="3" class="heading") Boomer
+                        td
+                        td
+                        td
+                        td
+                        td
+                        td
+                        td
+                        td 20:15
+                        td 20:15
+                        td 20:15
+
+                      tr
+                        td(colspan="3" class="heading") Boomer
+                        td
+                        td
+                        td
+                        td
+                        td
+                        td 20:15
+                        td
+                        td 20:15
+                        td 20:15
+                        td 20:15
+
+                      tr
+                        td(colspan="3" class="heading") Boomer
+                        td
+                        td
+                        td
+                        td
+                        td
+                        td
+                        td
+                        td 20:15
+                        td 20:15
+                        td 20:15
+
+                      tr
+                        td(colspan="3" class="heading") Boomer
+                        td
+                        td
+                        td
+                        td 20:15
+                        td
+                        td
+                        td
+                        td 20:15
+                        td 20:15
+                        td 20:15
+
+                      tr
+                        td(colspan="3" class="heading") Boomer
+                        td
+                        td
+                        td
+                        td
+                        td
+                        td 20:15
+                        td 20:15
+                        td 20:15
+                        td 20:15
+                        td 20:15
+
+                      tr
+                        td(colspan="3" class="heading") Boomer
+                        td
+                        td
+                        td
+                        td
+                        td
+                        td
+                        td 20:15
+                        td 20:15
+                        td 20:15
+                        td 20:15
+
+          .comments_poster
+            .wall_block
+              - if @post.comments_count.positive?
+                = render "frontend/comments/comments"
+              = render "frontend/comments/form"
+
+                    //.action_item.reply_box_emoji
+                    //    a(href="#")
+                    //        i.far.fa-smile
+
+          .add_poster_comments
+            .heading Додати коментар
+            .content
+              .form_comments
+                .row.form-inline
+                  .col-md-6
+                    .form-group
+                      label(for="user_name")
+                        | Ім’я
+                        sup *
+                      input(type="text" class="form-control" id="user_name")
+
+                  .col-md-6
+                    .form-group
+                      label(for="user_email")
+                        | Е-mail
+                        sup *
+                      input(type="text" class="form-control" id="user_email")
+
+                .form_action_comments
+                  .item_action
+                    a(href="#")
+                      i.fas.fa-quote-right
+
+                  .item_action
+                    a(href="#")
+                      i.fas.fa-camera
+
+                .form-group.textarea_input
+                  textarea(placeholder="Написати коментар" data-emojiable="true" class="comment_text_1")
+
+                .form-group
+                  .row
+                    .col-md-6.col-xs-6.button
+                      button(class="btn btn-primary") Надіслати
+
+                    .col-md-6.col-xs-6
+                      .captcha
+                        img(src="img/re_captcha.jpg")
+
+          .wrap_poster
+            .heading Популярні афіші
+
+            .content
+              .poster-list
+                .row
+                  .col-md-4
+                    .poster_item
+                      .image_poster
+                        img(src="img/posts/poster.jpg" class="img-responsive")
+
+                      .title_poster
+                        a(href="#")
+                          | Найбільші українські ІТ-компанії
+                          | розповіли про свої розробки
+
+                      .meta_poster
+                        .category_poster
+                          a(href="#") Інше
+
+                        .date_poster
+                          | 12.10.2017
+
+                  .col-md-4
+                    .poster_item
+                      .image_poster
+                        img(src="img/posts/poster.jpg" class="img-responsive")
+
+                      .title_poster
+                        a(href="#")
+                          | Найбільші українські ІТ-компанії
+                          | розповіли про свої розробки
+
+                      .meta_poster
+                        .category_poster
+                          a(href="#") Інше
+
+                        .date_poster
+                          | 12.10.2017
+
+                  .col-md-4
+                    .poster_item
+                      .image_poster
+                        img(src="img/posts/poster.jpg" class="img-responsive")
+
+                      .title_poster
+                        a(href="#")
+                          | Найбільші українські ІТ-компанії
+                          | розповіли про свої розробки
+
+                      .meta_poster
+                        .category_poster
+                          a(href="#") Інше
+
+                        .date_poster
+                          | 12.10.2017

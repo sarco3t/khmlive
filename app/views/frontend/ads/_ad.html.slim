@@ -1,0 +1,10 @@
+.item_list
+  .wrap_item
+    .image_item
+      a(href="#")
+        img(src="img/posts/content_1.jpg" class="img-responsive")
+
+    .title_item
+      = link_to category_post_path(post.category, post), post.title
+
+    .price_item= post.price

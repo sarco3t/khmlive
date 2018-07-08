@@ -1,6 +1,9 @@
 .replies
-  .replies_list
-    .button_more
-      a(href="#") Переглянути ще 20 коментарів
-    - comments.each do |comment|
-      = render 'comment', comment: comment
+  - page = defined?(@page) ? @page : 1
+  paginate url=(category_post_comments_path(post.category, post))
+    template slot-scope="props"
+      .replies_list
+        .button_more
+          more-button @load="props.load"
+        - post.comments.page(page).each do |comment|
+          = render 'frontend/comments/comment', comment: comment

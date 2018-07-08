@@ -1,0 +1,123 @@
+.container
+  .row
+    .col-md-2.col-lg-2
+      .sidebar.sidebar_left
+        = render 'partials/frontend/sidebar'
+    .col-md-10.col-lg-10
+      .content
+        .action_adcontent
+          .top_content
+            ul.nav
+              li
+                a(href="#") Мої оголошення
+
+              li
+                a(href="#") Повідомлення
+
+          .main_content
+            .button
+              button(type="button" class="btn btn-primary") додати оголошення
+
+          .bottom_content
+            .search_content
+              form(action="" method="POST")
+              .row
+                .col-md-5.col-lg-5
+                  label
+                    .icon_search
+                      i.fas.fa-search
+                    input(type="text" class="form-control")
+
+                .col-md-4.col-lg-5
+                  label
+                    .icon_search
+                      i.fas.fa-map-marker-alt
+                    input(type="text" class="form-control" value="Хмельницький")
+
+                .col-md-3.col-lg-2
+                  .button
+                    button(type="submit" class="btn btn-primary") Пошук
+
+        .wrap_adcontent
+          .post_adcontent
+            .header
+              .row
+                .col-md-9
+                  .heading= @post.title
+                .col-md-3
+                  .price= @post.price
+
+              .header_image
+                img(src="img/posts/header.jpg" class="img-responsive")
+
+              .meta_post
+                .row
+                  .col-md-6
+                    .item_meta.location Харків, Харківська область, Фрунзенський
+                    .item_meta.post_id Номер оголошення: 366685330
+
+                  .col-md-6
+                    .item_meta.date_post Додано в 08:28, 16 жовтня 2017
+
+            .content= @post.body
+
+          .postad_contacts
+            .header
+              .visible-xs-block
+                .heading Зв'яжіться з автором оголошення
+
+              .visible-xs-block
+                .author_post
+                  .author_image
+                    img(src="img/user.jpg")
+
+                  .author_name Сергій
+
+                .contact_phone
+                  .icon_phone
+                    i.fas.fa-mobile-alt
+
+                  a(href="#") +38 (067) 22 22 222
+
+
+              .row.hidden-xs
+                .col-md-6
+                  .heading Зв'яжіться з автором оголошення
+
+                  .contact_phone
+                    .icon_phone
+                      i.fas.fa-mobile-alt
+
+                    a(href="#") +38 (067) 22 22 222
+
+                .col-md-6
+                  .author_post
+                    .author_name Сергій
+                    .author_image
+                      img(src="img/user.jpg")
+
+            .content
+
+              .form-group
+                textarea(class="form-control" placeholder="Текст повідомлення")
+
+              .action_contacts
+                label
+                  input(type="file" name="file")
+                  .title_action
+                    .icon_action
+                      i.fas.fa-paperclip
+
+                    .wrap_content
+                      .text_action Прикріпити файл
+
+                      .description_action Типи файлів, які приймаються: jpg, jpeg, png, doc, pdf, gif, zip, rar, tar, html, swf, txt, xls, docx, xlsx, odt. Максимальний розмір файлу 2 МБ
+
+
+              .row
+                .col-md-6
+                  button(class="btn btn-primary") Надіслати
+
+                .col-md-6
+                  .captcha
+                    img(src="img/re_captcha.jpg")

@@ -1,0 +1,59 @@
+.container
+  .row
+    .col-md-2.col-lg-2
+      .sidebar.sidebar_left
+        = render "partials/frontend/sidebar"
+
+    .col-md-10.col-lg-10
+      .content
+        .action_adcontent
+          .top_content
+            ul.nav
+              li
+                a(href="#") Мої оголошення
+
+              li
+                a(href="#") Повідомлення
+
+          .main_content
+            .button
+              button(type="button" class="btn btn-primary") додати оголошення
+
+          .bottom_content
+            .search_content
+              form(action="" method="POST")
+              .row
+                .col-md-5.col-lg-5
+                  label
+                    .icon_search
+                      i.fas.fa-search
+                    input(type="text" class="form-control")
+
+                .col-md-4.col-lg-5
+                  label
+                    .icon_search
+                      i.fas.fa-map-marker-alt
+                    input(type="text" class="form-control" value="Хмельницький")
+
+                .col-md-3.col-lg-2
+                  .button
+                    button(type="submit" class="btn btn-primary") Пошук
+
+        .wrap_adcontent
+          .category_list
+            - @category.children.each do |c|
+              = render 'frontend/ads/category', category: c
+          .wrap_aditem_list
+            .heading VIP-оголошення
+            .aditem_list
+              - [].each do |post|
+                = render 'frontend/ads/ad', post: post
+
+          .wrap_aditem_list
+            .heading Всі оголошення
+            .aditem_list
+              - [].each do |post|
+                = render 'frontend/ads/ad', post: post
+            .button
+              a(href="#" class="button_more")
+                span Ще

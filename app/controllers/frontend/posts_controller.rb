@@ -11,13 +11,23 @@ class Frontend::PostsController < FrontendController
                @category.posts
              end
     @posts = @posts.includes(:category).page(params[:page])
+    set_partial
+  end
+
+  def show
+    @post = AbstractPost.friendly.find(params[:id])
   end
 
   private
 
-  def set_category
+  def set_partial
+    return @partial = 'ads' if params[:category_id] == 'ads'
     @partial = 'posts'
-    @partial = 'articles' if params[:category_id] == 'news'
+    @partial = 'articles' if @posts.first&.type == 'Article'
+    @partial = 'affiches' if @posts.first&.type == 'Affiche'
+  end
+
+  def set_category
     @category = Category.friendly.find(params[:category_id])
   end
 end

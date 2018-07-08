@@ -10,9 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_08_091717) do
+ActiveRecord::Schema.define(version: 2018_07_08_102907) do
 
-  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_07_08_091717) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "active_storage_blobs", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,23 +36,7 @@ ActiveRecord::Schema.define(version: 2018_07_08_091717) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "affiches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.boolean "enabled"
-    t.boolean "user_enabled"
-    t.string "place"
-    t.integer "price"
-    t.datetime "start_time"
-    t.bigint "user_id"
-    t.bigint "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_affiches_on_category_id"
-    t.index ["user_id"], name: "index_affiches_on_user_id"
-  end
-
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.boolean "enable", default: true
@@ -62,7 +49,7 @@ ActiveRecord::Schema.define(version: 2018_07_08_091717) do
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
-  create_table "ckeditor_assets", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "ckeditor_assets", id: :serial, force: :cascade do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
     t.integer "data_file_size"
@@ -75,7 +62,7 @@ ActiveRecord::Schema.define(version: 2018_07_08_091717) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.bigint "user_id"
     t.text "body"
     t.string "commentable_type"
@@ -86,19 +73,19 @@ ActiveRecord::Schema.define(version: 2018_07_08_091717) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "friendly_id_slugs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
     t.string "scope"
     t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, length: { slug: 70, scope: 70 }
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", length: { slug: 140 }
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  create_table "menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "menus", force: :cascade do |t|
     t.string "title"
     t.bigint "category_id"
     t.string "link"
@@ -112,7 +99,7 @@ ActiveRecord::Schema.define(version: 2018_07_08_091717) do
     t.index ["category_id"], name: "index_menus_on_category_id"
   end
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.string "type"
     t.string "title"
     t.text "body"
@@ -123,12 +110,14 @@ ActiveRecord::Schema.define(version: 2018_07_08_091717) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.integer "comments_count", default: 0
+    t.jsonb "extra", default: {}, null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["extra"], name: "index_posts_on_extra", using: :gin
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -151,8 +140,6 @@ ActiveRecord::Schema.define(version: 2018_07_08_091717) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "affiches", "categories"
-  add_foreign_key "affiches", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "menus", "categories"
   add_foreign_key "posts", "categories"

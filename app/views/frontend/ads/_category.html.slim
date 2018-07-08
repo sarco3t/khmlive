@@ -1,0 +1,14 @@
+.item_list
+  .item_icon
+    - if category.logo.attached?
+      = image_tag url_for(category.logo)
+
+  .item_content class=(category.has_children? ? 'inner_content' : '')
+    .title
+      = link_to category_posts_path(category) do
+        span= category.title
+    - if category.has_children?
+      .nav_item
+        ul.nav
+          - category.children.each do |child|
+            li = link_to category_posts_path(child), child.title
