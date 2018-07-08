@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class Frontend::PostsController < FrontendController
   before_action :set_category
 
   def index
     @posts = if @category.root?
-      AbstractPost.where(category_id: @category.child_ids)
-    else
-      @category.posts
-    end
+               AbstractPost.where(category_id: @category.child_ids)
+             else
+               @category.posts
+             end
     @posts = @posts.page(params[:page])
   end
 

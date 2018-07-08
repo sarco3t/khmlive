@@ -1,9 +1,10 @@
 AllCops:
-  Include:
-    - Rakefile
-    - config.ru
   Exclude:
     - db/**
     - script/**
 Documentation:
   Enabled: false
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+Metrics/LineLength:
+  Max: 120

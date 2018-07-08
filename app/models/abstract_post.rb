@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AbstractPost < ApplicationRecord
-  self.table_name = "posts"
+  self.table_name = 'posts'
   extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -7,7 +9,6 @@ class AbstractPost < ApplicationRecord
   belongs_to :category
   has_many :comments, as: :commentable
   has_many_attached :images
-
 
   attribute :remove_images, :json
   after_save :delete_images, if: -> { remove_images.present? }
