@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_07_172634) do
+ActiveRecord::Schema.define(version: 2018_07_07_175414) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -36,9 +36,16 @@ ActiveRecord::Schema.define(version: 2018_07_07_172634) do
   create_table "affiches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "body"
+    t.boolean "enabled"
+    t.boolean "user_enabled"
+    t.string "place"
+    t.integer "price"
+    t.datetime "start_time"
     t.bigint "user_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_affiches_on_category_id"
     t.index ["user_id"], name: "index_affiches_on_user_id"
   end
 
@@ -129,6 +136,7 @@ ActiveRecord::Schema.define(version: 2018_07_07_172634) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "affiches", "categories"
   add_foreign_key "affiches", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "categories"
