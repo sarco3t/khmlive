@@ -5,7 +5,7 @@ class Frontend::PostsController < FrontendController
 
   def index
     @posts = if @category.root?
-               AbstractPost.where(category_id: @category.child_ids)
+               AbstractPost.where(category_id: @category.child_ids + [@category.id])
              else
                @category.posts
              end

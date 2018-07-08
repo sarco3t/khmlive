@@ -1,388 +1,54 @@
 .container
-    .row
-        .col-md-2.col-lg-2
-            .sidebar.sidebar_left
-                = render 'partials/frontend/sidebar'
+  .row
+    .col-md-2.col-lg-2
+      .sidebar.sidebar_left
+        = render 'partials/frontend/sidebar'
 
-        .col-md-6.col-lg-6
-            .content
+    .col-md-6.col-lg-6
+      .content
 
-                .category_block
-                    .header
-                        .category_image
-                            -if @category.logo.attached?
-                                = img_tag url_for(@category.logo)
-                            img(src="/img/icon/search_you.jpg")
+        .category_block
+          .header
+            .category_image
+              -if @category.logo.attached?
+                = image_tag url_for(@category.logo)
+            h1= @category.title
+          .content_block
+            .row
+              .col-md-12.col-sm-6.col-lg-6
+                .form-group.button
+                  button(class="btn btn-primary" data-toggle="modal" data-target="#addNews") Запропонувати новину
 
-                        h1= @category.title
+              .col-md-12.col-sm-6.col-lg-6
+                - if @category.children.size.positive?
+                  .form-group
+                    .select_category
+                      = select_tag "companies", options_from_collection_for_select(@category.children, 'slug', 'title'), include_blank: 'Вибір теми',class: 'selectCategory'
+        .visible-xs-block
+          .mobile-content
+            .button
+              a(href="#" class="show_popular")
+                span Найбільш обговорюване
 
-                    .content_block
-                        .row
-                            .col-md-12.col-sm-6.col-lg-6
-                                .form-group.button
-                                    button(class="btn btn-primary" data-toggle="modal" data-target="#addNews") Запропонувати новину
+            .popular_post.sidebar_item.hide_default
+              .header Найбільш обговорювані
 
-                            .col-md-12.col-sm-6.col-lg-6
-                                .form-group
-                                    .select_category
-                                        select.selectCategory
-                                            option(selected disabled) Вибір теми
-                                            option Тема
-                                            option Тема 2
-                                            option Тема 3
-                                            option Тема 4
-                                            option Тема 5
-                                            option Тема 6
-
-                .visible-xs-block
-                    .mobile-content
-                        .button
-                            a(href="#" class="show_popular")
-                                span Найбільш обговорюване
-
-                        .popular_post.sidebar_item.hide_default
-                            .header Найбільш обговорювані
-
-                            .content
-                                .post
-                                    .image
-                                        a(href="#")
-                                            img(src="/img/icon/search_you.jpg")
-                                    .content
-                                        .text
-                                            p
-                                                | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                                a(href="#" class="comments_post")
-                                                    span.icon_comments
-                                                        i.fas.fa-comment
-                                                    span.count_comments 50
+              .content
+                - 5.times do
+                  = render "popular_post"
 
 
-                                .post
-                                    .image
-                                        a(href="#")
-                                            img(src="/img/icon/search_you.jpg")
-                                    .content
-                                        .text
-                                            p
-                                                | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                                a(href="#" class="comments_post")
-                                                    span.icon_comments
-                                                        i.fas.fa-comment
-                                                    span.count_comments 50
-                                .post
-                                    .image
-                                        a(href="#")
-                                            img(src="/img/icon/search_you.jpg")
-                                    .content
-                                        .text
-                                            p
-                                                | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                                a(href="#" class="comments_post")
-                                                    span.icon_comments
-                                                        i.fas.fa-comment
-                                                    span.count_comments 50
-                                .post
-                                    .image
-                                        a(href="#")
-                                            img(src="/img/icon/search_you.jpg")
-                                    .content
-                                        .text
-                                            p
-                                                | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                                a(href="#" class="comments_post")
-                                                    span.icon_comments
-                                                        i.fas.fa-comment
-                                                    span.count_comments 50
-                                .post
-                                    .image
-                                        a(href="#")
-                                            img(src="/img/icon/search_you.jpg")
-                                    .content
-                                        .text
-                                            p
-                                                | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                                a(href="#" class="comments_post")
-                                                    span.icon_comments
-                                                        i.fas.fa-comment
-                                                    span.count_comments 50
+        .wall_block
+          - posts.each do |post|
+            = render post.type.underscore, post: post
 
 
-                .wall_block
-                    - posts.each do |post|
-                        = render post.type.underscore, post: post
+    .col-md-4.col-lg-4.hidden-xs
+      .sidebar.sidebar_right
 
+        .popular_post.sidebar_item
+          .header Найбільш обговорювані
 
-        .col-md-4.col-lg-4.hidden-xs
-            .sidebar.sidebar_right
-
-                .popular_post.sidebar_item
-                    .header Найбільш обговорювані
-
-                    .content
-                        .post
-                            .image
-                                a(href="#")
-                                    img(src="/img/icon/search_you.jpg")
-                            .content
-                                .text
-                                    p
-                                        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                        a(href="#" class="comments_post")
-                                            span.icon_comments
-                                                i.fas.fa-comment
-                                            span.count_comments 50
-
-
-                        .post
-                            .image
-                                a(href="#")
-                                    img(src="/img/icon/search_you.jpg")
-                            .content
-                                .text
-                                    p
-                                        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                        a(href="#" class="comments_post")
-                                            span.icon_comments
-                                                i.fas.fa-comment
-                                            span.count_comments 50
-                        .post
-                            .image
-                                a(href="#")
-                                    img(src="/img/icon/search_you.jpg")
-                            .content
-                                .text
-                                    p
-                                        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                        a(href="#" class="comments_post")
-                                            span.icon_comments
-                                                i.fas.fa-comment
-                                            span.count_comments 50
-                        .post
-                            .image
-                                a(href="#")
-                                    img(src="/img/icon/search_you.jpg")
-                            .content
-                                .text
-                                    p
-                                        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                        a(href="#" class="comments_post")
-                                            span.icon_comments
-                                                i.fas.fa-comment
-                                            span.count_comments 50
-                        .post
-                            .image
-                                a(href="#")
-                                    img(src="/img/icon/search_you.jpg")
-                            .content
-                                .text
-                                    p
-                                        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                        a(href="#" class="comments_post")
-                                            span.icon_comments
-                                                i.fas.fa-comment
-                                            span.count_comments 50
-.container
-    .row
-        .col-md-2.col-lg-2
-            .sidebar.sidebar_left
-                = render 'partials/frontend/sidebar'
-
-        .col-md-6.col-lg-6
-            .content
-
-                .category_block
-                    .header
-                        .category_image
-                            -if @category.logo.attached?
-                                = img_tag url_for(@category.logo)
-                            img(src="/img/icon/search_you.jpg")
-
-                        h1= @category.title
-
-                    .content_block
-                        .row
-                            .col-md-12.col-sm-6.col-lg-6
-                                .form-group.button
-                                    button(class="btn btn-primary" data-toggle="modal" data-target="#addNews") Запропонувати новину
-
-                            .col-md-12.col-sm-6.col-lg-6
-                                .form-group
-                                    .select_category
-                                        select.selectCategory
-                                            option(selected disabled) Вибір теми
-                                            option Тема
-                                            option Тема 2
-                                            option Тема 3
-                                            option Тема 4
-                                            option Тема 5
-                                            option Тема 6
-
-                .visible-xs-block
-                    .mobile-content
-                        .button
-                            a(href="#" class="show_popular")
-                                span Найбільш обговорюване
-
-                        .popular_post.sidebar_item.hide_default
-                            .header Найбільш обговорювані
-
-                            .content
-                                .post
-                                    .image
-                                        a(href="#")
-                                            img(src="/img/icon/search_you.jpg")
-                                    .content
-                                        .text
-                                            p
-                                                | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                                a(href="#" class="comments_post")
-                                                    span.icon_comments
-                                                        i.fas.fa-comment
-                                                    span.count_comments 50
-
-
-                                .post
-                                    .image
-                                        a(href="#")
-                                            img(src="/img/icon/search_you.jpg")
-                                    .content
-                                        .text
-                                            p
-                                                | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                                a(href="#" class="comments_post")
-                                                    span.icon_comments
-                                                        i.fas.fa-comment
-                                                    span.count_comments 50
-                                .post
-                                    .image
-                                        a(href="#")
-                                            img(src="/img/icon/search_you.jpg")
-                                    .content
-                                        .text
-                                            p
-                                                | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                                a(href="#" class="comments_post")
-                                                    span.icon_comments
-                                                        i.fas.fa-comment
-                                                    span.count_comments 50
-                                .post
-                                    .image
-                                        a(href="#")
-                                            img(src="/img/icon/search_you.jpg")
-                                    .content
-                                        .text
-                                            p
-                                                | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                                a(href="#" class="comments_post")
-                                                    span.icon_comments
-                                                        i.fas.fa-comment
-                                                    span.count_comments 50
-                                .post
-                                    .image
-                                        a(href="#")
-                                            img(src="/img/icon/search_you.jpg")
-                                    .content
-                                        .text
-                                            p
-                                                | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                                a(href="#" class="comments_post")
-                                                    span.icon_comments
-                                                        i.fas.fa-comment
-                                                    span.count_comments 50
-
-
-                .wall_block
-                    - posts.each do |post|
-                        = render post.type.underscore, post: post
-
-
-        .col-md-4.col-lg-4.hidden-xs
-            .sidebar.sidebar_right
-
-                .popular_post.sidebar_item
-                    .header Найбільш обговорювані
-
-                    .content
-                        .post
-                            .image
-                                a(href="#")
-                                    img(src="/img/icon/search_you.jpg")
-                            .content
-                                .text
-                                    p
-                                        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                        a(href="#" class="comments_post")
-                                            span.icon_comments
-                                                i.fas.fa-comment
-                                            span.count_comments 50
-
-
-                        .post
-                            .image
-                                a(href="#")
-                                    img(src="/img/icon/search_you.jpg")
-                            .content
-                                .text
-                                    p
-                                        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                        a(href="#" class="comments_post")
-                                            span.icon_comments
-                                                i.fas.fa-comment
-                                            span.count_comments 50
-                        .post
-                            .image
-                                a(href="#")
-                                    img(src="/img/icon/search_you.jpg")
-                            .content
-                                .text
-                                    p
-                                        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                        a(href="#" class="comments_post")
-                                            span.icon_comments
-                                                i.fas.fa-comment
-                                            span.count_comments 50
-                        .post
-                            .image
-                                a(href="#")
-                                    img(src="/img/icon/search_you.jpg")
-                            .content
-                                .text
-                                    p
-                                        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                        a(href="#" class="comments_post")
-                                            span.icon_comments
-                                                i.fas.fa-comment
-                                            span.count_comments 50
-                        .post
-                            .image
-                                a(href="#")
-                                    img(src="/img/icon/search_you.jpg")
-                            .content
-                                .text
-                                    p
-                                        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
-
-                                        a(href="#" class="comments_post")
-                                            span.icon_comments
-                                                i.fas.fa-comment
-                                            span.count_comments 50
+          .content
+            - 5.times do
+              = render "popular_post"

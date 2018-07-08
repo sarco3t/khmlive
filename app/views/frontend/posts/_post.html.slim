@@ -3,7 +3,7 @@
         .post_image
             a(href="#")
                 -if post.category.logo.attached?
-                    = img_tag url_for(post.category.logo)
+                    = image_tag url_for(post.category.logo)
 
         .post_info
             .post_category

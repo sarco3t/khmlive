@@ -2,9 +2,10 @@
 
 require 'i18n'
 I18n.available_locales = %i[en uk]
-I18n.default_locale = :en
+I18n.default_locale = :uk
 
 RailsAdmin.config do |config|
+  config.label_methods << :category_title
   config.excluded_models = ['ActiveStorage::Blob', 'ActiveStorage::Attachment', 'Ckeditor::Picture', 'Ckeditor::Asset', 'AbstractPost']
   config.parent_controller = '::ApplicationController'
 
@@ -61,6 +62,19 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Post' do
+    list do
+      include_all_fields
+      field :category
+      exclude_fields :type
+    end
+    edit do
+      include_all_fields
+      field :images, :active_storage_many
+      exclude_fields :type
+    end
+  end
+
   config.model 'Category' do
     nestable_tree({
       max_depth: 3
@@ -76,4 +90,14 @@ RailsAdmin.config do |config|
       exclude_fields :ancestry
     end
   end
+
+  config.model 'Menu' do
+    object_label_method do
+      :category_or_title
+    end
+    nestable_list true
+    include_all_fields
+    exclude_fields :ancestry
+  end
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_07_175414) do
+ActiveRecord::Schema.define(version: 2018_07_08_075839) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -98,6 +98,20 @@ ActiveRecord::Schema.define(version: 2018_07_07_175414) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.bigint "category_id"
+    t.string "link"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.boolean "enabled", default: false
+    t.string "icon"
+    t.index ["ancestry"], name: "index_menus_on_ancestry"
+    t.index ["category_id"], name: "index_menus_on_category_id"
+  end
+
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type"
     t.string "title"
@@ -139,5 +153,6 @@ ActiveRecord::Schema.define(version: 2018_07_07_175414) do
   add_foreign_key "affiches", "categories"
   add_foreign_key "affiches", "users"
   add_foreign_key "comments", "users"
+  add_foreign_key "menus", "categories"
   add_foreign_key "posts", "categories"
 end

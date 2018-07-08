@@ -4,7 +4,8 @@ class Category < ApplicationRecord
   extend FriendlyId
 
   has_one_attached :logo
-  has_many :posts, class_name: 'AbstractPost'
+  has_many :posts, class_name: 'AbstractPost', dependent: :nullify
+  has_many :menus, dependent: :nullify
   acts_as_tree
 
   friendly_id :title, use: :slugged
@@ -18,7 +19,7 @@ class Category < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    title_changed?
+    title_changed? && !slug_changed?
   end
 
   def normalize_friendly_id(text)
