@@ -1,0 +1,6 @@
+.replies
+  .replies_list
+    .button_more
+      a(href="#") Переглянути ще 20 коментарів
+    - comments.each do |comment|
+      = render 'comment', comment: comment

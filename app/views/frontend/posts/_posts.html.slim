@@ -34,9 +34,8 @@
               .header Найбільш обговорювані
 
               .content
-                - 5.times do
-                  = render "popular_post"
-
+                - @popular_posts.each do |post|
+                  = render "popular_post", post: post
 
         .wall_block
           - posts.each do |post|
@@ -50,5 +49,5 @@
           .header Найбільш обговорювані
 
           .content
-            - 5.times do
-              = render "popular_post"
+            - @popular_posts.each do |post|
+              = render "popular_post", post: post

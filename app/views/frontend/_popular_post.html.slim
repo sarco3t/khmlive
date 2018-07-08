@@ -1,13 +1,13 @@
 .post
   .image
-    a(href="#")
-      img(src="/img/icon/search_you.jpg")
+    = link_to category_posts_path(post.category.slug) do
+      = image_tag url_for(post.category.logo)
   .content
     .text
       p
-        | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео
+        = post.body
 
         a(href="#" class="comments_post")
           span.icon_comments
             i.fas.fa-comment
-          span.count_comments 50
+          span.count_comments= post.comments_count

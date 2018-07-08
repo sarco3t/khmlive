@@ -1,0 +1,23 @@
+- if current_user
+  .reply_box
+      .reply_box_wrapper
+        .reply_box_image
+          a(href="#")
+            img(src="img/user.jpg")
+
+        .reply_box_comment
+          textarea(name="comment" placeholder="Написати коментар" data-emojiable="true" class="comment_text_1")
+
+          .reply_box_action
+            .action_item.reply_box_attach_image
+              input(type="file")
+              a(href="#")
+                i.fas.fa-camera
+
+            //.action_item.reply_box_emoji
+            //    a(href="#")
+            //        i.far.fa-smile
+
+  .reply_box_button
+    .button
+      button(class="btn btn-primary") Відправити

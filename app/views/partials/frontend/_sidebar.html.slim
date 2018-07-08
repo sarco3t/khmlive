@@ -1,84 +1,28 @@
 #mobile-navbar-collapse.mobile-sidebar-nav.collapse.navbar-collapse
-    .row
-        .col-sm-6.col-xs-12.col-md-12
-            .sidebar_nav
-                ul.nav
-                    - @menus.each do |item|
-                        li
-                            = link_to category_posts_path(item.category.slug) do
-                                    span.icon_nav
-                                        i.fas class=(item.icon)
-                                    span= item.category.title
-                    / li
-                    /   = link_to category_posts_path('news') do
-                    /         span.icon_nav
-                    /             i.far.fa-newspaper
-                    /         span Новини
-                    / li
-                    /     a href="/poster.html"
-                    /         span.icon_nav
-                    /             i.far.fa-window-restore
-                    /         span Афіша
-                    / li
-                    /     a href="/directory.html"
-                    /         span.icon_nav
-                    /             i.fas.fa-book
-                    /         span Довідник
-                    / li
-                    /     a href="/ad.html"
-                    /         span.icon_nav
-                    /             i.fas.fa-bullhorn
-                    /         span Оголошення
-                    / li
-                    /     a href="/help.html"
-                    /         span.icon_nav
-                    /             i.fas.fa-question-circle
-                    /         span Запитання|Допомога
-                    / li
-                    /     a href="/history.html"
-                    /         span.icon_nav
-                    /             i.fas.fa-file-alt
-                    /         span Історії хмельничан
-                    / li
-                    /   = link_to category_posts_path('shukaiu-tebe') do
-                    /     span.icon_nav
-                    /         i.fas.fa-heart
-                    /     span Шукаю тебе
-                    / li
-                    /     a href="/paw.html"
-                    /         span.icon_nav
-                    /             i.fas.fa-paw
-                    /         span допомога тваринам
-                    / li
-                    /     a href="/auditor.html"
-                    /         span.icon_nav
-                    /             i.far.fa-hand-point-up
-                    /         span ревізор
-                    / li
-                    /     a href="/peoples_top.html"
-                    /         span.icon_nav
-                    /             i.far.fa-star
-                    /         span народний топ
-                    / li
-                    /     a href="/motorist.html"
-                    /         span.icon_nav
-                    /             i.fas.fa-car
-                    /         span автомобілісти
+  .row
+    .col-sm-6.col-xs-12.col-md-12
+      .sidebar_nav
+        ul.nav
+          - @menus.each do |item|
+            li
+              = link_to category_posts_path(item.category.slug) do
+                  span.icon_nav
+                    i.fas class=(item.icon)
+                  span= item.category.title
+      .sidebar_nav
+        ul.nav
+          li
+            a href="/banner.html"
+              span.icon_nav
+                i.fas.fa-dollar-sign
+              span Реклама на сайті
 
-            .sidebar_nav
-                ul.nav
-                    li
-                        a href="/banner.html"
-                            span.icon_nav
-                                i.fas.fa-dollar-sign
-                            span Реклама на сайті
+    .col-sm-6.col-xs-12.col-md-12
+      .banner.hidden-xs
+        .banner_item
+          a href="#"
+            img src="assets/banner/item.jpg" class="img-responsive"
 
-        .col-sm-6.col-xs-12.col-md-12
-            .banner.hidden-xs
-                .banner_item
-                    a href="#"
-                        img src="assets/banner/item.jpg" class="img-responsive"
-
-                .banner_item
-                    a href="#"
-                        img src="assets/banner/item.jpg" class="img-responsive"
+        .banner_item
+          a href="#"
+            img src="assets/banner/item.jpg" class="img-responsive"

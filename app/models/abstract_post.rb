@@ -3,11 +3,12 @@
 class AbstractPost < ApplicationRecord
   self.table_name = 'posts'
   extend FriendlyId
+  include Commentable
+  
   friendly_id :title, use: :slugged
 
   belongs_to :user, optional: true
   belongs_to :category
-  has_many :comments, as: :commentable
   has_many_attached :images
 
   attribute :remove_images, :json
