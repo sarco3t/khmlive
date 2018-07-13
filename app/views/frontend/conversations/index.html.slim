@@ -1,0 +1,289 @@
+.container
+  .row
+    .col-md-2.col-lg-2
+      .sidebar.sidebar_left
+        = render "partials/frontend/sidebar"
+
+    .col-md-10.col-lg-10
+      .content
+        .action_adcontent
+          .top_content
+            ul.nav
+              li
+                a(href="#") Мої оголошення
+
+              li= link_to  'Повідомлення', conversations_path
+
+          .main_content
+            .button
+              button(type="button" class="btn btn-primary") додати оголошення
+
+          .bottom_content
+            .search_content
+              form(action="" method="POST")
+              .row
+                .col-md-5.col-lg-5
+                  label
+                    .icon_search
+                      i.fas.fa-search
+                    input(type="text" class="form-control")
+
+                .col-md-4.col-lg-5
+                  label
+                    .icon_search
+                      i.fas.fa-map-marker-alt
+                    input(type="text" class="form-control" value="Хмельницький")
+
+                .col-md-3.col-lg-2
+                  .button
+                    button(type="submit" class="btn btn-primary") Пошук
+
+          .filter_content
+            .row
+              .col-md-3
+                .form-group
+                  input(type="text" class="form-control" placeholder="Ціна від (грн)")
+
+                .form-group
+                  input(type="text" class="form-control" placeholder="Ціна до (грн)")
+
+              .col-md-3
+                .form-group
+                  input(type="text" class="form-control" placeholder="Ціна від (грн)")
+
+                .form-group
+                  input(type="text" class="form-control" placeholder="Ціна до (грн)")
+
+              .col-md-3
+                .form-group
+                  input(type="text" class="form-control" placeholder="Ціна від (грн)")
+
+                .form-group
+                  input(type="text" class="form-control" placeholder="Ціна до (грн)")
+
+              .col-md-3
+                .form-group
+                  .select_category
+                    select.selectCategory
+                      option Дитячий світ
+                      option Робота
+                      option Бізнес та послуги
+                      option Нерухомість
+                      option Тварини
+                      option Мода та стиль
+                      option Транспорт
+                      option Запчастини для транспорту
+                      option Дім та сад
+                      option Хобі та відпочинок
+                      option Електроніка
+                      option Обмін
+                      option Віддам безкоштовно
+
+
+        .adcontent_message
+            .heading Мої повідомлення
+
+            .content
+              .profile_messages.wrap_messages
+                .header_message
+                  .search_message
+                    .search
+                      label
+                        .icon_search
+                          i.fas.fa-search
+                        input(type="text" name="search" placeholder="Пошук" autocapitalize="off" autocomplete="off" autocorrect="off")
+
+                    .action_message
+                      a(href="#")
+                        i.fas.fa-ellipsis-h
+
+                .im_message
+                  .message_list#content-message(data-simplebar data-simplebar-auto-hide="false")
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+
+                        .text_message
+                          .message_preview
+                            .dialog-preview
+                              .dialog_image
+                                img(src="img/user.jpg")
+                              .dialog_inner_text Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+                          .count_message 1
+
+                        .text_message
+                          .message_preview Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+                        .text_message
+                          .message_preview Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+                        .text_message
+                          .message_preview Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+
+                        .text_message
+                          .message_preview
+                            .dialog-preview
+                              .dialog_image
+                                img(src="img/user.jpg")
+                              .dialog_inner_text Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+                        .text_message
+                          .message_preview Повідомлення Повідомлення Повідомлення
+
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+                        .text_message
+                          .message_preview Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+
+                        .text_message
+                          .message_preview
+                            .dialog-preview
+                              .dialog_image
+                                img(src="img/user.jpg")
+                              .dialog_inner_text Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+                        .text_message
+                          .message_preview Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+                          .count_message 1
+
+                        .text_message
+                          .message_preview Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .author_message Користувач Користувач
+                        .text_message
+                          .message_preview Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+                        .text_message
+                          .message_preview Повідомлення Повідомлення Повідомлення
+
+                    .message_item
+                      .image_message
+                        a(href="#")
+                          img(src="img/user.jpg")
+
+                      .content_message
+                        .message_name
+                          .author_message
+                            | Користувач Користувач
+                          .date_message 21:32
+                          .count_message 1
+
+                        .text_message
+                          .message_preview Повідомлення Повідомлення Повідомлення

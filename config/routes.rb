@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :frontend do
+    get 'conversations/index'
+    get 'conversations/create'
+  end
+  namespace :frontend do
     get 'comments/index'
     get 'comments/create'
   end
@@ -14,7 +18,7 @@ Rails.application.routes.draw do
     concern :commentable do
       resources :comments, only: %i[index create]
     end
-
+    resources :conversations
     resources :categories, path: '/' do
       resources :posts, path: '/', concerns: :commentable
     end
