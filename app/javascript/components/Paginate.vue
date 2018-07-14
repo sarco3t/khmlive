@@ -20,7 +20,9 @@ export default {
     loadMore () {
       this.busy = true
       this.$http.get(this.url + '.json', {
-        params: ++this.page
+        params: {
+          page: ++this.page
+        }
       }).then(({body}) => {
         body.map( resource => this.collection.push(resource))
         this.busy = false

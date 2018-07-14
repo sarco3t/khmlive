@@ -6,12 +6,7 @@ class Frontend::CommentsController < ApplicationController
   end
 
   def create
-    comment = @resource.comments.create(comment_params)
-    if comment.errors.blank?
-      # saved
-    else
-      # not saved
-    end
+    @comment = @resource.comments.create(comment_params.merge(user_id: User.first.id))
   end
 
   private
@@ -21,7 +16,7 @@ class Frontend::CommentsController < ApplicationController
   end
 
   def comment_params
-    require(:comment).permit(
+    params.require(:comment).permit(
       :body
     )
   end

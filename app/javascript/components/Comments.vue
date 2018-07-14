@@ -1,12 +1,41 @@
 <template lang="jade">
-  .replies
-    paginate(:url="url + '/comments'")
-      template(slot-scope="props")
-        .replies_list
-          .button_more
-            more-button(@load="props.load")
-          template(v-for="comment in comments.concat(props.collection)")
-            comment(:comment="comment")
+  div
+    .replies
+      paginate(:url="url + '/comments'")
+        template(slot-scope="props")
+          .replies_list
+            .button_more
+              more-button(@load="props.load")
+            template(v-for="comment in sortedComments(props.collection)")
+              comment(:comment="comment")
+    .reply_box
+        .reply_box_wrapper
+          .reply_box_image
+            a(href="#")
+              img(src="assets/user.jpg")
+
+          .reply_box_comment
+            textarea(name="comment"
+              @keyup.ctrl.enter="send"
+              placeholder="Написати коментар"
+              data-emojiable="true"
+              class="comment_text_1"
+              v-model="body"
+            )
+
+            .reply_box_action
+              .action_item.reply_box_attach_image
+                input(type="file")
+                a(href="#")
+                  i.fas.fa-camera
+
+              //- .action_item.reply_box_emoji
+              //-   a(href="#")
+              //-     i.far.fa-smile
+
+    .reply_box_button
+      .button
+        button(class="btn btn-primary" @click="send") Відправити
 
 </template>
 
@@ -19,6 +48,27 @@ export default {
     Comment,
     Paginate,
     MoreButton
+  },
+  data () {
+    return {
+      body: '',
+      newComments: []
+    }
+  },
+  methods: {
+    sortedComments (collection) {
+      return collection.concat(this.comments, this.newComments).sort((a, b) => a.id - b.id)
+    },
+    send() {
+      this.$http.post(this.url + '/comments', {
+        comment: {
+          body: this.body
+        }
+      }).then(({body}) => {
+        this.body = ''
+        this.newComments.push(body)
+      })
+    }
   },
   props: ['comments', 'url']
 

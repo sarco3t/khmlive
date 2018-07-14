@@ -21,7 +21,7 @@ export default {
       lastResponse: false,
       busy: false,
       posts: [],
-      page: 1,
+      page: 0,
     };
   },
   methods: {

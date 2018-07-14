@@ -10,7 +10,7 @@ class Frontend::PostsController < FrontendController
              else
                @category.posts
              end
-    @posts = @posts.includes(:category).page(params[:page])
+    @posts = @posts.active.includes(:category).page(params[:page]).order(:created_at)
     set_partial
   end
 

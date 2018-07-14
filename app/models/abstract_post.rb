@@ -8,6 +8,8 @@ class AbstractPost < ApplicationRecord
   paginates_per 10
   friendly_id :title, use: :slugged
 
+  scope :active, -> { where(enabled: true) }
+
   belongs_to :user, optional: true
   belongs_to :category
   has_many_attached :images
