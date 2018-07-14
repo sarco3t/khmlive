@@ -11,47 +11,9 @@
 
                     .modal-title.text-center Запропонувати новину
 
-                .modal-body
-                    form action="" method="POST"
-                        .form-group
-                            .select_category
-                                select.selectCategory_modal
-                                    option Вибір розділу
-                                    option Розід 1
-                                    option Розід 2
-                                    option Розід 3
-                                    option Розід 4
-                                    option Розід 5
-                                    option Розід 6
-                                    option Розід 7
-                                    option Розід 8
+                .modal-body data-vue-modal="true"
+                    modal categories=(Category.roots.pluck(:id, :title).to_json)
 
-                        .form-group
-                            .modal_action
-                                ul
-                                    li
-                                        a href="#"
-                                            i.fas.fa-quote-right
-                                    li
-                                        a href="#"
-                                            i.fas.fa-camera
-                                    li
-                                        a href="#"
-                                            i.fab.fa-youtube
-
-                        .form-group
-                            textarea class="form-control" placeholder="Введіть текст новини"
-
-                        .form-group
-                            .row
-                                .col-md-6
-                                    .form-group.button
-                                        button type="submit" class="btn btn-primary" Надіслати
-
-                                .col-md-6
-                                    .form-group
-                                        .text-right.recaptcha_content
-                                            img src="assets/re_captcha.jpg"
 
 
     #addPoster.modal.fade tabindex="-1" role="dialog"

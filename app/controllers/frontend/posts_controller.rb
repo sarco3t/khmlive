@@ -14,11 +14,20 @@ class Frontend::PostsController < FrontendController
     set_partial
   end
 
+  def create
+    @category.posts.create(post_params)
+    redirect_back(fallback_location: root_path)
+  end
+
   def show
     @post = AbstractPost.friendly.find(params[:id])
   end
 
   private
+
+  def post_params
+    params.require(:post).permit(:body, :type)
+  end
 
   def set_partial
     return @partial = 'ads' if params[:category_id] == 'ads'

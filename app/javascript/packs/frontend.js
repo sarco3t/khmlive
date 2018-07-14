@@ -8,6 +8,7 @@ import EndlessScroll from '../components/EndlessScroll'
 import Paginate from '../components/Paginate'
 import MoreButton from '../components/MoreButton'
 import Post from '../components/Post'
+import Modal from '../components/Modal'
 
 Vue.use(TurbolinksAdapter)
 Vue.use(VueResource)
@@ -16,6 +17,11 @@ document.addEventListener('turbolinks:load', () => {
   console.log('load')
   const app = new Vue({
     el: '[data-vue="true"]',
-    components: { EndlessScroll, Paginate, MoreButton, Post }
+    components: { EndlessScroll, Paginate, MoreButton, Post, Modal }
   })
+new Vue({
+    el: '[data-vue-modal="true"]',
+    components: { Modal }
+  })
+
 })

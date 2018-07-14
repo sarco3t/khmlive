@@ -104,7 +104,7 @@ document.addEventListener("turbolinks:load", function() {
        $(like_button).text(count);
    });
 
-   $('.reply_box_attach_image a').on('click', function (e) {
+   $(document).on('click', '.reply_box_attach_image a', function (e) {
        e.preventDefault();
 
        $(this).parent().find('input').click();

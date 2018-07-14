@@ -20,17 +20,17 @@
               placeholder="Написати коментар"
               data-emojiable="true"
               class="comment_text_1"
-              v-model="body"
+              @input="handle"
             )
 
             .reply_box_action
               .action_item.reply_box_attach_image
                 input(type="file")
-                a(href="#")
+                a(href="#" data-turbolinks="false")
                   i.fas.fa-camera
 
               //- .action_item.reply_box_emoji
-              //-   a(href="#")
+              //-   a(href="#" data-turbolinks="false")
               //-     i.far.fa-smile
 
     .reply_box_button
@@ -49,6 +49,9 @@ export default {
     Paginate,
     MoreButton
   },
+  created () {
+      setTimeout(() => { window.emojiPicker.discover(); }, 200)
+  },
   data () {
     return {
       body: '',
@@ -56,6 +59,9 @@ export default {
     }
   },
   methods: {
+    handle(e) {
+      console.log(e.target.value)
+    },
     sortedComments (collection) {
       return collection.concat(this.comments, this.newComments).sort((a, b) => a.id - b.id)
     },
