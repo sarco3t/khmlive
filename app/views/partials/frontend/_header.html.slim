@@ -13,16 +13,15 @@ header
 
 
               ul.nav.navbar-nav.visible-xs-block.nav-mobile.left
-                    li
-                        a href="#" class="signin-button"
-                            | Вхід
-                            span.caret
-
-                        ul.nav-mobile-sub.action-header
-                            li
-                                a href="#signin" Вхід
-                            li
-                                a href="#signup" Реєстрація
+                 li
+                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+                        | Вхід
+                        span.caret
+                    ul.dropdown-menu.nav-mobile-sub.action-header
+                        li
+                            a href="#signin" Вхід
+                        li
+                            a href="#signup" Реєстрація
 
 
               ul.nav.navbar-nav.visible-xs-block.nav-mobile.right
@@ -38,14 +37,11 @@ header
                     i.fas.fa-search
                   input.form-control type='text' id="search" placeholder='Пошук по сайту'
 
-              ul.nav.navbar-nav.navbar-right.action-header
+              ul.nav.navbar-nav.navbar-right.action-login
                 li
                   a href='#signin' Вхід
                   | /
                   a href='#signup' Реєстрація
-
-            // /.navbar-collapse
-          // /.container-fluid
 
     .search-mobile
         .content

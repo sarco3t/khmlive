@@ -500,7 +500,7 @@ body {
     .button {
       margin: 0;
     }
-    
+
     @media (max-width: $screen-xs-max) {
       padding: 0;
 
@@ -1665,13 +1665,13 @@ body {
       color: #898989;
     }
   }
-  
+
   @media (min-width: $screen-md-max) and (max-width: 1600px) {
     .content_text {
       clear: both;
       padding-top: 10px;
     }
-  } 
+  }
 
   @media (max-width: $screen-xs-max) {
     .content {
@@ -2587,7 +2587,7 @@ body {
       }
     }
   }
-  
+
   @media (max-width: $screen-xs-max) {
     > .content {
       padding-left: 15px;
@@ -2911,7 +2911,7 @@ body {
       }
     }
   }
-  
+
   @media (max-width: $screen-xs-max) {
     background: none;
 
@@ -3951,13 +3951,17 @@ body {
     left: 0;
     top: -20px;
     min-width: 277px;
-    z-index: 109;
+    z-index: 125;
 
     .sidebar_nav {
       padding-left: 20px;
 
       a {
         color: #fff;
+
+        &:hover {
+          color: #26C48A;
+        }
       }
     }
   }
@@ -4011,7 +4015,7 @@ body {
     &:after {
       clear: both;
     }
-    
+
     @media (max-width: $screen-xs-max) {
       .image {
         width: 65px;

@@ -8,12 +8,13 @@
   display: inline-block;
   width: 0;
   height: 0;
-  margin-left: 2px;
+  margin-left: 8px;
   vertical-align: middle;
   border-top:   $caret-width-base dashed;
   border-top:   $caret-width-base solid \9; // IE8
   border-right: $caret-width-base solid transparent;
   border-left:  $caret-width-base solid transparent;
+  @include transition(0.4s);
 }
 
 // The dropdown wrapper (div)
@@ -127,6 +128,10 @@
   // Remove the outline when :focus is triggered
   > a {
     outline: 0;
+
+    .caret {
+      transform: rotate(-180deg);
+    }
   }
 }
 

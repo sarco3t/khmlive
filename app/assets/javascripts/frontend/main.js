@@ -84,13 +84,6 @@ document.addEventListener("turbolinks:load", function() {
       $('header .search-mobile').toggleClass('show');
    });
 
-   $('.nav-mobile a.signin-button').on('click', function (e) {
-      e.preventDefault();
-
-      $(this).toggleClass('active');
-      $(this).parent().find('.nav-mobile-sub').toggleClass('active');
-   });
-
    $('a.like_btn.like, a.like_btn.share ').on('click', function (e) {
        e.preventDefault();
 

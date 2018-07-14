@@ -244,16 +244,18 @@
   @media (max-width: $grid-float-breakpoint-max) {
     // Dropdowns get custom display when collapsed
     .open .dropdown-menu {
-      position: static;
+      //position: static;
       float: none;
       width: auto;
-      margin-top: 0;
-      background-color: transparent;
+      margin-top: 9px;
       border: 0;
       box-shadow: none;
+      height: auto;
+      opacity: 1;
+
       > li > a,
       .dropdown-header {
-        padding: 5px 15px 5px 25px;
+        padding: 10px 15px 10px 25px;
       }
       > li > a {
         line-height: $line-height-computed;
@@ -273,8 +275,10 @@
     > li {
       float: left;
       > a {
-        padding-top:    $navbar-padding-vertical;
-        padding-bottom: $navbar-padding-vertical;
+        //padding-top:    $navbar-padding-vertical;
+        //padding-bottom: $navbar-padding-vertical;
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
     }
   }
@@ -423,8 +427,8 @@
 
       &:hover,
       &:focus {
-        color: $navbar-default-link-hover-color;
-        background-color: $navbar-default-link-hover-bg;
+        //color: $navbar-default-link-hover-color;
+        //background-color: $navbar-default-link-hover-bg;
       }
     }
     > .active > a {
@@ -441,7 +445,7 @@
       &:hover,
       &:focus {
         color: $navbar-default-link-disabled-color;
-        background-color: $navbar-default-link-disabled-bg;
+        //background-color: $navbar-default-link-disabled-bg;
       }
     }
   }
@@ -469,8 +473,9 @@
       &,
       &:hover,
       &:focus {
-        background-color: $navbar-default-link-active-bg;
-        color: $navbar-default-link-active-color;
+        //background-color: $navbar-default-link-active-bg;
+        background: none;
+        //color: $navbar-default-link-active-color;
       }
     }
 

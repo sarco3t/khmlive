@@ -46,8 +46,31 @@ header {
     }
   }
 
+  ul.action-login {
+    li {
+      color: #fff;
+    }
+
+    a {
+      display: inline-block;
+      padding-right: 6px;
+      padding-left: 6px;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      a {
+        padding-top: 35px;
+        padding-bottom: 33px;
+      }
+    }
+  }
+
   .nav-mobile {
     margin: 5px 0;
+
+    li {
+      float: left;
+    }
 
     a {
       font-size: 16px;
@@ -59,6 +82,34 @@ header {
 
     &.right {
       float: right;
+    }
+
+    .dropdown-menu {
+      a {
+        color: #fff;
+        background: none;
+        @include transition(0.4s);
+
+        &:hover {
+          color: #26c48a!important;
+        }
+
+        &.item {
+          display: inline-block;
+        }
+      }
+    }
+
+    .notification_user {
+      font-size: 20px;
+
+      position: relative;
+
+      .badge {
+        position: absolute;
+        left: 8px;
+        top: -12px
+      }
     }
   }
 
@@ -79,13 +130,53 @@ header {
     }
   }
 
+  .profile_item {
+    a.item {
+      padding: 20px 10px;
+    }
+
+    .profile_image {
+      width: 47px;
+      margin-top: 2px;
+
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+
+    .notification_user {
+      font-size: 35px;
+      padding: 10px 20px 5px;
+      position: relative;
+
+      .badge {
+        position: absolute;
+        left: 32px;
+        top: 0px;
+      }
+    }
+
+    .profile_content {
+      > a {
+        color: #fff;
+
+        padding: 37px 5px;
+        display: block;
+
+        &:hover, &:focus {
+          background: none;
+        }
+      }
+    }
+  }
+
   ul.nav-mobile-sub {
     position: absolute;
     left: 0;
     background: #373737;
     z-index: 102;
-    margin: 0;
-    padding: 4px 8px;
+    padding: 6px 0;
     margin-top: 9px;
     min-width: 145px;
 
@@ -106,7 +197,7 @@ header {
     a {
       color: #fff;
       display: block;
-      padding: 10px 15px;
+      padding: 16px 15px;
 
       &:hover {
         color: #26C48A;
