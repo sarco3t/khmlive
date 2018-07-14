@@ -5,7 +5,7 @@ class AbstractPost < ApplicationRecord
   extend FriendlyId
   include Commentable
 
-  paginates_per 1
+  paginates_per 10
   friendly_id :title, use: :slugged
 
   belongs_to :user, optional: true

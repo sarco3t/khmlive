@@ -1,23 +1,26 @@
 <template lang="jade">
-  div(v-infinite-scroll="loadMore", infinite-scroll-disabled="busy", infinite-scroll-distance="10" infinite-scroll-throttle-delay="500")
+  div(v-infinite-scroll="loadMore", infinite-scroll-disabled="busy", infinite-scroll-distance="10" infinite-scroll-throttle-delay="200")
     slot
-    div(v-html="content")
+    template(v-for="post in posts")
+      post(:post="post", :key="post.id")
     spinner(v-if="busy")
 </template>
 
 <script>
 import infiniteScroll from "vue-infinite-scroll";
 import Spinner from 'vue-simple-spinner'
+import Post from './Post'
 
 export default {
     components: {
-    Spinner
+    Spinner,
+    Post
   },
   data: function() {
     return {
       lastResponse: false,
       busy: false,
-      content: "",
+      posts: [],
       page: 1,
     };
   },
@@ -26,19 +29,19 @@ export default {
       if (!this.lastResponse) {
         this.busy = true;
         this.$http
-          .get(this.url + '.js', {
+          .get(this.url + '.json', {
             params: {
               page: ++this.page,
             },
           })
           .then(response => {
-            if (response.body) {
-              this.content += response.body;
+            if (response.body.length) {
+              response.body.map(post => this.posts.push(post));
             } else {
               this.lastResponse = true
             }
             this.busy = false
-          })
+          }, () => { this.lastResponse = true })
       }
     },
   },
@@ -46,5 +49,8 @@ export default {
   props: {
     url: "",
   },
+  created() {
+    this.loadMore()
+  }
 };
 </script>

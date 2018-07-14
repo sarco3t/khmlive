@@ -102,7 +102,7 @@ uk:
         few: "%{count} дні"
         many: "%{count} днів"
         one: "%{count} день"
-        other: "%{count} дня"
+        other: "%{count} днів"
       x_minutes:
         few: "%{count} хвилини"
         many: "%{count} хвилин"

@@ -2,7 +2,7 @@ class Frontend::CommentsController < ApplicationController
   before_action :set_resource
 
   def index
-    @page = params[:page]
+    @comments = @resource.comments.page(params[:page])
   end
 
   def create

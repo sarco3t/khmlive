@@ -5,7 +5,7 @@
         = render 'partials/frontend/sidebar'
 
     .col-md-6.col-lg-6
-      .content
+      .content data-vue="true"
 
         .category_block
           .header
@@ -37,14 +37,12 @@
                 - @popular_posts.each do |post|
                   = render "popular_post", post: post
 
-        .wall_block#endless-scroll
+        .wall_block
           endless-scroll url=(category_posts_path(@category))
-            - posts.each do |post|
-              = render post.type.underscore, post: post
 
 
     .col-md-4.col-lg-4.hidden-xs
-      .sidebar.sidebar_right
+      .sidebar.sidebar_right data-vue="true"
 
         .popular_post.sidebar_item
           .header Найбільш обговорювані

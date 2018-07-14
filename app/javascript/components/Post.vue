@@ -1,14 +1,14 @@
+<template lang="jade">
 .post
   .post_header
     .post_image
       a(href="#")
-        -if post.category.logo.attached?
-          = image_tag url_for(post.category.logo)
+        img(:src="post.category.logo_url")
 
     .post_info
       .post_category
-        = link_to post.category.title, category_posts_path(post.category.slug)
-      .post_date 17 хв
+        a(:href="post.category.url") {{ post.category.title }}
+      .post_date {{ post.created_at }} тому
 
     .post_action
       a(href="#")
@@ -16,7 +16,7 @@
 
   .post_content
     .text_post
-      p= post.body
+      {{ post.body }}
       p
         a(href="#")
           img(src="img/posts/content_1.jpg" class="img-responsive")
@@ -32,7 +32,7 @@
         a(href="#" class="like_btn comment")
           .like_button_icon
             i.fas.fa-comment
-          .like_button_count= post.comments_count
+          .like_button_count {{ post.comments_count }}
 
         a(href="#" class="like_btn share active")
           .like_button_icon
@@ -45,8 +45,13 @@
           i.fas.fa-eye
         .like_count
           | 2536
+  comments(:comments="post.latest_comments || post.comments", :url="post.url")
+</template>
 
-  - if post.comments_count.positive?
-    = render 'frontend/comments/comments', post: post
-  = render 'frontend/comments/form'
-
+<script>
+import Comments from './Comments'
+export default {
+  components: { Comments },
+  props: ['post']
+}
+</script>

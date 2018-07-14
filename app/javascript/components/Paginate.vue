@@ -1,7 +1,6 @@
 <template lang="jade">
   div
-    slot(:load="loadMore")
-    div(v-html="content")
+    slot(:load="loadMore", :collection="collection")
     spinner(v-if="busy")
 </template>
 
@@ -13,17 +12,17 @@ export default {
   data () {
     return {
       page: 1,
-      content: '',
+      collection: [],
       busy: false
     }
   },
   methods: {
     loadMore () {
       this.busy = true
-      this.$http.get(this.url + '.js', {
+      this.$http.get(this.url + '.json', {
         params: ++this.page
       }).then(({body}) => {
-        this.content += body
+        body.map( resource => this.collection.push(resource))
         this.busy = false
       })
     }

@@ -7,4 +7,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def hidden_attributes
+    %i[
+      created_at
+      updated_at
+    ]
+  end
 end
