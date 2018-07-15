@@ -23,12 +23,7 @@
 
     .post_like
       .like_btns
-        a(href="#" class="like_btn like active")
-          .like_button_icon
-            i.fas.fa-heart
-          .like_button_count
-            | 130
-
+        like(:url="post.url", :count="post.likes_count", :has_like="post.has_like")
         a(href="#" class="like_btn comment")
           .like_button_icon
             i.fas.fa-comment
@@ -49,9 +44,10 @@
 </template>
 
 <script>
+import Like from './Like'
 import Comments from './Comments'
 export default {
-  components: { Comments },
+  components: { Comments, Like },
   props: ['post']
 }
 </script>

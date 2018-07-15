@@ -4,6 +4,8 @@ if comment.errors.blank?
   json.user do
     json.partial! 'frontend/users/user', resource: comment.user
   end
+  json.has_like !!current_user && !!(comment.likes.find_by(user: current_user))
+  json.url comment_path(comment)
 else
   json.errors comment.errors
 end

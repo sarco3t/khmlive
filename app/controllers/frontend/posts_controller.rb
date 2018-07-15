@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Frontend::PostsController < FrontendController
+  before_action :authenticate_user!, only: %i[like dislike]
   before_action :set_category
-
+  before_action :set_post, only: %i[show like dislike]
   def index
     @popular_posts = AbstractPost.includes(:category).where(category_id: @category.child_ids + [@category.id]).limit(5)
     @posts = if @category.root?
@@ -20,7 +21,15 @@ class Frontend::PostsController < FrontendController
   end
 
   def show
-    @post = AbstractPost.friendly.find(params[:id])
+
+  end
+
+  def like
+    @post.likes.first_or_create(user: current_user)
+  end
+
+  def dislike
+    @post.likes.where(user: current_user).delete_all
   end
 
   private
@@ -35,6 +44,11 @@ class Frontend::PostsController < FrontendController
     @partial = 'articles' if @posts.first&.type == 'Article'
     @partial = 'affiches' if @posts.first&.type == 'Affiche'
   end
+
+  def set_post
+    @post = AbstractPost.friendly.find(params[:id])
+  end
+
 
   def set_category
     @category = Category.friendly.find(params[:category_id])

@@ -15,12 +15,23 @@ Rails.application.routes.draw do
   root to: "frontend/pages#home"
 
   scope module: 'frontend' do
+    resources :comments, only: :show do
+      member do
+        post :like
+        delete :dislike
+      end
+    end
     concern :commentable do
       resources :comments, only: %i[index create]
     end
     resources :conversations
     resources :categories, path: '/' do
-      resources :posts, path: '/', concerns: :commentable
+      resources :posts, path: '/', concerns: :commentable do
+        member do
+          post :like
+          delete :dislike
+        end
+      end
     end
   end
 end

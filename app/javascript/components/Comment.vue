@@ -18,17 +18,15 @@
           a(href="#" class="reply_btn reply") Відповісти
 
           .reply_date {{ comment.created_at }} тому
-
         .reply_like
-          a(href="#" class="like_btn like active")
-            .like_button_icon
-              i.fas.fa-heart
-            .like_button_count 1
+          like(:url="comment.url", :count="comment.likes_count", :has_like="comment.has_like")
 
 </template>
 
 <script>
+import Like from './Like'
 export default {
+  components: { Like },
   props: ['comment']
 }
 </script>
