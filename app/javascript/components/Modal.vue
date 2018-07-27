@@ -8,15 +8,15 @@
     .form-group
         .modal_action
             ul
-                li
-                    a(href="#")
-                        i.fas.fa-quote-right
-                li
-                    a(href="#")
-                        i.fas.fa-camera
-                li
-                    a( href="#")
-                        i.fab.fa-youtube
+              li
+                  a(href="#")
+                      i.fas.fa-quote-right
+              li
+                  a(href="#")
+                      i.fas.fa-camera
+              li
+                  a( href="#")
+                      i.fab.fa-youtube
 
     .form-group
         input(type="hidden", value="Post" name="post[type]")

@@ -1,5 +1,5 @@
 unless User.find_by(email: 'admin@admin.com')
-  user = User.create(role: :admin, email: 'admin@admin.com', password: '123123')
+  user = User.create(role: :admin, email: 'admin@admin.com', password: '123123', username: 'admin')
   user.confirm
 end
 def category_with_logo(obj, logo)

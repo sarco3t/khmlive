@@ -180,26 +180,8 @@
                 .modal-header
                     .modal-title.text-center Реєстрація
 
-                .modal-body
-                    form action="" method="POST"
-                        .form-group
-                            input type="text" name="email" placeholder="E-mail" class="form-control"
-
-                        .form-group
-                            input type="text" name="login" placeholder="Логін" class="form-control"
-
-                        .form-group
-                            input type="password" name="password" placeholder="Пароль" class="form-control"
-
-                        .form-group
-                            input type="password" name="confirm_password" placeholder="Повторити пароль" class="form-control"
-
-                        .form-group
-                            button type="submit" class="btn btn-primary full-width" Зареєструватись
-
-                        .form-group
-                            .text-center.recaptcha_content
-                                img src="assets/re_captcha.jpg"
+                .modal-body data-vue-modal="true"
+                    signup-modal url=(user_registration_path(format: :json))
 
     #signinModal.modal.fade
         .modal-dialog
@@ -211,21 +193,8 @@
                 .modal-header
                     .modal-title.text-center Авторизація
 
-                .modal-body
-                    form action="" method="POST"
-                        .form-group
-                            input type="text" name="login" placeholder="E-mail/Логін" class="form-control"
-
-                        .form-group
-                            input type="password" name="password" placeholder="Пароль" class="form-control"
-
-                        .form-group
-                            button type="submit" class="btn btn-primary full-width" Вхід
-
-                        .form-group
-                            input type="checkbox" name="remember" id="remember" class="checkbox" checked="true"
-                            label for="remember" Запам’ятати мене
-
+                .modal-body data-vue-modal="true"
+                    signin-modal url=(user_session_path(format: :json))
                 .model-footer
                     .link_action
                         .action_signin

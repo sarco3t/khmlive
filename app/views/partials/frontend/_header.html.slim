@@ -1,47 +1,112 @@
 header
     .container
         nav.navbar.navbar-default
-          .container-fluid
-            // Brand and toggle get grouped for better mobile display
-            .navbar-header
-              button.navbar-toggle.collapsed type='button' data-toggle='collapse' data-target='#mobile-navbar-collapse' aria-expanded='false'
-                span.sr-only Toggle navigation
-                i.fas.fa-align-left
+          - unless current_user
+            .container-fluid
+              // Brand and toggle get grouped for better mobile display
+              .navbar-header
+                button.navbar-toggle.collapsed type='button' data-toggle='collapse' data-target='#mobile-navbar-collapse' aria-expanded='false'
+                  span.sr-only Toggle navigation
+                  i.fas.fa-align-left
 
-              a.navbar-brand href=(root_path)
-                img src=(asset_path "logo.svg") width="90"
+                a.navbar-brand href=(root_path)
+                  img src=(asset_path "logo.svg") width="90"
 
 
-              ul.nav.navbar-nav.visible-xs-block.nav-mobile.left
-                 li
-                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
-                        | Вхід
-                        span.caret
-                    ul.dropdown-menu.nav-mobile-sub.action-header
+                ul.nav.navbar-nav.visible-xs-block.nav-mobile.left
+                  li
+                      a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                          | Вхід
+                          span.caret
+                      ul.dropdown-menu.nav-mobile-sub.action-header
+                          li
+                              a href="#signin" data-toggle="modal" data-target="#signinModal" Вхід
+                          li
+                              a href="#signup" data-toggle="modal" data-target="#signupModal" Реєстрація
+
+
+                ul.nav.navbar-nav.visible-xs-block.nav-mobile.right
+                      li
+                          a href="#" class="search-button"
+                              i.fas.fa-search
+
+              .collapse.navbar-collapse
+
+                form.navbar-form.navbar-left
+                  .form-group.search-form
+                    label for="search"
+                      i.fas.fa-search
+                    input.form-control type='text' id="search" placeholder='Пошук по сайту'
+
+                ul.nav.navbar-nav.navbar-right.action-login
+                  li
+                    a href='#signin' data-toggle="modal" data-target="#signinModal" Вхід
+                    | /
+                    a href='#signup' data-toggle="modal" data-target="#signupModal" Реєстрація
+          - else
+            .container-fluid
+                // Brand and toggle get grouped for better mobile display
+                .navbar-header
+                    button.navbar-toggle.collapsed type='button', data-toggle='collapse', data-target='#mobile-navbar-collapse', aria-expanded='false'
+                        span.sr-only Toggle navigation
+                        i.fas.fa-align-left
+
+                    a.navbar-brand href='#'
+                        img src="img/logo.svg" width="90"
+
+
+                    ul.nav.navbar-nav.visible-xs-block.nav-mobile.left
                         li
-                            a href="#signin" Вхід
+                            a href='#' class="item"
+                                .notification_user
+                                    i.fas.fa-bell
+                                    span.badge 2
                         li
-                            a href="#signup" Реєстрація
+                            a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                                = current_user.username
+                                span.caret
+
+                            ul.dropdown-menu.nav-mobile-sub.action-header
+                                li
+                                    a href="#signin" Профіль
+                                li
+                                    a href="#signup" Вихід
 
 
-              ul.nav.navbar-nav.visible-xs-block.nav-mobile.right
-                    li
-                        a href="#" class="search-button"
-                            i.fas.fa-search
+                    ul.nav.navbar-nav.visible-xs-block.nav-mobile.right
+                        li
+                            a href="#" class="search-button"
+                                i.fas.fa-search
 
-            .collapse.navbar-collapse
+                .collapse.navbar-collapse
 
-              form.navbar-form.navbar-left
-                .form-group.search-form
-                  label for="search"
-                    i.fas.fa-search
-                  input.form-control type='text' id="search" placeholder='Пошук по сайту'
+                    form.navbar-form.navbar-left
+                        .form-group.search-form
+                            label for="search"
+                                i.fas.fa-search
+                            input.form-control type='text', id="search", placeholder='Пошук по сайту'
 
-              ul.nav.navbar-nav.navbar-right.action-login
-                li
-                  a href='#signin' Вхід
-                  | /
-                  a href='#signup' Реєстрація
+                    ul.nav.navbar-nav.navbar-right.profile_item
+                        li
+                            a href='#' class="item"
+                                .notification_user
+                                    i.fas.fa-bell
+                                    span.badge 2
+                        li
+                            a href='#' class="item"
+                                .profile_image
+                                    img src="img/user.jpg"
+                        li
+                            .profile_content
+                                a href="#" class="dropdown-toggle item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                                    | Користувач
+                                    span.caret
+
+                                ul.dropdown-menu
+                                    li
+                                        a href="#signin" Профіль
+                                    li
+                                        a href="#signup" Вихід
 
     .search-mobile
         .content

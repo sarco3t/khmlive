@@ -8,8 +8,12 @@ class User < ApplicationRecord
          :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+  has_many :comments, dependent: :delete_all
+  has_many :likes, dependent: :delete_all
+
   def hidden_attributes
-    %i[
+    %i[11
       created_at
       updated_at
     ]

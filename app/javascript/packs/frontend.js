@@ -9,19 +9,24 @@ import Paginate from '../components/Paginate'
 import MoreButton from '../components/MoreButton'
 import Post from '../components/Post'
 import Modal from '../components/Modal'
+import SignupModal from '../components/SignupModal'
+import SigninModal from '../components/SigninModal'
 
 Vue.use(TurbolinksAdapter)
 Vue.use(VueResource)
 Vue.http.headers.common['X-CSRF-Token'] = document.getElementsByName('csrf-token')[0].getAttribute('content')
 document.addEventListener('turbolinks:load', () => {
-  console.log('load')
-  const app = new Vue({
-    el: '[data-vue="true"]',
-    components: { EndlessScroll, Paginate, MoreButton, Post, Modal }
+  document.querySelectorAll('[data-vue="true"]').forEach(el => {
+    new Vue({
+      el: el,
+      components: { EndlessScroll, Paginate, MoreButton, Post }
+    })
   })
-new Vue({
-    el: '[data-vue-modal="true"]',
-    components: { Modal }
+  const app =
+  document.querySelectorAll('[data-vue-modal="true"]').forEach(el => {
+    new Vue({
+      el: el,
+      components: { Modal, SignupModal, SigninModal }
+    })
   })
-
 })

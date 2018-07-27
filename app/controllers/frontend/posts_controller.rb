@@ -4,6 +4,7 @@ class Frontend::PostsController < FrontendController
   before_action :authenticate_user!, only: %i[like dislike]
   before_action :set_category
   before_action :set_post, only: %i[show like dislike]
+
   def index
     @popular_posts = AbstractPost.includes(:category).where(category_id: @category.child_ids + [@category.id]).limit(5)
     @posts = if @category.root?
@@ -11,7 +12,7 @@ class Frontend::PostsController < FrontendController
              else
                @category.posts
              end
-    @posts = @posts.active.includes(:category).page(params[:page]).order(:created_at)
+    @posts = @posts.active.page(params[:page]).order(:created_at)
     set_partial
   end
 
