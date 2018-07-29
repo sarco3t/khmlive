@@ -35,3 +35,4 @@ TAGS
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+ops/config.yml
