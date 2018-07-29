@@ -2,6 +2,10 @@ unless User.find_by(email: 'admin@admin.com')
   user = User.create(role: :admin, email: 'admin@admin.com', password: '123123', username: 'admin')
   user.confirm
 end
+
+Menu.delete_all
+Category.delete_all
+
 def category_with_logo(obj, logo)
   image_path = Rails.root.join('db', 'images')
   c = Category.create(obj)

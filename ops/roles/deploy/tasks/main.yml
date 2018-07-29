@@ -4,6 +4,9 @@
 - name: copy files (src is Rails root folder)
   synchronize: src=../../../../ dest={{ deploy_directory }} delete=yes rsync_opts=--exclude=.git/,--exclude=log/,--exclude=tmp/cache
 
+- name: remove digest
+  command: bash -lc bundle exec rake assets:non_digested chdir={{ deploy_directory }}
+
 - name: config database.yml
   template: src=database.yml.j2 dest={{ deploy_directory}}/config/database.yml
 

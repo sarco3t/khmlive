@@ -4,7 +4,7 @@ class Category < ApplicationRecord
   extend FriendlyId
 
   has_one_attached :logo
-  has_many :posts, class_name: 'AbstractPost', dependent: :nullify
+  has_many :posts, class_name: 'AbstractPost', dependent: :destroy
   has_many :menus, dependent: :nullify
   acts_as_tree
 
