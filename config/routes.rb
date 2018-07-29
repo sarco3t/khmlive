@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   root to: "frontend/pages#home"
 
   scope module: 'frontend' do
+    resources :users, only: :show, path: 'u' do
+    end
     resources :comments, only: :show do
       member do
         post :like

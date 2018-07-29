@@ -1,16 +1,16 @@
 <template lang="jade">
   form(:action="url", @submit.prevent="handleForm", method="POST")
     .form-group
-      input(type="text" name="user[email]" placeholder="E-mail" class="form-control")
+      input(type="text" name="user[email]" placeholder="E-mail" class="form-control" v-model="email")
 
     .form-group
-        input(type="text" name="user[username]" placeholder="Логін" class="form-control")
+        input(type="text" name="user[username]" placeholder="Логін" class="form-control" v-model="username")
 
     .form-group
-        input(type="password" name="user[password]" placeholder="Пароль" class="form-control")
+        input(type="password" name="user[password]" placeholder="Пароль" class="form-control" v-model="password")
 
     .form-group
-        input(type="password" name="user[password_confirmation]" placeholder="Повторити пароль" class="form-control")
+        input(type="password" name="user[password_confirmation]" placeholder="Повторити пароль" class="form-control" v-model="password_confirmation")
 
     .form-group
         button(type="submit" class="btn btn-primary full-width") Зареєструватись
@@ -26,30 +26,28 @@ export default {
   },
   data() {
     return {
-      category: ''
+      email: '',
+      password: '',
+      password_confirmation: '',
+      username: ''
     }
   },
   methods: {
     handleForm(e) {
-      this.category = `/${$(this.$refs.select).val()}`
-      e.target.submit()
-      console.log(this.category)
+      const {
+        email, password, password_confirmation, username
+      } = this
+      this.$http.post(this.url, {
+        user: {
+          email,
+          username,
+          password_confirmation,
+          password
+        }
+      }).then(({ body }) => {
+        window.location.href = '/u/' + body.slug
+      }, console.log)
     },
-    options () {
-      return JSON.parse(this.categories).map(c => {
-        ({
-          text: c[1],
-          value: c[0]
-        })
-      }) //.unshift({text: 'Вибір розділу', id: null})
-    }
-  },
-  mounted () {
-    $(this.$refs.select).select2({
-       allowClear: false,
-       minimumResultsForSearch: -1,
-       dropdownParent: $('#addNews')
-   });
   },
   props: {
     url: {}

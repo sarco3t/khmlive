@@ -52,7 +52,7 @@ header
                         i.fas.fa-align-left
 
                     a.navbar-brand href='#'
-                        img src="img/logo.svg" width="90"
+                        img src="assets/logo.svg" width="90"
 
 
                     ul.nav.navbar-nav.visible-xs-block.nav-mobile.left
@@ -67,10 +67,8 @@ header
                                 span.caret
 
                             ul.dropdown-menu.nav-mobile-sub.action-header
-                                li
-                                    a href="#signin" Профіль
-                                li
-                                    a href="#signup" Вихід
+                                li= link_to "Профіль", user_path(current_user.username)
+                                li= link_to "Вихід", destroy_user_session_path, method: :delete
 
 
                     ul.nav.navbar-nav.visible-xs-block.nav-mobile.right
@@ -84,7 +82,7 @@ header
                         .form-group.search-form
                             label for="search"
                                 i.fas.fa-search
-                            input.form-control type='text', id="search", placeholder='Пошук по сайту'
+                            input.form-control type='text' id="search" placeholder='Пошук по сайту'
 
                     ul.nav.navbar-nav.navbar-right.profile_item
                         li
@@ -95,19 +93,18 @@ header
                         li
                             a href='#' class="item"
                                 .profile_image
-                                    img src="img/user.jpg"
+                                    img src="assets/user.jpg"
                         li
                             .profile_content
                                 a href="#" class="dropdown-toggle item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
-                                    | Користувач
+                                    = current_user.username
                                     span.caret
 
                                 ul.dropdown-menu
-                                    li
-                                        a href="#signin" Профіль
-                                    li
-                                        a href="#signup" Вихід
+                                  li= link_to "Профіль", user_path(current_user.username)
+                                  li= link_to "Вихід", destroy_user_session_path, method: :delete
+
 
     .search-mobile
         .content
-            input type="text" name="search" class="form-control" placeholder="Пошук по сайту"
+            input(type="text" name="search" class="form-control" placeholder="Пошук по сайту")

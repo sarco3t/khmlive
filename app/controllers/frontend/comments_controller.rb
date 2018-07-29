@@ -1,4 +1,4 @@
-class Frontend::CommentsController < ApplicationController
+class Frontend::CommentsController < FrontendController
   before_action :set_resource, only: %i[index create]
   before_action :set_comment, only: %i[like dislike]
   before_action :authenticate_user!, only: %i[like dislike create]

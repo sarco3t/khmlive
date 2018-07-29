@@ -3,5 +3,6 @@ class Frontend::ConversationsController < FrontendController
   end
 
   def create
+    recipient_id = params[:recipient_id]
   end
 end

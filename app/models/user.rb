@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  extend FriendlyId
+
   enum role: %i[user admin]
+  friendly_id :username, use: :slugged
   devise :database_authenticatable, :registerable, :confirmable,
          :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -13,9 +14,13 @@ class User < ApplicationRecord
   has_many :likes, dependent: :delete_all
 
   def hidden_attributes
-    %i[11
+    %i[
       created_at
       updated_at
     ]
+  end
+
+  def full_name
+    'користувач користувач'
   end
 end

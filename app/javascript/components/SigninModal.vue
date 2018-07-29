@@ -1,10 +1,10 @@
 <template lang="jade">
-  form(:action="url", @submit.prevent="handleForm")
+  form(:action="url", @submit.prevent="handleForm", method="post")
     .form-group
-        input(type="text" name="user[email]" placeholder="E-mail/Логін" class="form-control")
+        input(type="text" name="user[email]" placeholder="E-mail/Логін" class="form-control" v-model="email")
 
     .form-group
-        input(type="password" name="password" placeholder="Пароль" class="form-control")
+        input(type="password" name="password" placeholder="Пароль" class="form-control" v-model="password")
 
     .form-group
         button(type="submit" class="btn btn-primary full-width") Вхід
@@ -21,23 +21,24 @@ export default {
   },
   data() {
     return {
-      category: ''
+      email: '',
+      password: ''
     }
   },
   methods: {
     handleForm(e) {
-      this.category = `/${$(this.$refs.select).val()}`
-      e.target.submit()
-      console.log(this.category)
+      const {
+        email, password
+      } = this
+      this.$http.post(this.url, {
+        user: {
+          email,
+          password
+        }
+      }).then(() => {
+        window.location.reload()
+      }, console.log)
     },
-    options () {
-      return JSON.parse(this.categories).map(c => {
-        ({
-          text: c[1],
-          value: c[0]
-        })
-      }) //.unshift({text: 'Вибір розділу', id: null})
-    }
   },
   mounted () {
     $(this.$refs.select).select2({
