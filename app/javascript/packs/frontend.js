@@ -12,6 +12,11 @@ import Modal from '../components/Modal'
 import SignupModal from '../components/SignupModal'
 import SigninModal from '../components/SigninModal'
 
+// require styles
+import 'quill/dist/quill.core'
+import 'quill/dist/quill.snow'
+import 'quill/dist/quill.bubble'
+
 Vue.use(TurbolinksAdapter)
 Vue.use(VueResource)
 Vue.http.headers.common['X-CSRF-Token'] = document.getElementsByName('csrf-token')[0].getAttribute('content')

@@ -8,10 +8,10 @@
       .reply_action
 
       .reply_author
-        a(href="#" class="author") {{ comment.user.email }}
+        a(:href="comment.user.url" class="author") {{ comment.user.username }}
 
       .reply_text
-        .wall_reply_text {{ comment.body }}
+        .wall_reply_text(v-html="comment.body")
 
       .reply_footer
         .reply_info

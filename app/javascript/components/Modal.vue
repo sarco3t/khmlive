@@ -5,22 +5,24 @@
           select.selectCategory_modal(ref="select")
               option(disabled selected value="") Вибір розділу
               option(v-for="c in JSON.parse(categories)", :value="c[0]") {{ c[1] }}
-    .form-group
-        .modal_action
-            ul
-              li
-                  a(href="#")
-                      i.fas.fa-quote-right
-              li
-                  a(href="#")
-                      i.fas.fa-camera
-              li
-                  a( href="#")
-                      i.fab.fa-youtube
+    //- .form-group
+        //- .modal_action
+            //- ul
+            //-   li
+            //-       a(href="#")
+            //-           i.fas.fa-quote-right
+            //-   li
+            //-       a(href="#")
+            //-           i.fas.fa-camera
+            //-   li
+            //-       a( href="#")
+            //-           i.fab.fa-youtube
 
     .form-group
         input(type="hidden", value="Post" name="post[type]")
-        textarea( class="form-control" placeholder="Введіть текст новини" name="post[body]")
+        quillEditor(
+          v-model="body",
+          :options="options")
 
     .form-group
         .row
@@ -33,12 +35,25 @@
                     .text-right.recaptcha_content
 </template>
 <script>
+import { quillEditor } from 'vue-quill-editor'
+
 export default {
   components: {
+    quillEditor
   },
   data() {
     return {
-      category: ''
+      category: '',
+      body: '',
+      options: {
+        modules: {
+          toolbar: [
+            ['blockquote', 'code-block'],
+            ['link', 'image', 'video'],
+          ]
+        },
+        placeholder: "Введіть текст новини"
+      },
     }
   },
   methods: {
@@ -71,4 +86,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import 'quill/dist/quill.core.css';
+@import 'quill/dist/quill.snow.css';
+@import 'quill/dist/quill.bubble.css';
+.quill-editor {
+  z-index: 99;
+  padding-bottom: 20px
+}
+.ql-toolbar {
+  border: 0 !important;
+  border-bottom: 1px solid #ccc !important;
+}
+.ql-container {
+  height: 100px !important;
+}
+</style>
 

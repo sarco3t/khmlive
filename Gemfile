@@ -80,3 +80,4 @@ gem 'babosa'
 gem 'kaminari'
 gem 'webpacker', '~> 3.5'
 gem 'mailboxer'
+

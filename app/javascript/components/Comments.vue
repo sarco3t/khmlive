@@ -16,11 +16,11 @@
 
           .reply_box_comment
             textarea(name="comment"
-              @keyup.ctrl.enter="send"
               placeholder="Написати коментар"
               data-emojiable="true"
               class="comment_text_1"
               @input="handle"
+              ref="form"
             )
 
             .reply_box_action
@@ -29,9 +29,9 @@
                 a(href="#" data-turbolinks="false")
                   i.fas.fa-camera
 
-              //- .action_item.reply_box_emoji
-              //-   a(href="#" data-turbolinks="false")
-              //-     i.far.fa-smile
+              .action_item.reply_box_emoji
+                //- a(href="#" data-turbolinks="false")
+                //-   i.far.fa-smile
 
     .reply_box_button
       .button
@@ -47,10 +47,19 @@ export default {
   components: {
     Comment,
     Paginate,
-    MoreButton
+    MoreButton,
   },
   created () {
-      setTimeout(() => { window.emojiPicker.discover(); }, 200)
+      setTimeout(() => {
+        window.emojiPicker.discover();
+        $(this.$refs.form).siblings('.emoji-wysiwyg-editor').keydown((e) => {
+          if (e.ctrlKey && e.keyCode == 13) {
+            this.body = e.target.innerHTML
+            e.target.innerHTML = ''
+            this.send()
+          }
+        })
+      }, 200)
   },
   data () {
     return {
@@ -59,20 +68,22 @@ export default {
     }
   },
   methods: {
-    handle(e) {
-      console.log(e.target.value)
+    handle (e) {
+      console.log('s')
+      this.body = e.target.value
     },
     sortedComments (collection) {
       return collection.concat(this.comments, this.newComments).sort((a, b) => a.id - b.id)
     },
     send() {
+      console.log('lol')
       this.$http.post(this.url + '/comments', {
         comment: {
           body: this.body
         }
       }).then(({body}) => {
-        this.body = ''
         this.newComments.push(body)
+        this.body = ''
       })
     }
   },

@@ -17,9 +17,6 @@
   .post_content
     .text_post
       {{ post.body }}
-      p
-        a(href="#")
-          img(src="img/posts/content_1.jpg" class="img-responsive")
 
     .post_like
       .like_btns
@@ -33,7 +30,7 @@
           .like_button_icon
             i.fas.fa-share
           .like_button_count
-            | 8
+            | 0
 
       .like_views.views
         .like_icon

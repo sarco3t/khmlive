@@ -4,10 +4,14 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "emoji-mart-vue": "^2.6.4",
+    "fontawesome": "^4.7.2",
     "jade": "^1.11.0",
     "vue": "^2.5.16",
+    "vue-emoji-mart": "^1.0.5",
     "vue-infinite-scroll": "^2.0.2",
     "vue-loader": "14.2.2",
+    "vue-quill-editor": "^3.0.6",
     "vue-resource": "^1.5.1",
     "vue-select2": "^0.2.6",
     "vue-simple-spinner": "^1.2.8",
@@ -15,6 +19,7 @@
     "vue-turbolinks": "^2.0.3"
   },
   "devDependencies": {
+    "babel-preset-stage-2": "^6.24.1",
     "webpack-dev-server": "2.11.2"
   }
 }

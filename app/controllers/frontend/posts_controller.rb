@@ -30,7 +30,7 @@ class Frontend::PostsController < FrontendController
   end
 
   def dislike
-    @post.likes.where(user: current_user).delete_all
+    @post.likes.where(user: current_user).destroy_all
   end
 
   private

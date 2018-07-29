@@ -29,7 +29,7 @@
                     .modal-title.text-center Додати афішу
 
                 .modal-body
-                    form action="" method="POST"
+                    = form_tag '', method: :post do
                         .form-group
                             .select_category
                                 select.selectCategory_modal2
@@ -45,16 +45,17 @@
 
                         .form-group
                             .modal_action
-                                ul
-                                    li
-                                        a href="#"
-                                            i.fas.fa-quote-right
-                                    li
-                                        a href="#"
-                                            i.fas.fa-camera
-                                    li
-                                        a href="#"
-                                            i.fab.fa-youtube
+                                = cktext_area_tag :body
+                                / ul
+                                /     li
+                                /         a href="#"
+                                /             i.fas.fa-quote-right
+                                /     li
+                                /         a href="#"
+                                /             i.fas.fa-camera
+                                /     li
+                                /         a href="#"
+                                /             i.fab.fa-youtube
 
                         .form-group
                             textarea class="form-control" placeholder="Опис"
