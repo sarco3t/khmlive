@@ -12,7 +12,7 @@
         .reply_box_wrapper
           .reply_box_image
             a(href="#")
-              img(src="assets/user.jpg")
+              img(src="/assets/user.jpg")
 
           .reply_box_comment
             textarea(name="comment"

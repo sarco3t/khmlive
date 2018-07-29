@@ -2,7 +2,7 @@
 .reply.reply_item
   .wrap_reply
     a(href="#" class="reply_image")
-      img(src="assets/user.jpg")
+      img(src="/assets/user.jpg")
 
     .reply_content
       .reply_action

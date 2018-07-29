@@ -17,7 +17,7 @@
 
     .form-group
         .text-center.recaptcha_content
-          img(src="assets/re_captcha.jpg")
+          img(src="/assets/re_captcha.jpg")
 
 </template>
 <script>
