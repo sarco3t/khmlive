@@ -1,0 +1,131 @@
+.container
+  .row
+    .col-md-2.col-lg-2
+      .sidebar.sidebar_left
+        = render "partials/frontend/sidebar"
+
+    .col-md-10.col-lg-10
+      .content
+        .user_profile
+          .row
+            .col-lg-9
+
+              .hidden-lg
+                .yearth_user
+                  .header На сайті:
+                  .content 1 рік 3 місяці
+
+                .message_nav
+                  .nav_item
+                    a(href="#") Важливі
+
+                  .nav_item
+                    a(href="#") Непрочитані
+
+              .profile_dialog.wrap_dialog
+                .header_dialog
+                  .im_dialog_search
+                    .search
+                      label
+                        .icon_search
+                          i.fas.fa-search
+
+                        input(type="text" name="search" placeholder="Пошук" autocapitalize="off" autocomplete="off" autocorrect="off")
+
+                    .search_button
+                      button(class="btn btn-primary") Пошук
+                      button(class="btn btn-default cancel_search") Відмінити
+
+                  .im_dialog_tools
+                    .prev_dialog
+                      = link_to conversations_path do
+                        .icon_prev
+                          i.fas.fa-chevron-left
+                        span Назад
+
+                    .action_dialog
+                      .search_dialog.item_action
+                        a(href="#")
+                          i.fas.fa-search
+
+                      .item_action.action-list
+                        a(href="#")
+                          i.fas.fa-ellipsis-h
+
+                      .image_dialog
+                        = link_to user_path(@conversation.receipts.first.receiver) do
+                          = render "user", user_image: @conversation.receipts.first.receiver.avatar
+
+                    .heading_dialog= @conversation.receipts.first.receiver.username
+
+                .im_dialog
+                  .dialog_list#content-message(data-simplebar data-simplebar-auto-hide="false")
+                    .dialog_items
+                      - @conversation.receipts_for(current_user).order(created_at: :asc).each do |receipt|
+                        .dialog_item
+                          .image_dialog
+                            = link_to user_path(receipt.message.sender) do
+                              = render "user", user_image: receipt.message.sender.avatar
+                          .content_dialog
+                            .header_dialog
+                              .name_dialog= receipt.message.sender.username
+                              .date_dialog= receipt.message.created_at
+
+                            .messages_dialog
+                              .message_dialog
+                                .text_dialog= receipt.message.body
+                                / .important_dialog
+                                /   a(href="#")
+                                /     .default_icon
+                                /       i.far.fa-star
+                                /     .active_icon
+                                /       i.fas.fa-star
+                  = form_tag conversation_messages_path(@conversation), method: :post do
+                    .reply_box
+                        .reply_box_wrapper
+                          .reply_box_clip
+                            a(href="#")
+                              i.fas.fa-paperclip
+                          .reply_box_comment
+                            = text_area_tag :body, nil, placeholder: 'написати повідомлення', data: { emojiable: true }, class: 'comment_text_1'
+
+                            .reply_box_action
+                              .action_item.reply_box_attach_image
+                                input(type="file")
+                                a(href="#")
+                                  i.fas.fa-camera
+
+                    .reply_box_attach_image
+                      .wrap_attach
+                        .item_list
+                          .item_attach
+                            .image_attach
+                              a(href="#")
+                                img(src="img/posts/content_1.jpg")
+
+                            .action_attach
+                              a(href="#")
+                                i.fas.fa-times
+
+                      .reply_box_button
+                        .button
+                          button(class="btn btn-primary" type="submit") Відправити
+
+
+
+
+
+
+
+            .col-lg-3.col-xs-12.visible-lg-block
+              .sidebar_right_profile
+                .yearth_user
+                  .header На сайті:
+                  .content 1 рік 3 місяці
+
+                .message_nav
+                  .nav_item
+                    a(href="#") Важливі
+
+                  .nav_item
+                    a(href="#") Непрочитані

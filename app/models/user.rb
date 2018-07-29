@@ -9,9 +9,13 @@ class User < ApplicationRecord
          :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  acts_as_messageable
 
   has_many :comments, dependent: :delete_all
   has_many :likes, dependent: :delete_all
+  has_one_attached :avatar
+
+  def mailboxer_email(obj); end
 
   def hidden_attributes
     %i[
@@ -23,4 +27,6 @@ class User < ApplicationRecord
   def full_name
     'користувач користувач'
   end
+
+  alias name full_name
 end

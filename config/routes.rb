@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     concern :commentable do
       resources :comments, only: %i[index create]
     end
-    resources :conversations
+    resources :conversations do
+      resources :messages
+    end
     resources :categories, path: '/' do
       resources :posts, path: '/', concerns: :commentable do
         member do

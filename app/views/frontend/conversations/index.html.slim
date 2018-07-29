@@ -99,191 +99,29 @@
 
                 .im_message
                   .message_list#content-message(data-simplebar data-simplebar-auto-hide="false")
+                    - @conversations.each do |conversation|
+                      .message_item
+                        .image_message
+                          = link_to user_path(conversation.original_message.receipts.first.receiver) do
+                            = render "user", user_image: conversation.original_message.receipts.first.receiver.avatar
 
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-
-                        .text_message
-                          .message_preview
-                            .dialog-preview
-                              .dialog_image
-                                img(src="img/user.jpg")
-                              .dialog_inner_text Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-                          .count_message 1
-
-                        .text_message
-                          .message_preview Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-                        .text_message
-                          .message_preview Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-                        .text_message
-                          .message_preview Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-
-                        .text_message
-                          .message_preview
-                            .dialog-preview
-                              .dialog_image
-                                img(src="img/user.jpg")
-                              .dialog_inner_text Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-                        .text_message
-                          .message_preview Повідомлення Повідомлення Повідомлення
-
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-                        .text_message
-                          .message_preview Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-
-                        .text_message
-                          .message_preview
-                            .dialog-preview
-                              .dialog_image
-                                img(src="img/user.jpg")
-                              .dialog_inner_text Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-                        .text_message
-                          .message_preview Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-                          .count_message 1
-
-                        .text_message
-                          .message_preview Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .author_message Користувач Користувач
-                        .text_message
-                          .message_preview Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-                        .text_message
-                          .message_preview Повідомлення Повідомлення Повідомлення
-
-                    .message_item
-                      .image_message
-                        a(href="#")
-                          img(src="img/user.jpg")
-
-                      .content_message
-                        .message_name
-                          .author_message
-                            | Користувач Користувач
-                          .date_message 21:32
-                          .count_message 1
-
-                        .text_message
-                          .message_preview Повідомлення Повідомлення Повідомлення
+                        = link_to conversation_path(conversation) do
+                          .content_message
+                            .message_name
+                              .author_message = conversation.original_message.receipts.first.receiver.username
+                              .date_message = conversation.last_message.created_at
+                              - unread = conversation.receipts_for(current_user).where(is_read: false).count
+                              - if unread.positive?
+                                .count_message= unread
+                            .text_message
+                              - if conversation.last_sender.id == current_user.id
+                                .message_preview
+                                  .dialog-preview
+                                    .dialog_image
+                                      - if conversation.last_sender.avatar.attached?
+                                        = img_tag url_for(conversation.last_sender.avatar)
+                                      - else
+                                        img(src="/assets/user.jpg")
+                                    .dialog_inner_text = conversation.receipts_for(current_user).last.message.body
+                              - else
+                                .message_preview = conversation.receipts_for(current_user).last.message.body

@@ -1,0 +1,4 @@
+- if user_image.attached?
+  = img_tag url_for(user_image.avatar)
+- else
+  img(src="/assets/user.jpg")
