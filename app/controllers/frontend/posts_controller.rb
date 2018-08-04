@@ -6,13 +6,14 @@ class Frontend::PostsController < FrontendController
   before_action :set_post, only: %i[show like dislike]
 
   def index
-    @popular_posts = AbstractPost.includes(:category).where(category_id: @category.child_ids + [@category.id]).limit(5)
+    @popular_posts = AbstractPost.active.includes(:category).where(category_id: @category.child_ids + [@category.id]).limit(5)
     @posts = if @category.root?
                AbstractPost.where(category_id: @category.child_ids + [@category.id])
              else
                @category.posts
              end
     @posts = @posts.active.page(params[:page]).order(:created_at)
+    @posts.each { |post| mark_as_viewed(post) }
     set_partial
   end
 

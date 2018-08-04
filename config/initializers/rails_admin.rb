@@ -6,7 +6,17 @@ I18n.default_locale = :uk
 
 RailsAdmin.config do |config|
   config.label_methods << :category_title
-  config.excluded_models = ['ActiveStorage::Blob', 'ActiveStorage::Attachment', 'Ckeditor::Picture', 'Ckeditor::Asset', 'AbstractPost']
+  config.excluded_models = [
+    'ActiveStorage::Blob', 'ActiveStorage::Attachment', 'Ckeditor::Picture', 'Ckeditor::Asset', 'AbstractPost',
+    "Mailboxer::Conversation",
+    "Mailboxer::Conversation::OptOut",
+    "Mailboxer::Notification",
+    "Mailboxer::Notification::Message",
+    "Mailboxer::Receipt",
+    "Mailboxer::Message",
+    "View",
+    "Like",
+  ]
   config.parent_controller = '::ApplicationController'
 
   ### Popular gems integration

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_29_123044) do
+ActiveRecord::Schema.define(version: 2018_07_29_175110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(version: 2018_07_29_123044) do
     t.integer "comments_count", default: 0
     t.jsonb "extra", default: {}, null: false
     t.integer "likes_count", default: 0
+    t.integer "views_count", default: 0
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["extra"], name: "index_posts_on_extra", using: :gin
     t.index ["slug"], name: "index_posts_on_slug", unique: true
@@ -208,6 +209,22 @@ ActiveRecord::Schema.define(version: 2018_07_29_123044) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "views", force: :cascade do |t|
+    t.string "viewable_type"
+    t.bigint "viewable_id"
+    t.integer "user_id"
+    t.string "controller_name"
+    t.string "action_name"
+    t.string "request_hash"
+    t.string "session_hash"
+    t.string "ip_address"
+    t.text "params"
+    t.string "referrer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["viewable_type", "viewable_id"], name: "index_views_on_viewable_type_and_viewable_id"
   end
 
   add_foreign_key "comments", "users"

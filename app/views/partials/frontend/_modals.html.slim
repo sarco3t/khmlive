@@ -12,8 +12,23 @@
                     .modal-title.text-center Запропонувати новину
 
                 .modal-body data-vue-modal="true"
-                    modal categories=(Category.roots.pluck(:id, :title).to_json)
+                    modal categories=(Category.roots.pluck(:id, :title).to_json) post_type='Article'
 
+
+    #addPost.modal.fade tabindex="-1" role="dialog"
+        .modal-dialog role="document"
+            .modal-content
+
+                button class="close" data-dismiss="modal" aria-label="Close"
+                    .wrap_button
+                        i.fas.fa-times
+
+                .modal-header
+
+                    .modal-title.text-center Запропонувати новину
+
+                .modal-body data-vue-modal="true"
+                    modal categories=(Category.roots.pluck(:id, :title).to_json) post_type='Post'
 
 
     #addPoster.modal.fade tabindex="-1" role="dialog"

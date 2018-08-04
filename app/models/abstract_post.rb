@@ -14,6 +14,7 @@ class AbstractPost < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :category
   has_many_attached :images
+  has_many :views, as: :viewable
 
   attribute :remove_images, :json
   after_save :delete_images, if: -> { remove_images.present? }

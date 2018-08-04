@@ -17,7 +17,7 @@
             .row
               .col-md-12.col-sm-6.col-lg-6
                 .form-group.button
-                  button(class="btn btn-primary" data-toggle="modal" data-target="#addNews") Запропонувати новину
+                  button(class="btn btn-primary" data-toggle="modal" data-target=(@category.title == 'Новини' ? "#addNews" : "#addPost")) Запропонувати новину
 
               .col-md-12.col-sm-6.col-lg-6
                 - if @category.children.size.positive?

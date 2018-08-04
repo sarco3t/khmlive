@@ -59,10 +59,16 @@ export default {
   methods: {
     handleForm(e) {
       this.category = `/${$(this.$refs.select).val()}`
-      e.target.submit()
-      console.log(this.category)
+      e.target.action = this.category
+      // e.target.submit()
+      this.$http.post(this.category, {
+        post: {
+          type: this.post_type,
+          body: this.body
+        }
+      }).then(_ => window.location.reload(), console.log)
     },
-    options () {
+    optionsSelected () {
       return JSON.parse(this.categories).map(c => {
         ({
           text: c[1],
@@ -75,13 +81,17 @@ export default {
     $(this.$refs.select).select2({
        allowClear: false,
        minimumResultsForSearch: -1,
-       dropdownParent: $('#addNews')
+       dropdownParent: $( this.post_type == 'Post' ? '#addPost': '#addNews')
    });
   },
   props: {
     categories: {
       default: '[]',
       type: String
+    },
+    post_type: {
+      type: String,
+      default: 'Post'
     }
   }
 }

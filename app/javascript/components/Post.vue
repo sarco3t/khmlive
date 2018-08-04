@@ -15,8 +15,7 @@
         i.fas.fa-ellipsis-h
 
   .post_content
-    .text_post
-      {{ post.body }}
+    .text_post(v-html="post.body")
 
     .post_like
       .like_btns
@@ -35,8 +34,7 @@
       .like_views.views
         .like_icon
           i.fas.fa-eye
-        .like_count
-          | 2536
+        .like_count {{ post.views_count }}
   comments(:comments="post.latest_comments || post.comments", :url="post.url")
 </template>
 
