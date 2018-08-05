@@ -18,11 +18,6 @@
               span Реклама на сайті
 
     .col-sm-6.col-xs-12.col-md-12
-      .banner.hidden-xs
-        .banner_item
-          a href="#"
-            img src="/assets/banner/item.jpg" class="img-responsive"
-
-        .banner_item
-          a href="#"
-            img src="/assets/banner/item.jpg" class="img-responsive"
+      .banner.hidden-xs data-vue="true"
+        banner(position="left_top")
+        banner(position="left_bottom")

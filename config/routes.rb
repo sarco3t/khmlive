@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   root to: "frontend/pages#home"
 
   scope module: 'frontend' do
+    resources :banners do
+      collection do
+        get :next
+      end
+    end
     resources :users, only: :show, path: 'u' do
     end
     resources :comments, only: :show do

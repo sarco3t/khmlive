@@ -12,6 +12,7 @@ import Modal from '../components/Modal'
 import SignupModal from '../components/SignupModal'
 import SigninModal from '../components/SigninModal'
 import PosterModal from '../components/PosterModal'
+import Banner from '../components/Banner'
 
 // require styles
 import 'quill/dist/quill.core'
@@ -25,7 +26,7 @@ document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('[data-vue="true"]').forEach(el => {
     new Vue({
       el: el,
-      components: { EndlessScroll, Paginate, MoreButton, Post }
+      components: { EndlessScroll, Paginate, MoreButton, Post, Banner }
     })
   })
   const app =

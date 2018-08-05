@@ -85,6 +85,22 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Banner' do
+    field :image, :active_storage
+    include_all_fields
+    field :start_date do
+      strftime_format do
+        '%d-%m-%Y %H:%M:%S'
+      end
+    end
+    field :end_date do
+      strftime_format do
+        '%d-%m-%Y %H:%M:%S'
+      end
+    end
+
+    exclude_fields :views
+  end
   config.model 'Category' do
     nestable_tree({
       max_depth: 3
