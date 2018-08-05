@@ -1,0 +1,127 @@
+.container
+  .row
+    .col-md-2.col-lg-2
+      .sidebar.sidebar_left
+        = render "partials/frontend/sidebar"
+
+    .col-md-10.col-lg-10
+      .header_company
+        .content
+          .row
+            .col-md-6.col-lg-8
+              .nav_company
+                ul.nav
+                  li
+                    = link_to '/directory' do
+                      span Новини компанії
+                  li
+                    = link_to *current_path_active(companies_path) do
+                      span Каталог підприємств
+                  li
+                    a(href="/useful_info.html")
+                      span Корисна інформація
+
+            .col-md-6.col-lg-4
+              .button
+                button(type="button" class="btn btn-primary") додати підприємство
+
+
+    .col-md-6.col-lg-6
+      .content
+
+        .action_company
+          .content
+            .row
+              .col-md-12.col-lg-6
+                .form-group
+                  .select_category
+                    select.selectCategory
+                      option(selected disabled) Розділ
+                      option Розділ
+                      option Розділ 2
+                      option Розділ 3
+                      option Розділ 4
+                      option Розділ 5
+                      option Розділ 6
+
+              .col-md-12.col-lg-6
+                .form-group
+                  .select_category.select_theme
+                    select.selectCategory
+                      option(selected disabled) Район
+                      option Район
+                      option Район 2
+                      option Район 3
+                      option Район 4
+                      option Район 5
+                      option Район 6
+
+          .search_bottom
+            .content
+              .search
+                .form-group
+                  label
+                    .icon_search
+                      i.fas.fa-search
+                    input(type="text" name="search" class="form-control" placeholder="Пошук")
+
+        .visible-xs-block
+
+
+
+        .catalog_map
+          .content
+            #catalog_map.map_content
+
+            script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcdzrltGYUZXziF9BT48PKhzN9r08tc2E&callback=initMap")
+            javascript:
+              var marker;
+
+              function initMap() {
+                // The location of Uluru
+                var icon = '/img/icon/map_marker.png';
+                var uluru = {lat: -25.344, lng: 131.036};
+                // The map, centered at Uluru
+                var map = new google.maps.Map(
+                    document.getElementById('catalog_map'), {zoom: 6, center: uluru});
+                // The marker, positioned at Uluru
+                marker = new google.maps.Marker({
+                  position: uluru,
+                  map: map,
+                  icon: icon
+                });
+
+                marker = new google.maps.Marker({
+                  position: {lat: -26.134, lng: 133.036},
+                  map: map,
+                  icon: icon
+                });
+
+                marker = new google.maps.Marker({
+                  position: {lat: -28.134, lng: 130.036},
+                  map: map,
+                  icon: icon
+                });
+              }
+
+        .catalog_category
+          - @categories.each do |category|
+            .category_item
+              a(href="#")
+                .icon_category
+                  = image_tag url_for(category.logo) if category.logo.attached?
+                .name_category= category.title
+              ul.inner_nav
+                - category.children.each do |child|
+                  li= link_to child.title, companies_category_path(child)
+
+
+    .col-md-4.col-lg-4.hidden-xs
+        .sidebar.sidebar_right
+
+          .top_companies.sidebar_item
+            .header ТОП-Компанії
+
+            .content
+              - @top_companies.each do |company|
+                = render "company_card", company: company

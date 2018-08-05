@@ -14,4 +14,8 @@ module ApplicationHelper
     )
     view.save unless view.persisted?
   end
+
+  def current_path_active(path)
+    [path, class: request.path == path ? 'active' : '']
+  end
 end

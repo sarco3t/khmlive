@@ -11,6 +11,7 @@ import Post from '../components/Post'
 import Modal from '../components/Modal'
 import SignupModal from '../components/SignupModal'
 import SigninModal from '../components/SigninModal'
+import PosterModal from '../components/PosterModal'
 
 // require styles
 import 'quill/dist/quill.core'
@@ -31,7 +32,7 @@ document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('[data-vue-modal="true"]').forEach(el => {
     new Vue({
       el: el,
-      components: { Modal, SignupModal, SigninModal }
+      components: { Modal, SignupModal, SigninModal, PosterModal }
     })
   })
 })

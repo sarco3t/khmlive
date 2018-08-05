@@ -1,0 +1,160 @@
+.container
+  .row
+    .col-md-2.col-lg-2
+      .sidebar.sidebar_left
+        = render "partials/frontend/sidebar"
+
+    .col-md-10.col-lg-10
+      .content
+        .poster_action
+          .action_top
+            .row
+              .col-md-9
+                .select_category.select_poster
+                  = select_tag "affiches", options_from_collection_for_select(@category.children, 'slug', 'title'), include_blank: 'Вибір категорії', class: 'selectCategory'
+
+
+              .col-md-3
+                .button
+                  button(class="btn btn-primary" data-toggle="modal" data-target="#addPoster") додати афішу
+
+          .action_bottom
+            ul.nav.nav_poster
+              li
+                a(href="#" class="active")
+                  span Всі дати
+
+              li
+                a(href="#")
+                  span Сьогодні
+
+              li
+                a(href="#")
+                  span Завтра
+
+              li
+                input(type="hidden" class="datepicker_input hidden_calendar")
+                a(href="#" class="button_calendar")
+                  span Календар
+
+
+        .wrap_poster
+          .heading Рекомендовано
+
+          .content
+            .poster-list
+              .row
+                .col-md-4
+                  .poster_item
+                    .image_poster
+                      img(src="img/posts/poster.jpg" class="img-responsive")
+
+                    .title_poster
+                      a(href="#")
+                        | Найбільші українські ІТ-компанії
+                        | розповіли про свої розробки
+
+                    .meta_poster
+                      .category_poster
+                        a(href="#") Інше
+
+                      .date_poster
+                        | 12.10.2017
+
+                .col-md-4
+                  .poster_item
+                    .image_poster
+                      img(src="img/posts/poster.jpg" class="img-responsive")
+
+                    .title_poster
+                      a(href="#")
+                        | Найбільші українські ІТ-компанії
+                        | розповіли про свої розробки
+
+                    .meta_poster
+                      .category_poster
+                        a(href="#") Інше
+
+                      .date_poster
+                        | 12.10.2017
+
+                .col-md-4
+                  .poster_item
+                    .image_poster
+                      img(src="img/posts/poster.jpg" class="img-responsive")
+
+                    .title_poster
+                      a(href="#")
+                        | Найбільші українські ІТ-компанії
+                        | розповіли про свої розробки
+
+                    .meta_poster
+                      .category_poster
+                        a(href="#") Інше
+
+                      .date_poster
+                        | 12.10.2017
+
+        .wrap_poster
+          .heading Вся афіша
+
+          .content
+            .poster-list
+              .row
+                .col-md-4
+                  .poster_item
+                    .image_poster
+                      img(src="img/posts/poster.jpg" class="img-responsive")
+
+                    .title_poster
+                      a(href="#")
+                        | Найбільші українські ІТ-компанії
+                        | розповіли про свої розробки
+
+                    .meta_poster
+                      .category_poster
+                        a(href="#") Інше
+
+                      .date_poster
+                        | 12.10.2017
+
+                .col-md-4
+                  .poster_item
+                    .image_poster
+                      img(src="img/posts/poster.jpg" class="img-responsive")
+
+                    .title_poster
+                      a(href="#")
+                        | Найбільші українські ІТ-компанії
+                        | розповіли про свої розробки
+
+                    .meta_poster
+                      .category_poster
+                        a(href="#") Інше
+
+                      .date_poster
+                        | 12.10.2017
+
+                .col-md-4
+                  .poster_item
+                    .image_poster
+                      img(src="img/posts/poster.jpg" class="img-responsive")
+
+                    .title_poster
+                      a(href="#")
+                        | Найбільші українські ІТ-компанії
+                        | розповіли про свої розробки
+
+                    .meta_poster
+                      .category_poster
+                        a(href="#") Інше
+
+                      .date_poster
+                        | 12.10.2017
+
+
+
+
+            .button
+              a(href="#" class="button_more")
+                span Ще

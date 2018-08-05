@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :frontend do
+    get 'companies/index'
+  end
+  namespace :frontend do
     get 'conversations/index'
     get 'conversations/create'
   end
@@ -28,6 +31,11 @@ Rails.application.routes.draw do
     end
     resources :conversations do
       resources :messages
+    end
+    get :posters, to: "categories#posters"
+    get :ads, to: "categories#ads"
+    resources :companies do
+      get :category
     end
     resources :categories, path: '/' do
       resources :posts, path: '/', concerns: :commentable do

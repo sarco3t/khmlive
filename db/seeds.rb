@@ -15,11 +15,11 @@ end
 
 categories = []
 
-
 categories << [Category.create(title: 'Новини', slug: 'news'), 'fa-newspaper']
 categories << [Category.create(title: 'Афіша', slug: 'posters'), 'fa-window-restore']
-categories << [Category.create(title: 'Довідник', slug: 'companies'), 'fa-book']
+categories << [Category.create(title: 'Довідник', slug: 'directory'), 'fa-book']
 categories << [Category.create(title: 'Оголошення', slug: 'ads'), 'fa-bullhorn']
+categories << [Category.create(title: 'Компанії', slug: 'companies'), 'fa-bullhorn']
 
 categories << [category_with_logo({ title: 'Запитання/Допомога' }, 'help'), 'fa-question-circle']
 categories << [category_with_logo({ title: 'Історії Хмельничан' }, 'history'), 'fa-file-alt']

@@ -6,6 +6,7 @@ class Category < ApplicationRecord
   has_one_attached :logo
   has_many :posts, class_name: 'AbstractPost', dependent: :destroy
   has_many :menus, dependent: :nullify
+  has_many :companies
   acts_as_tree
 
   friendly_id :title, use: :slugged
@@ -19,7 +20,7 @@ class Category < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    title_changed? && !slug_changed?
+    slug.blank? || (title_changed? && !slug_changed?)
   end
 
   def normalize_friendly_id(text)

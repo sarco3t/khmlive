@@ -4,9 +4,9 @@ class Frontend::PostsController < FrontendController
   before_action :authenticate_user!, only: %i[like dislike]
   before_action :set_category
   before_action :set_post, only: %i[show like dislike]
+  respond_to :js, :html, :json
 
   def index
-    @popular_posts = AbstractPost.active.includes(:category).where(category_id: @category.child_ids + [@category.id]).limit(5)
     @posts = if @category.root?
                AbstractPost.where(category_id: @category.child_ids + [@category.id])
              else
@@ -14,7 +14,19 @@ class Frontend::PostsController < FrontendController
              end
     @posts = @posts.active.page(params[:page]).order(:created_at)
     @posts.each { |post| mark_as_viewed(post) }
-    set_partial
+    method = request.path.split('/').second.to_sym
+    respond_with do |format|
+      format.html do
+        if respond_to?(method)
+          public_send(method)
+        else
+          @popular_posts = AbstractPost
+            .active.includes(:category).where(category_id: @category.child_ids + [@category.id]).limit(5) if request.format.html?
+        end
+        set_partial
+      end
+      format.json {  }
+    end
   end
 
   def create
@@ -34,7 +46,18 @@ class Frontend::PostsController < FrontendController
     @post.likes.where(user: current_user).destroy_all
   end
 
+
+  def directory
+    @top_companies = Company
+                      .group(:id)
+                      .includes(:logo_attachment)
+                      .order('avg(comments_count + likes_count + views_count) desc')
+                      .limit(3)
+    render 'frontend/categories/directory'
+  end
+
   private
+
 
   def post_params
     params.require(:post).permit(:body, :type)

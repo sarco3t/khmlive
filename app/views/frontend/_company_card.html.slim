@@ -1,0 +1,26 @@
+.item_company
+  .heading
+    .image
+    - if company.logo.attached?
+      = image_tag url_for(company.logo)
+    - else
+      img(src="/assets/icon/top_company.jpg")
+
+
+    .title= company.title
+
+  .text== company.description
+
+  ul.contacts
+    - if company.address.present?
+      li
+        span Адреса:
+        p= company.address
+    - if company.site.present?
+      li
+        span Сайт:
+          = link_to company.site, company.site
+    - if company.phone.present?
+      li
+        span Телефон:
+        p= company.phone

@@ -1,0 +1,61 @@
+.container
+  .row
+    .col-md-2.col-lg-2
+      .sidebar.sidebar_left
+        = render "partials/frontend/sidebar"
+
+    .col-md-10.col-lg-10
+      .header_company
+          .content
+            .row
+              .col-md-6.col-lg-8
+                .nav_company
+                  ul.nav
+                    li
+                      = link_to *current_path_active('/directory') do
+                        span Новини компанії
+                    li
+
+                      = link_to *current_path_active(companies_path) do
+                        span Каталог підприємств
+                    li
+                      a(href="/useful_info.html")
+                        span Корисна інформація
+
+              .col-md-6.col-lg-4
+                .button
+                  button(type="button" class="btn btn-primary") Додати підприємство
+
+
+    .col-md-6.col-lg-6
+      .content data-vue="true"
+          .action_company
+            .content
+              .row
+                .col-md-12.col-lg-6
+                  .search
+                    .form-group
+                      label
+                        .icon_search
+                          i.fas.fa-search
+                        input(type="text" name="search" class="form-control" placeholder="Пошук")
+
+                .col-md-12.col-lg-6
+                  .form-group
+                    .select_category.select_theme
+                      = select_tag :companies, options_from_collection_for_select(@category.children, 'slug', 'title'), include_blank: 'Вибір категорії', class: 'selectCategory'
+
+          .visible-xs-block
+          .wall_block
+            endless-scroll url=('/directory')
+
+    .col-md-4.col-lg-4.hidden-xs
+        .sidebar.sidebar_right
+
+          .top_companies.sidebar_item
+            .header ТОП-Компанії
+
+            .content
+              - @top_companies.each do |company|
+                = render "company_card", company: company
+
