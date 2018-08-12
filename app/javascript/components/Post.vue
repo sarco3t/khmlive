@@ -15,8 +15,23 @@
         i.fas.fa-ellipsis-h
 
   .post_content
-    .text_post(v-html="post.body")
+    .text_post
+      p(v-html="post.body")
+      .page_post_thumbs(v-if="post.images")
+        .row
+          template(v-for="(image, idx) in post.images")
+            .col-md-6(v-if="idx < 2")
+              a(href="#")
+                img(:src="image", class="img-responsive")
+            .col-md-2(v-else)
+              a(href="#")
+                img(:src="image", class="img-responsive")
 
+          //- .col-md-2.more_thumbs
+          //-     a(href="#")
+          //-         img(src="img/posts/content_1.jpg" class="img-responsive")
+          //-         .count_thumbs
+          //-             | + 10
     .post_like
       .like_btns
         like(:url="post.url", :count="post.likes_count", :has_like="post.has_like")
@@ -25,9 +40,9 @@
             i.fas.fa-comment
           .like_button_count {{ post.comments_count }}
 
-        a(href="#" class="like_btn share active")
-          .like_button_icon
-            i.fas.fa-share
+        //- a(href="#" class="like_btn share active")
+        //-   .like_button_icon
+        //-     i.fas.fa-share
           .like_button_count
             | 0
 

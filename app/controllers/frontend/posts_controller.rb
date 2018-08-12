@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Frontend::PostsController < FrontendController
-  before_action :authenticate_user!, only: %i[like dislike]
+  before_action :authenticate_user!, only: %i[like dislike create]
   before_action :set_category
   before_action :set_post, only: %i[show like dislike]
   respond_to :js, :html, :json
@@ -60,7 +60,7 @@ class Frontend::PostsController < FrontendController
 
 
   def post_params
-    params.require(:post).permit(:body, :type)
+    params.require(:post).permit(:body, :type, :images)
   end
 
   def set_partial
