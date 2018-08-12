@@ -29,4 +29,20 @@ class User < ApplicationRecord
   end
 
   alias name full_name
+
+  attr_writer :login
+
+  def login
+    @login || username || email
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions.to_hash).where(['username = :value OR email = :value', { value: login.downcase }]).first
+    elsif conditions.key?(:username) || conditions.key?(:email)
+      conditions[:email]&.downcase!
+      where(conditions.to_hash).first
+    end
+  end
 end

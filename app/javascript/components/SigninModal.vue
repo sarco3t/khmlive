@@ -1,7 +1,7 @@
 <template lang="jade">
   form(:action="url", @submit.prevent="handleForm", method="post")
     .form-group
-        input(type="text" name="user[email]" placeholder="E-mail/Логін" class="form-control" v-model="email")
+        input(type="text" name="user[login]" placeholder="E-mail/Логін" class="form-control" v-model="login")
 
     .form-group
         input(type="password" name="password" placeholder="Пароль" class="form-control" v-model="password")
@@ -21,18 +21,18 @@ export default {
   },
   data() {
     return {
-      email: '',
+      login: '',
       password: ''
     }
   },
   methods: {
     handleForm(e) {
       const {
-        email, password
+        login, password
       } = this
       this.$http.post(this.url, {
         user: {
-          email,
+          login,
           password
         }
       }).then(() => {

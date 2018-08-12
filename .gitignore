@@ -36,3 +36,4 @@ TAGS
 yarn-debug.log*
 .yarn-integrity
 ops/config.yml
+.vscode
