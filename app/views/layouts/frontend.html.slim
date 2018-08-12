@@ -12,6 +12,9 @@ html
     = javascript_include_tag 'frontend', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'frontend'
     = stylesheet_pack_tag 'frontend'
+    javascript:
+      window.current_user = "#{current_user}"
+
   body
     #wrapper
       = render 'partials/frontend/header'

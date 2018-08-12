@@ -1,10 +1,10 @@
 <template lang="jade">
   form(:action="category", @submit.prevent="handleForm", method="POST")
-    .form-group
-      .select_category
-          select.selectCategory_modal(ref="select")
-              option(disabled selected value="") Вибір розділу
-              option(v-for="c in JSON.parse(categories)", :value="c[0]") {{ c[1] }}
+    //- .form-group
+    //-   .select_category
+    //-       select.selectCategory_modal(ref="select")
+    //-           option(disabled selected value="") Вибір розділу
+    //-           option(v-for="c in JSON.parse(categories)", :value="c[0]") {{ c[1] }}
 
     .form-group
         quillEditor(

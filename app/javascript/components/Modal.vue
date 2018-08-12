@@ -1,10 +1,10 @@
 <template lang="jade">
   form(:action="category", @submit.prevent="handleForm", method="POST")
-    .form-group
-      .select_category
-          select.selectCategory_modal(ref="select")
-              option(disabled selected value="") Вибір розділу
-              option(v-for="c in JSON.parse(categories)", :value="c[0]") {{ c[1] }}
+    //- .form-group
+    //-   .select_category
+    //-       select.selectCategory_modal(ref="select")
+    //-           option(disabled selected value="") Вибір розділу
+    //-           option(v-for="c in JSON.parse(categories)", :value="c[0]") {{ c[1] }}
     //- .form-group
         //- .modal_action
             //- ul
@@ -18,6 +18,8 @@
             //-       a( href="#")
             //-           i.fab.fa-youtube
 
+    .form-group
+      p.help-block(style="color:red" v-if="message") {{ message }}
     .form-group
         input(type="hidden", value="Post" name="post[type]")
         quillEditor(
@@ -44,6 +46,7 @@ export default {
   data() {
     return {
       category: '',
+      message: '',
       body: '',
       options: {
         modules: {
@@ -58,10 +61,15 @@ export default {
   },
   methods: {
     handleForm(e) {
+      this.message = ''
+      if (!window.current_user) {
+        this.message = 'Увійдіть щоб запропонувати новину'
+        return
+      }
       this.category = `/${$(this.$refs.select).val()}`
       e.target.action = this.category
       // e.target.submit()
-      this.$http.post(this.category, {
+      this.$http.post(window.location.pathname, {
         post: {
           type: this.post_type,
           body: this.body
