@@ -7,5 +7,7 @@ class Frontend::CategoriesController < FrontendController
     @category = Category.friendly.find('posters')
   end
 
-  def ads; end
+  def ads
+    @category = Category.friendly.find('ads')
+  end
 end

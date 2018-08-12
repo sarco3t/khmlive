@@ -85,6 +85,27 @@
       z-index: 14;
     }
   }
+
+  .field_person {
+    .form-control {
+      background: none;
+      border-radius: 0;
+      border-color: #e8e8e8;
+    }
+  }
+
+  .contact_person {
+    padding-bottom: 15px;
+
+    .heading {
+      font-size: 18px;
+      padding-bottom: 25px;
+    }
+
+    label {
+      padding-top: 8px;
+    }
+  }
 }
 
 // Modal background

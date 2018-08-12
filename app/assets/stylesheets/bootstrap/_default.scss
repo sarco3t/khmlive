@@ -1230,6 +1230,63 @@ body {
     padding: 0 30px;
   }
 
+  .page_post_thumbs {
+    .row {
+      margin-left: -3px;
+      margin-right: -3px;
+    }
+
+    [class^='col-'], [class*='col-'] {
+      padding: 3px;
+    }
+
+    .more_thumbs {
+      a {
+        color: #fff;
+        position: relative;
+
+        &:before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 2;
+        }
+      }
+
+      .count_thumbs {
+        color: #fff;
+        font-size: 18px;
+        top: 0;
+        bottom: 0;
+        text-align: center;
+        margin: auto;
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        height: fit-content;
+      }
+    }
+
+    .full-width {
+      .img-responsive {
+        width: 100%;
+      }
+    }
+
+    .full-height {
+      .img-responsive {
+        height: 100%;
+        width: auto;
+      }
+    }
+
+    a {
+      display: block;
+    }
+  }
+
   .post_like {
     padding: 16px 0;
     margin-top: 15px;
