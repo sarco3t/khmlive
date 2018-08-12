@@ -2,6 +2,8 @@
   form(:action="url", @submit.prevent="handleForm", method="post")
     .form-group
         input(type="text" name="user[login]" placeholder="E-mail/Логін" class="form-control" v-model="login")
+        p.help-block(v-if="error" style="color: red")
+          {{ error }}
 
     .form-group
         input(type="password" name="password" placeholder="Пароль" class="form-control" v-model="password")
@@ -21,12 +23,14 @@ export default {
   },
   data() {
     return {
+      error: '',
       login: '',
       password: ''
     }
   },
   methods: {
     handleForm(e) {
+      this.error = ''
       const {
         login, password
       } = this
@@ -37,7 +41,7 @@ export default {
         }
       }).then(() => {
         window.location.reload()
-      }, console.log)
+      }, ({body}) => { this.error = body.error })
     },
   },
   mounted () {

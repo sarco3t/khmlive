@@ -15,6 +15,12 @@ class User < ApplicationRecord
   has_many :likes, dependent: :delete_all
   has_one_attached :avatar
 
+  validates :username, uniqueness: {
+    case_sensitive: false
+  }, allow_nil: true
+  validates :username, format: { with: /^[a-zA-Z0-9_\.]*$/, multiline: true }
+
+
   def mailboxer_email(obj); end
 
   def hidden_attributes
@@ -25,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    'користувач користувач'
+    login
   end
 
   alias name full_name
