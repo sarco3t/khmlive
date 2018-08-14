@@ -52,7 +52,7 @@ export default {
         modules: {
           toolbar: [
             ['blockquote', 'code-block'],
-            ['link', 'image', 'video'],
+            ['link', 'video'],
           ]
         },
         placeholder: "Введіть текст новини"

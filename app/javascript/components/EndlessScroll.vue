@@ -10,6 +10,7 @@
 import infiniteScroll from "vue-infinite-scroll";
 import Spinner from 'vue-simple-spinner'
 import Post from './Post'
+import bus from '../event-bus'
 
 export default {
     components: {
@@ -18,18 +19,22 @@ export default {
   },
   data: function() {
     return {
-      lastResponse: false,
+      lastResponse: true,
       busy: false,
       posts: [],
       page: 0,
+      categoryID: 0
     };
   },
   methods: {
+    getUrl() {
+      return this.url || '/' + this.categoryID
+    },
     loadMore() {
-      if (!this.lastResponse) {
+      if (!this.lastResponse && (this.categoryID || this.url)) {
         this.busy = true;
         this.$http
-          .get(this.url + '.json', {
+          .get(this.getUrl() + '.json', {
             params: {
               page: ++this.page,
             },
@@ -49,8 +54,19 @@ export default {
   props: {
     url: "",
   },
-  created() {
-    this.loadMore()
+  mounted() {
+    this.lastResponse = false
+    if (this.url) {
+      this.loadMore()
+    }
+    bus.$on('homeCategory', id => {
+      console.log(id)
+      this.categoryID = id
+      this.lastResponse = false
+      this.page = 0
+      this.loadMore()
+
+    })
   }
 };
 </script>

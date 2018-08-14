@@ -15,6 +15,7 @@ import PosterModal from '../components/PosterModal'
 import Banner from '../components/Banner'
 import AvatarUploader from '../components/AvatarUploader'
 import EditableInput from '../components/EditableInput'
+import GlobalSelect from '../components/GlobalSelect'
 
 // require styles
 import 'quill/dist/quill.core'
@@ -29,7 +30,7 @@ document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('[data-vue="true"]').forEach(el => {
     new Vue({
       el: el,
-      components: { EndlessScroll, Paginate, MoreButton, Post, Banner,  AvatarUploader, EditableInput }
+      components: { EndlessScroll, Paginate, MoreButton, Post, Banner,  AvatarUploader, EditableInput, GlobalSelect }
     })
   })
   const app =

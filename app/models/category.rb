@@ -8,7 +8,7 @@ class Category < ApplicationRecord
   has_many :menus, dependent: :nullify
   has_many :companies
   acts_as_tree
-
+  scope :active, -> { where(enable: true) }
   friendly_id :title, use: :slugged
   attribute :remove_logo, :boolean
   # attr_accessible :name, :parent_id

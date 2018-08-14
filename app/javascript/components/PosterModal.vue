@@ -78,7 +78,7 @@ export default {
       body: "",
       options: {
         modules: {
-          toolbar: [["blockquote", "code-block"], ["link", "image", "video"]],
+          toolbar: [["blockquote", "code-block"], ["link", "video"]],
         },
         placeholder: "Введіть текст новини",
       },

@@ -1,243 +1,238 @@
-    .container
-        .row
-            .col-md-2.col-lg-2
-                .sidebar.sidebar_left
-                  = render 'partials/frontend/sidebar'
+  .container
+    .row
+      .col-md-2.col-lg-2
+        .sidebar.sidebar_left
+          = render 'partials/frontend/sidebar'
 
-            .col-md-6.col-lg-6
+      .col-md-6.col-lg-6
+        .content
+
+          .visible-xs-block
+            .weather.sidebar_item
+              .header Сьогодні у Хмельницькому
+              .content
+                .today_weather
+                  .icon
+                    img src="/assets/weather/clear.jpg"
+                  .temp
+                    .min +20 C
+                    .max +24 C
+
+          .post_block
+            .header
+              h1 Сьогодні у Хмельницькому
+              .post_action
+                a href="#"
+                  i.fas.fa-ellipsis-h
+
+            .content_block
+              .row
+                .col-md-12.col-sm-6.col-lg-6
+                  .form-group.button
+                    button class="btn btn-primary" data-toggle="modal" data-target="#addNews"  Запропонувати новину
+
+                .col-md-12.col-sm-6.col-lg-6
+                  .form-group
+                    .select_category(data-vue="true")
+                      global-select(categories=(Category.roots.pluck(:slug, :title).to_json))
+                      / = select('c', 'id', Category.roots.active.pluck(:id, :title), include_blank: false, class: 'selectCategory')
+
+          .visible-xs-block
+            .latest_post.sidebar_item
+              .header Останні новини
+
+              .content
+                .post
+                  .image
+                    a href="#"
+                      img src="/assets/posts/item.jpg"
+                  .content
+                    .post_info
+                      span.date 23.10.2017
+                      span.time 13:37
+                      span.category
+                        a href="#"  Бізнес
+
+                    .text
+                      p
+                        | В Україні почала роботу товарна
+                        | онлайн-біржа на blockchain
+
+                .post
+                  .image
+                    a href="#"
+                      img src="/assets/posts/item.jpg"
+                  .content
+                    .post_info
+                      span.date 23.10.2017
+                      span.time 13:37
+                      span.category
+                        a href="#"  Бізнес
+
+                    .text
+                      p
+                        | В Україні почала роботу товарна
+                        | онлайн-біржа на blockchain
+
+                .post
+                  .image
+                    a href="#"
+                      img src="/assets/posts/item.jpg"
+                  .content
+                    .post_info
+                      span.date 23.10.2017
+                      span.time 13:37
+                      span.category
+                        a href="#"  Бізнес
+
+                    .text
+                      p
+                        | В Україні почала роботу товарна
+                        | онлайн-біржа на blockchain
+
+                .post
+                  .image
+                    a href="#"
+                      img src="/assets/posts/item.jpg"
+                  .content
+                    .post_info
+                      span.date 23.10.2017
+                      span.time 13:37
+                      span.category
+                        a href="#"  Бізнес
+
+                    .text
+                      p
+                        | В Україні почала роботу товарна
+                        | онлайн-біржа на blockchain
+
+                .post
+                  .image
+                    a href="#"
+                      img src="/assets/posts/item.jpg"
+                  .content
+                    .post_info
+                      span.date 23.10.2017
+                      span.time 13:37
+                      span.category
+                        a href="#"  Бізнес
+
+                    .text
+                      p
+                        | В Україні почала роботу товарна
+                        | онлайн-біржа на blockchain
+
+                .button
+                  a href="#"  Переглянути всі новини
+
+            .sort_post.sidebar_item
+              .header
+                input type="checkbox" name="sort_post" id="sort_post_m"
+                label for="sort_post_m"  Спочатку популярні
+
+          .wall_block(data-vue="true")
+            endless-scroll
+
+      .col-md-4.col-lg-4.hidden-xs
+        .sidebar.sidebar_right
+          / .weather.sidebar_item
+          /   .header Сьогодні у Хмельницькому
+          /   .content
+          /     .today_weather
+          /       .icon
+          /         img src="/assets/weather/clear.jpg"
+          /       .temp
+          /         .min +20 C
+          /         .max +24 C
+
+          .sort_post.sidebar_item
+            .header
+              input type="checkbox" name="sort_post" id="sort_post"
+              label for="sort_post"  Спочатку популярні
+
+          .latest_post.sidebar_item
+            .header Останні новини
+
+            .content
+              .post
+                .image
+                  a href="#"
+                    img src="/assets/posts/item.jpg"
                 .content
+                  .post_info
+                    span.date 23.10.2017
+                    span.time 13:37
+                    span.category
+                      a href="#"  Бізнес
 
-                    .visible-xs-block
-                        .weather.sidebar_item
-                            .header Сьогодні у Хмельницькому
-                            .content
-                                .today_weather
-                                    .icon
-                                        img src="/assets/weather/clear.jpg"
-                                    .temp
-                                        .min +20 C
-                                        .max +24 C
+                  .text
+                    p
+                      | В Україні почала роботу товарна
+                      | онлайн-біржа на blockchain
 
-                    .post_block
-                        .header
-                            h1 Сьогодні у Хмельницькому
-                            .post_action
-                                a href="#"
-                                    i.fas.fa-ellipsis-h
+              .post
+                .image
+                  a href="#"
+                    img src="/assets/posts/item.jpg"
+                .content
+                  .post_info
+                    span.date 23.10.2017
+                    span.time 13:37
+                    span.category
+                      a href="#"  Бізнес
 
-                        .content_block
-                            .row
-                                .col-md-12.col-sm-6.col-lg-6
-                                    .form-group.button
-                                        button class="btn btn-primary" data-toggle="modal" data-target="#addNews"  Запропонувати новину
+                  .text
+                    p
+                      | В Україні почала роботу товарна
+                      | онлайн-біржа на blockchain
 
-                                .col-md-12.col-sm-6.col-lg-6
-                                    .form-group
-                                        .select_category
-                                            select.selectCategory
-                                                option Розділ
-                                                option Розділ 2
-                                                option Розділ 3
-                                                option Розділ 4
-                                                option Розділ 5
-                                                option Розділ 6
+              .post
+                .image
+                  a href="#"
+                    img src="/assets/posts/item.jpg"
+                .content
+                  .post_info
+                    span.date 23.10.2017
+                    span.time 13:37
+                    span.category
+                      a href="#"  Бізнес
 
-                    .visible-xs-block
-                        .latest_post.sidebar_item
-                            .header Останні новини
+                  .text
+                    p
+                      | В Україні почала роботу товарна
+                      | онлайн-біржа на blockchain
 
-                            .content
-                                .post
-                                    .image
-                                        a href="#"
-                                            img src="/assets/posts/item.jpg"
-                                    .content
-                                        .post_info
-                                            span.date 23.10.2017
-                                            span.time 13:37
-                                            span.category
-                                                a href="#"  Бізнес
+              .post
+                .image
+                  a href="#"
+                    img src="/assets/posts/item.jpg"
+                .content
+                  .post_info
+                    span.date 23.10.2017
+                    span.time 13:37
+                    span.category
+                      a href="#"  Бізнес
 
-                                        .text
-                                            p
-                                                | В Україні почала роботу товарна
-                                                | онлайн-біржа на blockchain
+                  .text
+                    p
+                      | В Україні почала роботу товарна
+                      | онлайн-біржа на blockchain
 
-                                .post
-                                    .image
-                                        a href="#"
-                                            img src="/assets/posts/item.jpg"
-                                    .content
-                                        .post_info
-                                            span.date 23.10.2017
-                                            span.time 13:37
-                                            span.category
-                                                a href="#"  Бізнес
+              .post
+                .image
+                  a href="#"
+                    img src="/assets/posts/item.jpg"
+                .content
+                  .post_info
+                    span.date 23.10.2017
+                    span.time 13:37
+                    span.category
+                      a href="#"  Бізнес
 
-                                        .text
-                                            p
-                                                | В Україні почала роботу товарна
-                                                | онлайн-біржа на blockchain
+                  .text
+                    p
+                      | В Україні почала роботу товарна
+                      | онлайн-біржа на blockchain
 
-                                .post
-                                    .image
-                                        a href="#"
-                                            img src="/assets/posts/item.jpg"
-                                    .content
-                                        .post_info
-                                            span.date 23.10.2017
-                                            span.time 13:37
-                                            span.category
-                                                a href="#"  Бізнес
-
-                                        .text
-                                            p
-                                                | В Україні почала роботу товарна
-                                                | онлайн-біржа на blockchain
-
-                                .post
-                                    .image
-                                        a href="#"
-                                            img src="/assets/posts/item.jpg"
-                                    .content
-                                        .post_info
-                                            span.date 23.10.2017
-                                            span.time 13:37
-                                            span.category
-                                                a href="#"  Бізнес
-
-                                        .text
-                                            p
-                                                | В Україні почала роботу товарна
-                                                | онлайн-біржа на blockchain
-
-                                .post
-                                    .image
-                                        a href="#"
-                                            img src="/assets/posts/item.jpg"
-                                    .content
-                                        .post_info
-                                            span.date 23.10.2017
-                                            span.time 13:37
-                                            span.category
-                                                a href="#"  Бізнес
-
-                                        .text
-                                            p
-                                                | В Україні почала роботу товарна
-                                                | онлайн-біржа на blockchain
-
-                                .button
-                                    a href="#"  Переглянути всі новини
-
-                        .sort_post.sidebar_item
-                            .header
-                                input type="checkbox" name="sort_post" id="sort_post_m"
-                                label for="sort_post_m"  Спочатку популярні
-
-                    include ../posts/wall
-
-
-            .col-md-4.col-lg-4.hidden-xs
-                .sidebar.sidebar_right
-                    .weather.sidebar_item
-                        .header Сьогодні у Хмельницькому
-                        .content
-                            .today_weather
-                                .icon
-                                    img src="/assets/weather/clear.jpg"
-                                .temp
-                                    .min +20 C
-                                    .max +24 C
-
-                    .sort_post.sidebar_item
-                        .header
-                            input type="checkbox" name="sort_post" id="sort_post"
-                            label for="sort_post"  Спочатку популярні
-
-                    .latest_post.sidebar_item
-                        .header Останні новини
-
-                        .content
-                            .post
-                                .image
-                                    a href="#"
-                                        img src="/assets/posts/item.jpg"
-                                .content
-                                    .post_info
-                                        span.date 23.10.2017
-                                        span.time 13:37
-                                        span.category
-                                            a href="#"  Бізнес
-
-                                    .text
-                                        p
-                                            | В Україні почала роботу товарна
-                                            | онлайн-біржа на blockchain
-
-                            .post
-                                .image
-                                    a href="#"
-                                        img src="/assets/posts/item.jpg"
-                                .content
-                                    .post_info
-                                        span.date 23.10.2017
-                                        span.time 13:37
-                                        span.category
-                                            a href="#"  Бізнес
-
-                                    .text
-                                        p
-                                            | В Україні почала роботу товарна
-                                            | онлайн-біржа на blockchain
-
-                            .post
-                                .image
-                                    a href="#"
-                                        img src="/assets/posts/item.jpg"
-                                .content
-                                    .post_info
-                                        span.date 23.10.2017
-                                        span.time 13:37
-                                        span.category
-                                            a href="#"  Бізнес
-
-                                    .text
-                                        p
-                                            | В Україні почала роботу товарна
-                                            | онлайн-біржа на blockchain
-
-                            .post
-                                .image
-                                    a href="#"
-                                        img src="/assets/posts/item.jpg"
-                                .content
-                                    .post_info
-                                        span.date 23.10.2017
-                                        span.time 13:37
-                                        span.category
-                                            a href="#"  Бізнес
-
-                                    .text
-                                        p
-                                            | В Україні почала роботу товарна
-                                            | онлайн-біржа на blockchain
-
-                            .post
-                                .image
-                                    a href="#"
-                                        img src="/assets/posts/item.jpg"
-                                .content
-                                    .post_info
-                                        span.date 23.10.2017
-                                        span.time 13:37
-                                        span.category
-                                            a href="#"  Бізнес
-
-                                    .text
-                                        p
-                                            | В Україні почала роботу товарна
-                                            | онлайн-біржа на blockchain
-
-                            .button
-                                a href="#"  Переглянути всі новини
+              .button
+                a href="#"  Переглянути всі новини
