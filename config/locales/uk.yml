@@ -1,6 +1,9 @@
 ---
 uk:
   activerecord:
+    attributes:
+      user:
+        login: 'логін'
     errors:
       messages:
         record_invalid: 'Виникли помилки: %{errors}'

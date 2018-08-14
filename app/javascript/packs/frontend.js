@@ -13,6 +13,8 @@ import SignupModal from '../components/SignupModal'
 import SigninModal from '../components/SigninModal'
 import PosterModal from '../components/PosterModal'
 import Banner from '../components/Banner'
+import AvatarUploader from '../components/AvatarUploader'
+import EditableInput from '../components/EditableInput'
 
 // require styles
 import 'quill/dist/quill.core'
@@ -21,12 +23,13 @@ import 'quill/dist/quill.bubble'
 
 Vue.use(TurbolinksAdapter)
 Vue.use(VueResource)
+window.csrf = document.getElementsByName('csrf-token')[0].getAttribute('content')
 Vue.http.headers.common['X-CSRF-Token'] = document.getElementsByName('csrf-token')[0].getAttribute('content')
 document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('[data-vue="true"]').forEach(el => {
     new Vue({
       el: el,
-      components: { EndlessScroll, Paginate, MoreButton, Post, Banner }
+      components: { EndlessScroll, Paginate, MoreButton, Post, Banner,  AvatarUploader, EditableInput }
     })
   })
   const app =

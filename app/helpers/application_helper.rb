@@ -18,4 +18,8 @@ module ApplicationHelper
   def current_path_active(path)
     [path, class: request.path == path ? 'active' : '']
   end
+
+  def same_user?(user)
+    current_user == user
+  end
 end

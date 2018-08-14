@@ -58,28 +58,73 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.model 'Article' do
+  config.model 'Affiche' do
     list do
-      include_all_fields
       field :category
+      field :body
+      field :created_at
+      field :updated_at
       exclude_fields :type
     end
     edit do
       field :body, :ck_editor
+      field :category
+      field :slug
+      field :user
       field :images, :active_storage_many
-      include_all_fields
+      exclude_fields :type
+    end
+  end
+
+  config.model 'Ad' do
+    list do
+      field :category
+      field :body
+      field :created_at
+      field :updated_at
+      exclude_fields :type
+    end
+    edit do
+      field :body, :ck_editor
+      field :category
+      field :slug
+      field :user
+      field :images, :active_storage_many
+      exclude_fields :type
+    end
+  end
+
+  config.model 'Article' do
+    list do
+      field :category
+      field :body
+      field :created_at
+      field :updated_at
+      exclude_fields :type
+    end
+    edit do
+      field :body, :ck_editor
+      field :category
+      field :slug
+      field :user
+      field :images, :active_storage_many
       exclude_fields :type
     end
   end
 
   config.model 'Post' do
     list do
-      include_all_fields
       field :category
+      field :body
+      field :created_at
+      field :updated_at
       exclude_fields :type
     end
     edit do
-      include_all_fields
+      field :body, :ck_editor
+      field :category
+      field :slug
+      field :user
       field :images, :active_storage_many
       exclude_fields :type
     end

@@ -16,7 +16,8 @@
     "vue-select2": "^0.2.6",
     "vue-simple-spinner": "^1.2.8",
     "vue-template-compiler": "^2.5.16",
-    "vue-turbolinks": "^2.0.3"
+    "vue-turbolinks": "^2.0.3",
+    "vue2-dropzone": "^3.2.2"
   },
   "devDependencies": {
     "babel-preset-stage-2": "^6.24.1",

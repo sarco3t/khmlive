@@ -63,11 +63,11 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise"
-gem 'devise-i18n'
+gem 'devise-i18n', github: 'tigrish/devise-i18n'
 gem "pundit"
 
 # admin
-gem "rails_admin", github: "scalderdom/rails_admin", branch: "active_storage"
+gem "rails_admin", github: "sarco3t/rails_admin", branch: "active_storage"
 gem "ckeditor"
 gem 'ancestry'
 gem 'rails_admin_nestable'

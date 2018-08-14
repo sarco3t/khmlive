@@ -21,6 +21,13 @@ class AbstractPost < ApplicationRecord
 
   validates :body, presence: true
 
+  def slug_candidates
+    [
+      :title,
+      %i[title id]
+    ]
+  end
+
   def delete_images
     images.each_with_index { |_, index| images[index].purge if remove_images.include?(index.to_s) }
   end

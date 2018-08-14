@@ -1,70 +1,103 @@
 .container
   .row
-    .col-md-2.col-lg-2
-      .sidebar.sidebar_left
-        = render 'partials/frontend/sidebar'
-    .col-md-10.col-lg-10
-      .content
-          .user_profile
-              .row
-                  .col-lg-9
+  .col-md-2.col-lg-2
+    .sidebar.sidebar_left
+    = render 'partials/frontend/sidebar'
+  .col-md-10.col-lg-10
+    .content
+      .user_profile
+        .row
+          .col-lg-9
 
-                      .wrap_profile_column
-                          .profile_column_left
-                              .profile_image.hidden-xs.hidden-sm
-                                  a(href="#")
-                                      img(src="/assets/profile/user.jpg" class="img-responsive")
+            .wrap_profile_column
+              .profile_column_left(data-vue="true")
+                .profile_image.hidden-xs.hidden-sm
+                  - if current_user == @user
+                    avatar-uploader(src=(url_for(@user.avatar_path)))
+                  - else
+                    p
+                      img(src=(url_for(@user.avatar_path)) class="img-responsive")
 
-                              .row.hidden-lg.hidden-md
-                                  .col-sm-6
-                                      .profile_image
-                                          a(href="#")
-                                              img(src="/assets/profile/user.jpg" class="img-responsive")
+                .row.hidden-lg.hidden-md
+                  .col-sm-6
+                    .profile_image
+                    - if current_user == @user
+                      avatar-uploader(src=(url_for(@user.avatar_path)))
+                    - else
+                      p
+                      img(src=(url_for(@user.avatar_path))  class="img-responsive")
 
-                                  .col-sm-6
-                                      .sidebar_right_profile
-                                          .yearth_user
-                                              .header На сайті:
-                                              .content= time_ago_in_words @user.created_at
+                  .col-sm-6
+                    .sidebar_right_profile
+                      .yearth_user
+                        .header На сайті:
+                        .content= time_ago_in_words @user.created_at
 
 
-                              .pofile_msg_action
-                                  .button
-                                      a(href="#" class="btn btn-primary") Повідомлення
+                .pofile_msg_action
+                  .button
+                    a(href="#" class="btn btn-primary") Повідомлення
 
-                          .profile_column_right
-                              .profile_content
-                                  .profile_header
-                                      .user_name= @user.full_name
-                                      .user_status Статус
+              .profile_column_right
+                .profile_content
+                  .profile_header
+                    .user_name= @user.full_name
+                    / .user_status Статус
 
-                                  .profile_contacts
-                                      .item_contact
-                                          .name Район:
-                                          .value Озерна
+                  .profile_contacts(data-vue="true")
+                    - if same_user?(@user)
+                      editable-input(title="Район" name="region" value=(@user.extra['region']) url='/users')
+                    - elsif @user.extra['region']
+                      .item_contact
+                        .name Район:
+                        .value= @user.extra['region']
+                    - if same_user?(@user)
+                      editable-input(title="Instagram" name="instagram" value=(@user.extra['instagram']) url='/users')
+                    - elsif @user.extra['instagram']
+                      .item_contact
+                        .name Instagram:
+                        .value= @user.extra['instagram']
+                    - if same_user?(@user)
+                      editable-input(title="Facebook" name="facebook" value=(@user.extra['facebook']) url='/users')
+                    - elsif @user.extra['facebook']
+                      .item_contact
+                        .name Facebook:
+                        .value= @user.extra['facebook']
+                    - if same_user?(@user)
+                      editable-input(title="Сайт" name="site" value=(@user.extra['site']) url='/users')
+                    - elsif @user.extra['site']
+                      .item_contact
+                        .name Район:
+                        .value= @user.extra['site']
 
-                                      .item_contact
-                                          .name Instagram:
-                                          .value
-                                              a(href="#") Instagram
+                    / - if same_user?(@user)
+                    /   .item_contact
+                    /     .name Instagram:
+                    /     .value
+                    /       = link_to @user.extra['instagram'], @user.extra['instagram']
+                    / - elsif @user.extra['instagram']
 
-                                      .item_contact
-                                          .name Facebook:
-                                          .value
-                                              a(href="#") Facebook
+                    / - if
+                    /   .item_contact
+                    /     .name Facebook:
+                    /     .value
+                    /       = link_to @user.extra['instagram'], @user.extra['facebook']
+                    / - elsif same_user?(@user)
+                    /   vue component
+                    / - if @user.extra[;site]
+                    /   .item_contact
+                    /     .name Сайт:
+                    /     .value
+                    /       = link_to @user.extra['site'], @user.extra['site']
+                    / - elsif same_user?(@user)
+                    /    copmasd
+                - unless current_user
+                  .profile_del_action
+                    .button
+                      a(href="#" class="btn btn-danger") Заблокувати
 
-                                      .item_contact
-                                          .name Сайт:
-                                          .value
-                                              a(href="#") www
-
-                              - unless current_user
-                                .profile_del_action
-                                    .button
-                                        a(href="#" class="btn btn-danger") Заблокувати
-
-                  .col-lg-3.col-xs-12.hidden-xs.hidden-sm
-                      .sidebar_right_profile
-                          .yearth_user
-                              .header На сайті:
-                              .content= time_ago_in_words @user.created_at
+          .col-lg-3.col-xs-12.hidden-xs.hidden-sm
+            .sidebar_right_profile
+              .yearth_user
+                .header На сайті:
+                .content= time_ago_in_words @user.created_at
