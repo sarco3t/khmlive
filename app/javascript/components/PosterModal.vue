@@ -67,13 +67,23 @@
 </template>
 <script>
 import { quillEditor } from "vue-quill-editor";
+import vue2Dropzone from 'vue2-dropzone'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 
 export default {
   components: {
     quillEditor,
+    'vue-dropzone': vue2Dropzone
   },
   data() {
     return {
+      dropzoneOptions: {
+        autoQueue: false,
+        uploadMultiple: true,
+        accept(file, done) {
+          done()
+        }
+      },
       category: "",
       body: "",
       options: {

@@ -25,7 +25,11 @@
         quillEditor(
           v-model="body",
           :options="options")
-
+    .form-group
+      vue-dropzone(:options="dropzoneOptions",
+        ref="zone",
+        id="dz-1"
+      )
     .form-group
         .row
             .col-md-6
@@ -37,14 +41,29 @@
                     .text-right.recaptcha_content
 </template>
 <script>
-import { quillEditor } from 'vue-quill-editor'
-
+import { quillEditor } from "vue-quill-editor";
+import vue2Dropzone from 'vue2-dropzone'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+const formData = new FormData()
 export default {
   components: {
-    quillEditor
+    quillEditor,
+    'vue-dropzone': vue2Dropzone
   },
   data() {
     return {
+      dropzoneOptions: {
+        url: '/users',
+        autoQueue: false,
+        uploadMultiple: true,
+        accept: (file, done) => {
+          formData.append('files', 'file')
+          console.log(formData)
+          done()
+        },
+        acceptedFiles: 'image/*',
+        dictDefaultMessage: 'Перетягніть щоб завантажити файли'
+      },
       category: '',
       message: '',
       body: '',
