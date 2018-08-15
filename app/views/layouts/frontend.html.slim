@@ -16,6 +16,13 @@ html
       window.current_user = "#{current_user}"
 
   body
+    script(async src="https://www.googletagmanager.com/gtag/js?id=UA-123992696-1")
+    javascript:
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-123992696-1');
     #wrapper
       = render 'partials/frontend/header'
       section.main
