@@ -81,3 +81,5 @@ gem 'babosa'
 gem 'kaminari'
 gem 'webpacker', '~> 3.5'
 gem 'mailboxer'
+gem 'bootstrap-wysihtml5-rails'
+

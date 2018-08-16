@@ -85,6 +85,8 @@ GEM
     bindex (0.5.0)
     bootsnap (1.3.0)
       msgpack (~> 1.0)
+    bootstrap-wysihtml5-rails (0.3.3.8)
+      railties (>= 3.0)
     builder (3.2.3)
     bullet (5.7.5)
       activesupport (>= 3.0.0)
@@ -367,6 +369,7 @@ DEPENDENCIES
   ancestry
   babosa
   bootsnap (>= 1.1.0)
+  bootstrap-wysihtml5-rails
   bullet
   byebug
   capybara (>= 2.15, < 4.0)

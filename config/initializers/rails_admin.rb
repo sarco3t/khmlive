@@ -67,7 +67,11 @@ RailsAdmin.config do |config|
       exclude_fields :type
     end
     edit do
-      field :body, :ck_editor
+      field :body, :wysihtml5     do
+        config_options toolbar: { fa: true }, # use font-awesome instead of glyphicon
+                       html: true, # enables html editor
+                       parserRules: { tags: { p:1 } }
+      end
       field :category
       field :slug
       field :user
@@ -85,7 +89,11 @@ RailsAdmin.config do |config|
       exclude_fields :type
     end
     edit do
-      field :body, :ck_editor
+      field :body, :wysihtml5     do
+        config_options toolbar: { fa: true }, # use font-awesome instead of glyphicon
+                       html: true, # enables html editor
+                       parserRules: { tags: { p:1 } }
+      end
       field :category
       field :slug
       field :user
@@ -103,7 +111,11 @@ RailsAdmin.config do |config|
       exclude_fields :type
     end
     edit do
-      field :body, :ck_editor
+      field :body, :wysihtml5     do
+        config_options toolbar: { fa: true }, # use font-awesome instead of glyphicon
+                       html: true, # enables html editor
+                       parserRules: { tags: { p:1 } }
+      end
       field :category
       field :slug
       field :user
@@ -121,7 +133,11 @@ RailsAdmin.config do |config|
       exclude_fields :type
     end
     edit do
-      field :body, :ck_editor
+      field :body, :wysihtml5     do
+        config_options toolbar: { fa: true }, # use font-awesome instead of glyphicon
+                       html: true, # enables html editor
+                       parserRules: { tags: { p:1 } }
+      end
       field :category
       field :slug
       field :user
