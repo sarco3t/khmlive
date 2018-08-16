@@ -18,6 +18,13 @@ Rails.application.routes.draw do
   root to: "frontend/pages#home"
 
   scope module: 'frontend' do
+    namespace :pages, path: '/' do
+      get :privacy
+      get :banner
+      get :law
+      get :contacts
+    end
+
     resources :banners do
       collection do
         get :next
