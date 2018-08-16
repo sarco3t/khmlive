@@ -30,7 +30,7 @@ class Frontend::PostsController < FrontendController
   end
 
   def create
-    @category.posts.create(post_params)
+    @category.posts.create(post_params.merge(enabled: false))
     redirect_back(fallback_location: root_path)
   end
 

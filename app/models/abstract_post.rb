@@ -27,6 +27,9 @@ class AbstractPost < ApplicationRecord
       %i[title id]
     ]
   end
+  def should_generate_new_friendly_id?
+    slug.blank? || (title_changed? && !slug_changed?)
+  end
 
   def delete_images
     images.each_with_index { |_, index| images[index].purge if remove_images.include?(index.to_s) }

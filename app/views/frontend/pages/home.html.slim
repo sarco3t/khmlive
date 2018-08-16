@@ -8,15 +8,7 @@
         .content
 
           .visible-xs-block
-            .weather.sidebar_item
-              .header Сьогодні у Хмельницькому
-              .content
-                .today_weather
-                  .icon
-                    img src="/assets/weather/clear.jpg"
-                  .temp
-                    .min +20 C
-                    .max +24 C
+            = render 'weather'
 
           .post_block
             .header
@@ -123,7 +115,7 @@
                         | онлайн-біржа на blockchain
 
                 .button
-                  a href="#"  Переглянути всі новини
+                  a href='/news'  Переглянути всі новини
 
             .sort_post.sidebar_item
               .header
@@ -135,15 +127,7 @@
 
       .col-md-4.col-lg-4.hidden-xs
         .sidebar.sidebar_right
-          / .weather.sidebar_item
-          /   .header Сьогодні у Хмельницькому
-          /   .content
-          /     .today_weather
-          /       .icon
-          /         img src="/assets/weather/clear.jpg"
-          /       .temp
-          /         .min +20 C
-          /         .max +24 C
+          = render 'weather'
 
           .sort_post.sidebar_item
             .header
@@ -235,4 +219,4 @@
                       | онлайн-біржа на blockchain
 
               .button
-                a href="#"  Переглянути всі новини
+                a href="/news"  Переглянути всі новини
