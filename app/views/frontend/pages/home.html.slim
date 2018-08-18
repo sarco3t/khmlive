@@ -26,7 +26,7 @@
                 .col-md-12.col-sm-6.col-lg-6
                   .form-group
                     .select_category(data-vue="true")
-                      global-select(categories=(Category.roots.active.pluck(:slug, :title).to_json))
+                      global-select(categories=(Category.roots.active.home.pluck(:slug, :title).to_json))
                       / = select('c', 'id', Category.roots.active.pluck(:id, :title), include_blank: false, class: 'selectCategory')
 
           .visible-xs-block

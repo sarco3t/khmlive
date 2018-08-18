@@ -9,6 +9,7 @@ class Category < ApplicationRecord
   has_many :companies
   acts_as_tree
   scope :active, -> { where(enable: true) }
+  scope :home, -> { where(on_home_page: true) }
   friendly_id :title, use: :slugged
   attribute :remove_logo, :boolean
   # attr_accessible :name, :parent_id
