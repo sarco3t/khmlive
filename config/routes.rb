@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     resources :companies do
       get :category
     end
+    # resources :categories, path: '/', constraints: {id: /(?!packs).*/ } do
     resources :categories, path: '/' do
       resources :posts, path: '/', concerns: :commentable do
         member do

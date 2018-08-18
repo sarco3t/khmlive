@@ -4,11 +4,12 @@
       .sidebar_nav
         ul.nav
           - @menus.each do |item|
-            li
-              = link_to category_posts_path(item.category.slug) do
-                  span.icon_nav
-                    i.fas class=(item.icon)
-                  span= item.category.title
+            - if item.category.enable
+              li
+                = link_to category_posts_path(item.category.slug) do
+                    span.icon_nav
+                      i.fas class=(item.icon)
+                    span= item.category.title
       .sidebar_nav
         ul.nav
           li
