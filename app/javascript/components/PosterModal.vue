@@ -106,7 +106,10 @@ export default {
             body: this.body,
           },
         })
-        .then(_ => window.location.reload(), console.log);
+        .then(_ => {
+          $('#addNews').modal('hide')
+          $('#successModal').modal('show')
+        }, console.log);
     },
     optionsSelected() {
       return JSON.parse(this.categories).map(c => {

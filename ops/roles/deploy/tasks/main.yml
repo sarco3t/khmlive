@@ -2,7 +2,7 @@
   local_action: command bundle exec rake assets:precompile chdir=../
 
 - name: copy files (src is Rails root folder)
-  synchronize: src=../../../../ dest={{ deploy_directory }} delete=yes rsync_opts=--exclude=.git/,--exclude=log/,--exclude=tmp/cache
+  synchronize: src=../../../../ dest={{ deploy_directory }} delete=yes rsync_opts=--exclude=.git/,--exclude=log/,--exclude=tmp/cache,--exclude=storage
 
 - name: remove digest
   command: bash -lc bundle exec rake assets:non_digested chdir={{ deploy_directory }}

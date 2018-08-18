@@ -93,7 +93,10 @@ export default {
           type: this.post_type,
           body: this.body
         }
-      }).then(_ => window.location.reload(), console.log)
+      }).then(_ => {
+        $('#addPost').modal('hide')
+        $('#successModal').modal('show')
+      }, console.log)
     },
     optionsSelected () {
       return JSON.parse(this.categories).map(c => {

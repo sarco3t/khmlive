@@ -19,12 +19,14 @@ export default {
        allowClear: false,
        minimumResultsForSearch: -1,
    });
-   $(this.$refs.select).change((e) => {
-    bus.$emit('homeCategory', e.target.value)
-   })
-    setTimeout(() => {
-      bus.$emit('homeCategory', this.localCategories[0][0])
-    }, 500)
+   if (this.localCategories.length) {
+    $(this.$refs.select).change((e) => {
+      bus.$emit('homeCategory', e.target.value)
+    })
+      setTimeout(() => {
+        bus.$emit('homeCategory', this.localCategories[0][0])
+      }, 500)
+    }
   },
 }
 </script>
