@@ -17,6 +17,10 @@ export default {
   props: ['count', 'url', 'has_like'],
   methods: {
     handle() {
+      if (!window.current_user) {
+        $('#signinModal').modal('toggle')
+        return
+      }
       if (!this.hasLike) {
         this.hasLike = true
         this.$http.post(this.url + '/like')

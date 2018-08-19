@@ -69,14 +69,16 @@ export default {
   },
   methods: {
     handle (e) {
-      console.log('s')
       this.body = e.target.value
     },
     sortedComments (collection) {
       return collection.concat(this.comments, this.newComments).sort((a, b) => a.id - b.id)
     },
     send() {
-      console.log('lol')
+      if (!window.current_user) {
+        $('#signinModal').modal('toggle')
+        return
+      }
       this.$http.post(this.url + '/comments', {
         comment: {
           body: this.body
