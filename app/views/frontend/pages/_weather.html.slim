@@ -1,9 +1,18 @@
-.weather.sidebar_item
-  .header Погода
-  .content
-    .today_weather
-      .icon
-        img src="/assets/weather/clear.jpg"
-      .temp
-        .min +20 C
-        .max +24 C
+- if @weather.present?
+  .weather.sidebar_item
+    .header
+      | Погода
+      / |
+      / =  ' ' + Translit.convert(session[:geo]['city'])
+    .content
+      .today_weather
+        .icon
+          / img src="/assets/weather/clear.jpg"
+          img src="http://openweathermap.org/img/w/#{@weather[:icon]}.png"
+        .temp
+          .min
+            =@weather[:min]
+            |  C
+          .max
+            = @weather[:max]
+            |  C
