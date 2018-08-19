@@ -10,9 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_18_125224) do
+ActiveRecord::Schema.define(version: 2018_08_19_085018) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "btree_gist"
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -209,6 +211,7 @@ ActiveRecord::Schema.define(version: 2018_08_18_125224) do
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["extra"], name: "index_posts_on_extra", using: :gin
     t.index ["slug"], name: "index_posts_on_slug", unique: true
+    t.index ["title", "body"], name: "fulltext_index_posts", opclass: :gin_trgm_ops, using: :gin
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

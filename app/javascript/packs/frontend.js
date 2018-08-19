@@ -16,6 +16,7 @@ import Banner from '../components/Banner'
 import AvatarUploader from '../components/AvatarUploader'
 import EditableInput from '../components/EditableInput'
 import GlobalSelect from '../components/GlobalSelect'
+import TopNews from '../components/TopNews'
 
 // require styles
 import 'quill/dist/quill.core'
@@ -30,7 +31,7 @@ document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('[data-vue="true"]').forEach(el => {
     new Vue({
       el: el,
-      components: { EndlessScroll, Paginate, MoreButton, Post, Banner,  AvatarUploader, EditableInput, GlobalSelect }
+      components: { EndlessScroll, Paginate, MoreButton, Post, Banner,  AvatarUploader, EditableInput, GlobalSelect, TopNews }
     })
   })
   const app =

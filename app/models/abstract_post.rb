@@ -6,11 +6,18 @@ class AbstractPost < ApplicationRecord
   include Commentable
   include Likeable
 
+  include SearchCop
+
+  search_scope :search do
+    attributes all: %i[title body]
+    options :all, default: true
+  end
+
   paginates_per 10
   friendly_id :title, use: :slugged
 
   scope :active, -> { where(enabled: true) }
-
+  scope :popular, -> { order(:comments_count, :likes_count, :views_count)}
   belongs_to :user, optional: true
   belongs_to :category
   has_many_attached :images
@@ -27,6 +34,7 @@ class AbstractPost < ApplicationRecord
       %i[title id]
     ]
   end
+  
   def should_generate_new_friendly_id?
     slug.blank? || (title_changed? && !slug_changed?)
   end

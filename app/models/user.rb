@@ -20,9 +20,9 @@ class User < ApplicationRecord
   }, allow_nil: true
   validates :username, format: { with: /^[a-zA-Z0-9_\.]*$/, multiline: true }
 
-    def avatar_path
-      avatar.attached? ? avatar : '/assets/profile/user.jpg'
-    end
+  def avatar_path
+    avatar.attached? ? avatar : '/assets/profile/user.jpg'
+  end
 
   def mailboxer_email(obj); end
 

@@ -85,4 +85,4 @@ gem 'bootstrap-wysihtml5-rails'
 
 gem 'open-weather', require: 'open_weather'
 gem 'geocoder'
-gem 'ransack'
+gem 'search_cop'

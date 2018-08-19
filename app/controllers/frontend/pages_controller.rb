@@ -14,10 +14,9 @@ class Frontend::PagesController < FrontendController
       @weather = {}
       {}
     end
-    p session[:geo]
     @weather = Rails.cache.fetch("weather#{session[:geo]['city']}", expires_in: 2.hours) do
       weather = OpenWeather::Current.geocode(*session[:geo]['loc'].split(','), options)
-      main =weather['weather'].class == Array ? weather['weather'].first : weather['weather']
+      main = weather['weather'].class == Array ? weather['weather'].first : weather['weather']
       {
         icon: main['icon'],
         main: main['main'],

@@ -1,0 +1,95 @@
+.container
+  .row
+      .col-md-2.col-lg-2
+        .sidebar.sidebar_left
+          = render 'partials/frontend/sidebar'
+
+      .col-md-6.col-lg-6
+        .content
+
+          .search_action
+            .search
+              .form-group
+                label.full-width
+                  .icon_search
+                    i.fas.fa-search
+
+                  input(type="text" class="form-control" placeholder="Що ви шукаєте?")
+
+            .row
+              .col-md-6
+                .title За вашим запитом знайдено:
+
+              .col-md-6
+                .search_result 18 результатів
+
+          .visible-xs-block
+
+
+        .wall_block
+
+
+      .col-md-4.col-lg-4.hidden-xs
+        .sidebar.sidebar_right
+
+          .search_filter.sidebar_item
+            .header Інструменти пошуку
+
+            .content
+              .row
+                .col-md-6
+                  .filter_date
+                    .icon_filter
+                      i.far.fa-calendar-alt
+
+                    .content_filter
+                      input(type="text" name="date_start" value="04.11.2017" class="datepicker_input")
+                      span -
+                      input(type="text" name="date_end" value="06.11.2018" class="datepicker_input")
+
+
+                .col-md-6
+                  .filter_category
+                    .item
+                      input(type="checkbox" id="category_1" class="checkbox" checked)
+                      label(for="category_1") Шукати скрізь
+
+                    .item
+                      input(type="checkbox" id="category_2" class="checkbox")
+                      label(for="category_2") Новини
+
+                    .item
+                      input(type="checkbox" id="category_3" class="checkbox")
+                      label(for="category_3") Афіша
+
+                    .item
+                      input(type="checkbox" id="category_4" class="checkbox")
+                      label(for="category_4") Довідник
+
+                    .item
+                      input(type="checkbox" id="category_5" class="checkbox")
+                      label(for="category_5") Оголошення
+
+                    .item
+                      input(type="checkbox" id="category_6" class="checkbox")
+                      label(for="category_6") Запитання
+
+                    .item
+                      input(type="checkbox" id="category_7" class="checkbox")
+                      label(for="category_7") Історії
+
+                    .item
+                      input(type="checkbox" id="category_8" class="checkbox")
+                      label(for="category_8") Шукаю тебе
+
+                    .item
+                      input(type="checkbox" id="category_9" class="checkbox")
+                      label(for="category_9") Допомога тваринам
+
+                    .item
+                      input(type="checkbox" id="category_10" class="checkbox")
+                      label(for="category_10") Ревізор
+
+                    .item
+                      input(type="checkbox" id="category_11" class="checkbox")
+                      label(for="category_11") Народний ТОП

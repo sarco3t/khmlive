@@ -1,13 +1,12 @@
-.item_post
+div class=(header ? 'header_post' : 'item_post')
     .image_post
-        a(href="#")
-            img(src="img/posts/news.jpg" class="img-responsive")
+      = link_to category_post_path(post.category, post) do
+          = image_tag url_for(post.main_image_path), class: 'img-responsive'
 
     .title_post
-        p
-          | «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео запуска Falcon Heavy с кадрами потери центрального ускорителя
-          a href="#" class="comments_post"
-              span.icon_comments
-                  i.fas.fa-comment
-              span.count_comments 50
+        p== post.title || post.body
+        = link_to category_post_path(post.category, post), class: 'comments_post' do
+            span.icon_comments
+                i.fas.fa-comment
+            span.count_comments= post.comments_count
 

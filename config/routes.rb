@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   root to: "frontend/pages#home"
 
   scope module: 'frontend' do
+    get :search, to: 'posts#search'
     namespace :pages, path: '/' do
       get :privacy
       get :banner

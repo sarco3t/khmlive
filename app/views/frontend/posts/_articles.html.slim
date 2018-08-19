@@ -1,122 +1,39 @@
-    .container
-        .row
-            .col-md-2.col-lg-2
-                .sidebar.sidebar_left
-                  = render 'partials/frontend/sidebar'
+  .container
+    .row
+      .col-md-2.col-lg-2
+        .sidebar.sidebar_left
+          = render 'partials/frontend/sidebar'
 
-            .col-md-6.col-lg-6
+      .col-md-6.col-lg-6
+        .content
+
+          .visible-xs-block
+            .mobile-content
+              .button
+                a(href="void(0)" class="show_popular") Найбільш обговорювані
+
+              .popular_comments.hide_default
+                .header Найбільш обговорювані
+
                 .content
+                  .post_list
+                    - @popular_posts.each_with_index do |post, idx|
+                        = render 'mini_article', post: post, header: idx.zero?
 
-                    .visible-xs-block
-                        .mobile-content
-                            .button
-                                a(href="#" class="show_popular") Найбільш обговорювані
+          .news_posts
+            - posts.each do |post|
+              = render 'article', post: post
+          .button.button_news
+            a(href="#" class="button_more")
+              span Ще
 
-                            .popular_comments.hide_default
-                                .header Найбільш обговорювані
+      .col-md-4.col-lg-4.hidden-xs
+        .sidebar.sidebar_right
 
-                                .content
-                                    .header_post
-                                        .image_post
-                                            a(href="#")
-                                                img(src="img/posts/news.jpg" class="img-responsive")
+          .popular_comments.sidebar_item
+            .header Найбільш обговорювані
 
-                                        .title_post
-                                            a(href="#")
-                                                | «Трейлер следующей части человеческой
-                                                br
-                                                | истории»
-
-                                            a(href="#" class="comments_post")
-                                                span.icon_comments
-                                                    i.fas.fa-comment
-                                                span.count_comments 50
-
-
-                                    .post_list
-                                        .item_post
-                                            .image_post
-                                                a(href="#")
-                                                    img(src="img/posts/news.jpg" class="img-responsive")
-
-                                            .title_post
-                                                p «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео запуска Falcon Heavy с кадрами потери центрального ускорителя
-
-                                                    a(href="#" class="comments_post")
-                                                        span.icon_comments
-                                                            i.fas.fa-comment
-                                                        span.count_comments 50
-
-                                        .item_post
-                                            .image_post
-                                                a(href="#")
-                                                    img(src="img/posts/news.jpg" class="img-responsive")
-
-                                            .title_post
-                                                p «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео запуска Falcon Heavy с кадрами потери центрального ускорителя
-
-                                                    a(href="#" class="comments_post")
-                                                        span.icon_comments
-                                                            i.fas.fa-comment
-                                                        span.count_comments 50
-
-                                        .item_post
-                                            .image_post
-                                                a(href="#")
-                                                    img(src="img/posts/news.jpg" class="img-responsive")
-
-                                            .title_post
-                                                p «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео запуска Falcon Heavy с кадрами потери центрального ускорителя
-
-                                                    a(href="#" class="comments_post")
-                                                        span.icon_comments
-                                                            i.fas.fa-comment
-                                                        span.count_comments 50
-
-                                        .item_post
-                                            .image_post
-                                                a(href="#")
-                                                    img(src="img/posts/news.jpg" class="img-responsive")
-
-                                            .title_post
-                                                p «Трейлер следующей части человеческой истории»: Илон Маск и создатель «Мира Дикого Запада» показали новое видео запуска Falcon Heavy с кадрами потери центрального ускорителя
-
-                                                    a(href="#" class="comments_post")
-                                                        span.icon_comments
-                                                            i.fas.fa-comment
-                                                        span.count_comments 50
-
-                    .news_posts
-                        - posts.each do |post|
-                            = render 'article', post: post
-                    .button.button_news
-                        a(href="#" class="button_more")
-                            span Ще
-
-            .col-md-4.col-lg-4.hidden-xs
-                .sidebar.sidebar_right
-
-                    .popular_comments.sidebar_item
-                        .header Найбільш обговорювані
-
-                        .content
-                            .header_post
-                                .image_post
-                                    a(href="#")
-                                        img(src="img/posts/news.jpg" class="img-responsive")
-
-                                .title_post
-                                    a(href="#")
-                                        | «Трейлер следующей части человеческой
-                                        br
-                                        | истории»
-
-                                    a(href="#" class="comments_post")
-                                        span.icon_comments
-                                            i.fas.fa-comment
-                                        span.count_comments 50
-
-
-                            .post_list
-                              - (1..5).each do
-                                = render 'mini_article'
+            .content
+              .post_list
+                - @popular_posts.each_with_index do |post, idx|
+                  = render 'mini_article', post: post, header: idx.zero?

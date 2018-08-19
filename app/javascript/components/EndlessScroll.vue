@@ -31,7 +31,7 @@ export default {
       return this.url || '/' + this.categoryID
     },
     loadMore() {
-      if (!this.lastResponse && (this.categoryID || this.url)) {
+      if (!this.lastResponse && this.url) {
         this.busy = true;
         this.$http
           .get(this.getUrl() + '.json', {
