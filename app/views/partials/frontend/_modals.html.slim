@@ -28,7 +28,7 @@
                     .modal-title.text-center Запропонувати новину
 
                 .modal-body data-vue-modal="true"
-                    modal categories=(Category.roots.pluck(:id, :title).to_json) post_type='Post'
+                    modal categories=(Category.active.home.roots.pluck(:id, :title).to_json) post_type='Post'
 
 
     #addPoster.modal.fade tabindex="-1" role="dialog"

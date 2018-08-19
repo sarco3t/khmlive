@@ -107,7 +107,7 @@ export default {
           },
         })
         .then(_ => {
-          $('#addNews').modal('hide')
+          $('#addPost').modal('toggle')
           $('#successModal').modal('show')
         }, console.log);
     },
